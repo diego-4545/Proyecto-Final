@@ -1,0 +1,21 @@
+#contenedor-main-perfil {
+    display: flex;
+}
+
+#main-info-usuario-foto {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+#contenedor-lista-etiquetas {
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.boton-eliminar-etiqueta {
+    border: 1px solid lightgrey;
+}
+

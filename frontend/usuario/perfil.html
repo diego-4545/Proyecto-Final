@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" 
+    />
+
+    <!-- Importamos el CSS de Bootstrap v5.3.3 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" 
+    integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" 
+    />
+
+    <!-- Estilos de CSS -->
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/perfil.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Metropolitan
+            </a>
+            <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../publico/inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../publico/información_estatica.html">Conocenos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./inicio_editor.html">Escribe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../admin/inicio.html">Administrar</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Información y foto del usuario -->
+            <div class="d-flex align-items-center user-info ms-auto">
+                <div class="text-end" id="nombre-rol">
+                    <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
+                    <span class="role" id="navbar-info-usuario-rol">Rol</span>
+                </div>
+                <a href="./perfil.html">
+                    <img id="navbar-info-usuario-foto" src="./img/perfil_default.png" alt="Foto de perfil">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Contenido -->
+    <h1>PERFIL</h1>
+    <div id="contenedor-main-perfil" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div id="contenedor-izq-perfil" class="row">
+                    <div id="contenedor-foto-perfil" class="col-12">
+                        <img id="main-info-usuario-foto" src="./img/perfil_default.png" alt="Foto de perfil">
+                    </div>
+                    <div id="contenedor-info-usuario" class="col-12 mt-5">
+                        <p><b>NOMBRE: </b><span id="info-usuario-nombre">Manuel Magaña Lopez</span></p>
+                        <p><b>CORREO: </b><span id="info-usuario-correo">manuel.maganal@uanl.edu.mx</span></p>
+                        <p><b>DESCRIPCIÓN: </b><span id="info-usuario-descripcion"></span>Esta descripción será reemplazada por la de cada usuario individualmente.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-8">
+                <div id="contenedor-der-perfil" class="row">
+                    <!-- Los articulos del usuario -->
+                    <div id="contenedor-galeria-articulos" class="col-12">
+                        <h3>TUS NOTICIAS</h3>
+                        <div id="galeria articulos">
+                            <!-- Aquí se añadiran los articulos de cada usuario  -->
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Las etiquetas del usuario -->
+                    <div id="contenedor-etiquetas-intereses" class="col-12 mt-5">
+                        <h3>TUS INTERESES</h3>
+                        <div id="contenedor-lista-etiquetas">
+                            <div id="lista-etiquetas">
+                                <ul class="list-group list-group-horizontal">
+                                    <!-- Aqui se añadiran las etiquetas de cada usuario -->
+                                    <li class="list-group-item">
+                                        Etiqueta 1
+                                        <button class="badge text-bg-light boton-eliminar-etiqueta">X</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="busqueda-etiquetas">
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Busca etiquetas" aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opciones de configuracion -->
+                    <div id="contenedor-configuracion-perfil" class="col-12 mt-5">
+                        <h3>CONFIGURACIÓN</h3>
+                        <div>
+                            <button id="boton-cambiar-info" class="btn btn-dark">Modificar datos</button>
+                            <button id="boton-notificaciones" class=" btn btn-dark">Activar notificaciones</button>
+                        </div>
+                    </div>
+                    <div id="contenedor-eliminar-perfil" class="col-12 mt-5">
+                        <button id="boton-eliminar-cuenta" class="btn btn-danger">Eliminar cuenta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Importamos JQuery v3.7.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Importamos el JS de Bootstrap v5.3.3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+    integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    
+    <!-- Importamos el JS de Sweetalert2 v11.14.0 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.all.js"
+    integrity="sha512-HE6XTjw3UV1hqENThKtsSn4mr3sx/lXbTSVPlOdIU3pprqz5ti16sGIGw8y5EAePRYg80O3OEBRnXPwON7vOUA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Scripts de JS -->
+    <script src="js/transversing.js"></script>
+</body>
+</html>
