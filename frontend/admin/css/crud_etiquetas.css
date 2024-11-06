@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #f3f3f3;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.logo-img {
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.menu a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.menu a:hover {
+    background-color: #ddd;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    background-color: #fff;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.header {
+    background-color: #e8e8e8;
+    padding: 10px 20px;
+}
+
+.header h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.crud-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 50%; 
+    margin-left: 53px; 
+}
+
+.search-bar {
+    padding: 8px 40px 8px 40px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+    background-color: #fff;
+    background-image: url('../img/buscar.png') !important;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 30px 30px;
+}
+
+
+.btn-add {
+    padding: 8px 20px 8px 40px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    background-image: url('../img/mas.png'); 
+    background-repeat: no-repeat;
+    background-position: 10px center; 
+    background-size: 20px 20px;
+}
+.btn-add {
+    position: relative;
+    padding-left: 40px;
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: black;
+    border-radius: 25px;
+    border: 1px solid #000000;
+    cursor: pointer;
+}
+
+.btn-add::before {
+    content: "";
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px; 
+    height: 20px;
+    background-image: url('img/tu-imagen.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.btn-save {
+    padding: 8px 20px;
+    border-radius: 25px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+
+}
+
+
+.table-container {
+    width: 90%; 
+    margin: 20px auto;
+}
+
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #333;
+}
+
+.crud-table th, .crud-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+th {
+    background-color: rgba(138, 127, 127, 0.549);
+}
+
+.btn-action {
+    padding: 6px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 0; 
+}
+
+.edit, .delete {
+    background-color: rgba(138, 127, 127, 0.549);
+    color: black;
+}
+
+.divider {
+    border: none;
+    border-top: 2px solid #000000;
+    margin: 0;
+}
+
+
+.vertical-divider {
+    width: 2px;
+    background-color: #000000;
+    position: fixed;
+    left: 260px;
+    top: 0;
+    bottom: 0;
+}
+
+#paginationButtons {
+    text-align: right;
+    margin-top: 10px;
+}
+
+#paginationButtons button {
+    margin-left: 5px; 
+}
+
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; 
+    margin: 20px auto; 
+}
+
+#pageInfo {
+    text-align: right;
+    flex-grow: 1;
+    padding-right: 20px; 
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 5px; 
+}
+
+.pagination-buttons button {
+    padding: 8px 16px;
+    border-radius: 5px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.pagination-buttons button:hover {
+    background-color: #000000; 
+}
+
+
+.pagination-buttons button:active {
+    background-color: #000000; 
+}
