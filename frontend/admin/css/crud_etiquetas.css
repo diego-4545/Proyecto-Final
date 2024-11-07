@@ -234,3 +234,11 @@ th {
 .pagination-buttons button:active {
     background-color: #000000; 
 }
+
+#espacio {
+    margin-top:  5px;
+}
+
+.color {
+background-color: rgba(138, 127, 127, 0.549);
+}

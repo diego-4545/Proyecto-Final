@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalla de Administración</title>
+    <title>CRUD de Etiquetas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/Inicio.css">
+    <link rel="stylesheet" href="css/crud_etiquetas.css">
 </head>
 
 <body>
@@ -34,7 +34,6 @@
         </nav>
     </aside>
 
-
     <div class="vertical-divider"></div>
 
     <main class="main-content">
@@ -45,23 +44,161 @@
                 </h1>
             </div>
             <div class="user-info d-flex align-items-center">
+                <button class="btn-add mr-3" onclick="addTag()">
+                    <i class="fas fa-plus"></i> Añadir Usuarios
+                </button>
                 <div class="text-right mr-2">
                     <span>Nombre de usuario</span><br>
                     <small>Administrador</small>
                 </div>
                 <a href="../usuario/perfil.html">
-                    <img src="img/perfil_default.png" alt="Foto de perfil" class="rounded-circle" width="40"
-                        height="40">
+                    <img src="img/perfil_default.png" alt="Foto de perfil" class="rounded-circle" width="40" height="40">
                 </a>
             </div>
         </header>
 
         <hr class="divider">
 
+        <div class="crud-header">
+            <input type="text" id="searchBar" class="search-bar" placeholder="Buscar Usuarios" oninput="searchTag()">
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+        <div class="table-container">
+            <table class="crud-table" id="crudTable">
+                <thead>
+                    <tr>
+                        <th>Acciones</th>
+                        <th>Rol</th>
+                        <th>Fecha de creación</th>
+                        <th>Nombre de usuario</th>
+                        <th>Contraseña</th>
+                        <th>Email</th>
+                        <th>Articulos creados</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
 
-</html>
+<div class="pagination-container">
+    <div class="save-container">
+        <button class="btn-save" onclick="saveChanges()">Guardar Cambios</button>
+    </div>
+    <span id="pageInfo"></span>
+    <div class="pagination-buttons">
+        <button onclick="goToFirstPage()" >Primero</button>
+        <button onclick="prevPage()" >Anterior</button>
+        <button onclick="nextPage()" >Siguiente</button>
+        <button onclick="goToLastPage()" >Último</button>
+    </div>
+</div>
+
+    
+    </main>
+
+    <div class="modal fade" id="addTagModal" tabindex="-1" role="dialog" aria-labelledby="editTagModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editTagModalLabel">Agregar Usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editTagForm">
+                            <div class="form-group">
+                                <label for="Rol">Rol</label>
+                                <select class="form-control" id="Rol" required>
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Usuario">Usuario</option>
+                                    <option value="Suspendido">Suspendido</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="Date">Fecha de Creación</label>
+                                <input type="date" class="form-control" id="Date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="User">Nombre de usuario</label>
+                                <input type="text" class="form-control" id="User" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Creator">Contraseña</label>
+                                <input type="text" class="form-control" id="Creator" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="text" class="form-control" id="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Articles">Artículos Creados</label>
+                                <input type="text" class="form-control" id="Articles" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="saveTagBtn">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal para Editar Usuario -->
+        <div class="modal fade" id="editTagModal" tabindex="-1" role="dialog" aria-labelledby="editTagModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editTagModalLabel">Editar Usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editTagForm">
+                            <div class="form-group">
+                                <label for="Rol">Rol</label>
+                                <select class="form-control" id="Rol" required>
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Usuario">Usuario</option>
+                                    <option value="Suspendido">Suspendido</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editDate">Fecha de Creación</label>
+                                <input type="date" class="form-control" id="editDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editUser">Nombre de usuario</label>
+                                <input type="text" class="form-control" id="editUser" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editPasword">Contraseña</label>
+                                <input type="text" class="form-control" id="editPasword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEmail">Email</label>
+                                <input type="text" class="form-control" id="editEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editArticle">Artículos Creados</label>
+                                <input type="text" class="form-control" id="editArticle" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="updateTagBtn">Actualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="js/crud_usuarios.js"></script>
+    </body>
+    </html>
