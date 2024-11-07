@@ -64,35 +64,49 @@
 
 
     <!-- Contenido -->
-    <h1>PERFIL</h1>
     <div id="contenedor-main-perfil" class="container-fluid">
+        <h1 class="col-12">PERFIL</h1>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div id="contenedor-izq-perfil" class="row">
                     <div id="contenedor-foto-perfil" class="col-12">
+                        <h3>TU INFORMACIÓN</h3>
                         <img id="main-info-usuario-foto" src="./img/perfil_default.png" alt="Foto de perfil">
                     </div>
                     <div id="contenedor-info-usuario" class="col-12 mt-5">
-                        <p><b>NOMBRE: </b><span id="info-usuario-nombre">Manuel Magaña Lopez</span></p>
-                        <p><b>CORREO: </b><span id="info-usuario-correo">manuel.maganal@uanl.edu.mx</span></p>
-                        <p><b>DESCRIPCIÓN: </b><span id="info-usuario-descripcion"></span>Esta descripción será reemplazada por la de cada usuario individualmente.</p>
+                        <!-- Información del usuario -->
+                        <p><b>NOMBRE: </b><span id="info-usuario-nombre"></span></p>
+                        <p><b>CORREO: </b><span id="info-usuario-correo"></span></p>
+                        <p><b>DESCRIPCIÓN: </b><span id="info-usuario-descripcion"></span></p>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-lg-8">
+
+            <div class="col-lg-7">
                 <div id="contenedor-der-perfil" class="row">
                     <!-- Los articulos del usuario -->
                     <div id="contenedor-galeria-articulos" class="col-12">
                         <h3>TUS NOTICIAS</h3>
-                        <div id="galeria articulos">
-                            <!-- Aquí se añadiran los articulos de cada usuario  -->
-                            <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
+                        <div id="carrusel-articulos" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <!-- Aquí se añadiran los articulos de cada usuario  -->
+                                <div class="carousel-item active">
+                                    <div class="card articulo">
+                                        <img id="info-articulo-imagen" src="" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 id="info-articulo-titulo" class="card-title text-center">Card title</h5>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <button class="carousel-control-prev carrusel-control" type="button" data-bs-target="#carrusel-articulos" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon control-icon-btn" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next carrusel-control" type="button" data-bs-target="#carrusel-articulos" data-bs-slide="next">
+                                <span class="carousel-control-next-icon control-icon-btn" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
                         </div>
                     </div>
 
@@ -101,19 +115,15 @@
                         <h3>TUS INTERESES</h3>
                         <div id="contenedor-lista-etiquetas">
                             <div id="lista-etiquetas">
-                                <ul class="list-group list-group-horizontal">
+                                <ul id="lista">
                                     <!-- Aqui se añadiran las etiquetas de cada usuario -->
-                                    <li class="list-group-item">
-                                        Etiqueta 1
-                                        <button class="badge text-bg-light boton-eliminar-etiqueta">X</button>
+                                    <li class="etiquetas">
+                                        <span id="info-etiqueta-nombre">Etiqueta 1</span>
                                     </li>
                                 </ul>
                             </div>
-                            <div id="busqueda-etiquetas">
-                                <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Busca etiquetas" aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                                </form>
+                            <div id="boton-editar-etiquetas">
+                                <button class="btn btn-dark">Editar</button>
                             </div>
                         </div>
                     </div>
@@ -124,10 +134,11 @@
                         <div>
                             <button id="boton-cambiar-info" class="btn btn-dark">Modificar datos</button>
                             <button id="boton-notificaciones" class=" btn btn-dark">Activar notificaciones</button>
+                            <button id="boton-eliminar-cuenta" class="btn btn-danger">Eliminar cuenta</button>
                         </div>
                     </div>
                     <div id="contenedor-eliminar-perfil" class="col-12 mt-5">
-                        <button id="boton-eliminar-cuenta" class="btn btn-danger">Eliminar cuenta</button>
+                        
                     </div>
                 </div>
             </div>

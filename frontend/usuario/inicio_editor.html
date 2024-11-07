@@ -20,6 +20,7 @@
 
     <!-- Estilos de CSS -->
     <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/inicio_editor.css">
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -60,6 +61,39 @@
             </div>
         </div>
     </nav>
+
+    <!-- Contenido -->
+    <div id="contenedor-main-editor">
+        <h1 class="col-12">EDITAR</h1>
+        <div class="row">
+            <div id="contenedor-lista-articulos" class="col-12">
+                <ul id="lista-articulos">
+                    <!-- Lista de los articulos -->
+                    <li class="articulo">
+                        <a id="enlace-articulo" href="">
+                            <span id="info-articulo-titulo">Titulo</span>
+                        </a>
+                        <span id="info-articulo-fecha">24/12/43</span>
+                        <div id="info-articulo-estatus">
+                            <span id="info-articulo-estatus-nombre">Publicado</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h1>CREA</h1>
+                <button class="btn btn-success">Nuevo articulo</button>
+            </div>
+            <div class="col-6">
+                <h1>DUDAS</h1>
+                <a href="../publico/información_estatica.html"><button class="btn btn-dark">Contactanos</button></a>
+            </div>
+        </div>
+
+    </div>
+
 
 
     <!-- Importamos JQuery v3.7.1 -->

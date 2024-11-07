@@ -1,21 +1,84 @@
 #contenedor-main-perfil {
     display: flex;
+    flex-direction: column;
+
+    margin-top: 10px;
+    padding-left: 40px;
 }
 
 #main-info-usuario-foto {
     height: 300px;
     width: 300px;
+    
+    margin-top: 20px;
     border-radius: 50%;
 }
 
+#carrusel-articulos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    margin-top: 20px;
+}
+
+.carousel-item {
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+/* Botones del carrusel */
+.carrusel-control {
+    margin-top: 130px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+/* Articulos */
+.articulo img {
+    width: auto;
+    height: 200px;
+}
+
+/* Lista de etiquetas */
 #contenedor-lista-etiquetas {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
+}
+
+#lista {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 0%;
+    margin: 0%;
+}
+
+.etiquetas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
     border: 1px solid lightgray;
-    border-radius: 4px;
+    border-radius: 80px;
+    padding: 8px 10px 8px 10px;
+    font-size: medium;
+    margin: 5px;
 }
 
-.boton-eliminar-etiqueta {
-    border: 1px solid lightgrey;
+#boton-editar-etiquetas {
+    margin-left: 10px;
 }
 
+
+#boton-eliminar-cuenta {
+    margin-left: 20px;
+}
