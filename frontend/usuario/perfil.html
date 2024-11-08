@@ -71,7 +71,9 @@
                 <div id="contenedor-izq-perfil" class="row">
                     <div id="contenedor-foto-perfil" class="col-12">
                         <h3>TU INFORMACIÓN</h3>
-                        <img id="main-info-usuario-foto" src="./img/perfil_default.png" alt="Foto de perfil">
+                        <button id="boton-editar-imagen-perfil" type="button" data-bs-toggle="modal" data-bs-target="#cambiar-imagen-modal">
+                            <img id="main-info-usuario-foto" src="./img/perfil_default.png" alt="Foto de perfil">
+                        </button>
                     </div>
                     <div id="contenedor-info-usuario" class="col-12 mt-5">
                         <!-- Información del usuario -->
@@ -122,8 +124,10 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div id="boton-editar-etiquetas">
-                                <button class="btn btn-dark">Editar</button>
+                            <div>
+                                <button id="boton-editar-etiquetas" type="button" data-bs-toggle="modal" data-bs-target="#etiquetas-modal" class="btn btn-dark">
+                                    Editar
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -132,19 +136,114 @@
                     <div id="contenedor-configuracion-perfil" class="col-12 mt-5">
                         <h3>CONFIGURACIÓN</h3>
                         <div>
-                            <button id="boton-cambiar-info" class="btn btn-dark">Modificar datos</button>
-                            <button id="boton-notificaciones" class=" btn btn-dark">Activar notificaciones</button>
-                            <button id="boton-eliminar-cuenta" class="btn btn-danger">Eliminar cuenta</button>
+                            <button id="boton-cambiar-info" type="button" data-bs-toggle="modal" data-bs-target="#modificar-datos-modal" class="btn btn-dark">
+                                Modificar datos
+                            </button>
+                            <button id="boton-notificaciones" class=" btn btn-dark">
+                                Activar notificaciones
+                            </button> 
+                            <button id="boton-eliminar-cuenta" type="button" data-bs-toggle="modal" data-bs-target="#eliminar-cuenta-modal" class="btn btn-danger">
+                                Eliminar cuenta
+                            </button>
                         </div>
-                    </div>
-                    <div id="contenedor-eliminar-perfil" class="col-12 mt-5">
-                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- Modal para modificar datos -->
+    <div class="modal fade" id="modificar-datos-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica tus datos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Nombre</label>
+                            <input type="email" class="form-control" id="form-usuario-nombre">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Correo</label>
+                            <input type="password" class="form-control" id="form-usuario-perfil" placeholder="example@gmail.com">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Contraseña</label>
+                            <input type="text" class="form-control" id="form-usuario-contraseña">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress2" class="form-label">Descripción</label>
+                            <textarea class="form-control" rows="6" id="form-usuario-descripcion"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para eliminar cuenta -->
+    <div class="modal fade" id="eliminar-cuenta-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cuidado</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    La cuenta ya no podra ser recuperada. ¿Seguro que quieres continuar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger">Eliminar cuenta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para administrar etiquetas -->
+    <div class="modal fade" id="etiquetas-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Etiquetas</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Aqui se añadiran o eliminaran etiquetas
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para cambiar imagen -->
+    <div class="modal fade" id="cambiar-imagen-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Foto de perfil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Aqui se cambiara la imagen
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Importamos JQuery v3.7.1 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -164,6 +263,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <!-- Scripts de JS -->
-    <script src=""></script>
+    <script src="./js/perfil.js"></script>
 </body>
 </html>
