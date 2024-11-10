@@ -6,11 +6,27 @@
     padding-left: 40px;
 }
 
-#main-info-usuario-foto {
+#boton-editar-imagen-perfil {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
     height: 300px;
     width: 300px;
-    
+    padding: 0%;
     margin-top: 20px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+#boton-editar-imagen-perfil:hover img {
+    filter: grayscale(20%) brightness(80%);
+}
+
+#main-info-usuario-foto {
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
 }
 
