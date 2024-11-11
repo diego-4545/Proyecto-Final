@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+  }
+  
+  .comentarios-container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    margin: auto;
+  }
+  
+  .comentario {
+    background-color: #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .foto-perfil {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .contenido-comentario {
+    flex-grow: 1;
+  }
+  
+  .nombre-usuario {
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .botones-moderacion {
+    margin-top: 10px;
+  }
+  
+  .btn {
+    background-color: grey;
+    color: black;
+    border: black;
+    padding: 8px 15px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .aceptar {
+    background-color: #ffffff96;
+  }
+  
+  .eliminar {
+    background-color: #ffffff96;
+  }
+  
+  .suspender {
+    background-color: #ffffff96;
+  }
+  
+  .controles {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .btn-navegacion {
+    background-color: rgb(182, 182, 182);
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-guardar {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
