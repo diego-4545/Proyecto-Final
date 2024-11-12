@@ -6,7 +6,6 @@ from pydantic import BaseModel
 class GET_TodasDudas_Request(BaseModel):
     ...
 
-
 class GET_TodasDudas_Response(BaseModel):
     duda_ids: list[int]
 
@@ -14,7 +13,6 @@ class GET_TodasDudas_Response(BaseModel):
 # Obtener información de una duda especidica
 class GET_InfoDudas_Request(BaseModel):
     duda_id: int
-
 
 class GET_InfoDudas_Response(BaseModel):
     # Columnas de la tabla dudas
