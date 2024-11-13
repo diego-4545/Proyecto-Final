@@ -1,7 +1,7 @@
 # Librería para estructurar la API
 from pydantic import BaseModel
-### ============================= Dudas ==================================== ###
 
+### ============================= Dudas ==================================== ###
 # Obtener todos los IDs de dudas 
 class GET_TodasDudas_Request(BaseModel):
     ...
