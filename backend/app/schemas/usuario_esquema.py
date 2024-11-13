@@ -2,14 +2,6 @@
 from pydantic import BaseModel
 
 ### ============================= Usuarios ==================================== ###
-# Obtener el rol de cierto usuario
-
-class GET_UsuarioRol_Request(BaseModel):
-    articulo_id: int
-
-class GET_UsuarioRol_Response(BaseModel):
-    usuario_id: int
-    rol_id: int
 
 # Obtener información de un usuario especifico
 class GET_InfoUsuario_Request(BaseModel):
@@ -82,7 +74,7 @@ class GET_NombreEstadoNotificacion_Response(BaseModel):
     nombre: str
 
 ### ============================= Roles ==================================== ###
-# Obten el nombre del rol de un articulo
+# Obten el nombre del rol de un usuario
 class GET_NombreRolUsuario_Request(BaseModel):
     rol_id: int
 

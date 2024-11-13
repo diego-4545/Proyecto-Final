@@ -1,8 +1,8 @@
 # Librería para estructurar la API
 from pydantic import BaseModel
 
+### GET
 ### ============================= Articulos ==================================== ###
-
 # Obtener todos los IDs de articulos de cierto usuario
 class GET_TodosArticulos_Request(BaseModel):
     usuario_id: int
@@ -29,7 +29,6 @@ class GET_InfoArticulo_Response(BaseModel):
     imagen: str # path to the image
 
 ### ============================= Estados ==================================== ###
-
 # Obten el nombre del estado de un articulo
 class GET_NombreEstadoArticulo_Request(BaseModel):
     estado_id: int
@@ -39,7 +38,6 @@ class GET_NombreEstadoArticulo_Response(BaseModel):
     nombre: str
 
 ### ============================= Likes ==================================== ###
-
 # Obtener cantidad de likes de un artículo especifico
 class GET_LikesArticulo_Request(BaseModel):
     articulo_id: int
@@ -49,7 +47,6 @@ class GET_LikesArticulo_Response(BaseModel):
     likes: int
 
 ### ============================= Etiquetas ==================================== ###
-
 # Obtener los IDs de las etiquetas de un artículo especifico
 class GET_EtiquetasArticulo_Request(BaseModel):
     articulo_id: int
@@ -70,7 +67,6 @@ class GET_NombreEtiquetas_Response(BaseModel):
     fecha: str
     
 ### ============================== Comentarios =================================== ###
-
 # Obtener los IDs de los comentarios de un artículo especifico
 class GET_ComentariosArticulo_Request(BaseModel):
     articulo_id: int
@@ -99,5 +95,66 @@ class GET_NombreEstadoComentario_Request(BaseModel):
 class GET_NombreEstadoComentario_Response(BaseModel):
     comentario_id: int
     nombre: str
-
 ### ================================================================= ###
+
+
+
+### POST (Añadir datos)
+### ============================= Articulos ==================================== ###
+# Crea un nuevo articulo
+class POST_CrearArticulo_Request(BaseModel):
+    # Columnas de la tabla articulos
+    usuario_id: int
+    articulo_id: int
+    nombre: str # titulo
+    fecha: str
+    visitas: int
+    estado: int
+    contenido: str
+    imagen: str # path to the image
+
+### ============================= Likes ==================================== ###
+# Añade un like a un articulo
+class POST_LikeArticulo_Request(BaseModel):
+    articulo_id: int
+
+### ============================= Etiquetas ==================================== ###
+# Asigna etiquetas a un articulo
+class POST_AsignarEtiquetas_Request(BaseModel):
+    articulo_id: int
+    etiquetas_id: list[int]
+
+### ============================= Comentarios ==================================== ###
+# Publica un comentario
+class POST_PublicarComentario(BaseModel):
+    usuario_id: int
+    articulo_id: int
+    estado_id: int
+    contenido: str
+
+
+
+### PUT
+### ============================= Estado Articulo ==================================== ###
+# Cambia el estado del articulo
+class PUT_CambiarEstadoArticulo_Request(BaseModel):
+    articulo_id: int
+    estado_id: int
+
+### ============================= Estado Comentario ==================================== ###
+# Cambia el estado de un comentario
+class PUT_EstadoComentario_Request(BaseModel):
+    comentario_id: int
+    estado_id: int
+
+
+
+
+### DELETE
+### ============================= Articulos ==================================== ###
+class DELETE_BorrarArticulo(BaseModel):
+    articulo_id: int
+
+### ============================= Comentarios ==================================== ###
+class DELETE_BorrarComentario(BaseModel):
+    comentario_id: int
