@@ -14,7 +14,7 @@ DB_NAME = os.getenv("DB_NAME")
 
 
 # Funcion para conectarse a la BD y ejecutar las queries
-def articulos_query(query, parametros=None):
+def usuarios_query(query, parametros=None):
     try:
         # Conectar a la base de datos
         conexion = mysql.connector.connect(
