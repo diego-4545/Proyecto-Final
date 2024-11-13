@@ -74,7 +74,7 @@ class GET_NombreEstadoNotificacion_Response(BaseModel):
     nombre: str
 
 ### ============================= Roles ==================================== ###
-# Obten el nombre del rol de un articulo
+# Obten el nombre del rol de un usuario
 class GET_NombreRolUsuario_Request(BaseModel):
     rol_id: int
 
