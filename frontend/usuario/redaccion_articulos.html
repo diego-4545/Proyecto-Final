@@ -20,6 +20,7 @@
 
     <!-- Estilos de CSS -->
     <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/redaccion_articulos.css">
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -80,6 +81,44 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Scripts de JS -->
-    <script src=""></script>
+    <script src="js/redaccion_articulos.js"></script>
+    
+    <div class="container">
+        <h1>Escribe tu artículo</h1>
+        
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" placeholder="Título">
+        
+        <label for="etiquetas">Etiquetas</label>
+        <div class="etiquetas-input">
+            <input type="text" id="entradaEtiqueta" placeholder="Añadir etiqueta">
+            <button id="agregarEtiquetaBtn">+</button>
+            <div id="contenedorEtiquetas"></div>
+        </div>
+        
+        <label for="contenido">Contenido</label>
+        <textarea id="contenido" placeholder="Contenido"></textarea>
+        
+        <label>Imágenes</label>
+        <div id="contenedorImagenes">
+            <button id="agregarImagenBtn">Añadir Imagen</button>
+        </div>
+
+        <div class="botones">
+            <button id="guardarCambiosBtn">Guardar</button>
+            <button id="publicarArticuloBtn">Publicar</button>
+            <button id="eliminarArticuloBtn">Eliminar</button>
+        </div>
+    </div>
+
+    <!-- Modal para eliminar -->
+    <div id="modalEliminar" class="modal">
+        <div class="contenido-modal">
+            <p>¿Estás seguro de que quieres eliminar este artículo? Los datos se borrarán después de esto.</p>
+            <button id="confirmarEliminarBtn">Aceptar</button>
+            <button id="cancelarEliminarBtn">Cancelar</button>
+        </div>
+    </div>
+
 </body>
 </html>
