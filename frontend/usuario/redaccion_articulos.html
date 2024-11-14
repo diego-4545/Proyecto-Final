@@ -98,12 +98,17 @@
         
         <label for="contenido">Contenido</label>
         <textarea id="contenido" placeholder="Contenido"></textarea>
-        
-        <label>Imágenes</label>
-        <div id="contenedorImagenes">
-            <button id="agregarImagenBtn">Añadir Imagen</button>
-        </div>
+        <!-- El contenedor donde se mostrarán las imágenes cargadas -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+        <label>Imágenes</label>
+        <div id="contenedorImagenes"></div>
+        <div id="contenedorImagenes" class="carrusel-imagenes"></div>
+        <button id="agregarImagenBtn">Añadir Imagen</button>
+        <div id="galeriaImagenes"></div>
+        
         <div class="botones">
             <button id="guardarCambiosBtn">Guardar</button>
             <button id="publicarArticuloBtn">Publicar</button>
@@ -119,6 +124,6 @@
             <button id="cancelarEliminarBtn">Cancelar</button>
         </div>
     </div>
-
+    
 </body>
 </html>
