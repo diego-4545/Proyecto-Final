@@ -14,7 +14,7 @@ DB_NAME = os.getenv("DB_NAME")
 
 
 # Funcion para conectarse a la BD y ejecutar las queries
-def articulos_query(query, parametros=None):
+def dudas_query(query, parametros=None):
     try:
         # Conectar a la base de datos
         conexion = mysql.connector.connect(
@@ -58,3 +58,11 @@ get_ids_dudas = "SELECT * FROM Dudas WHERE Dudas={dudas_id};"
 
 # Seleccionar la info de una duda específico
 get_info_duda = "SELECT * FROM Dudas WHERE Id={dudas_id};"
+
+# Código SQL para extraer datos (SQL Queries)
+### ============================= Dudas ==================================== ###
+# Selecciona todos los IDs de dudas 
+get_ids_dudas = "SELECT Id FROM Dudas;"
+
+# Seleccionar información de una duda especidica
+get_info_dudas = "SELECT * FROM Dudas WHERE Id={dudas_id};"
