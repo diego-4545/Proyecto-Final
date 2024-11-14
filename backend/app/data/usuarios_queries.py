@@ -14,7 +14,7 @@ DB_NAME = os.getenv("DB_NAME")
 
 
 # Funcion para conectarse a la BD y ejecutar las queries
-def articulos_query(query, parametros=None):
+def usuarios_query(query, parametros=None):
     try:
         # Conectar a la base de datos
         conexion = mysql.connector.connect(
@@ -53,34 +53,40 @@ def articulos_query(query, parametros=None):
 
 
 # Código SQL para extraer datos (SQL Queries)
-# ============================= Articulos ==================================== #
-# Seleccionar todos los ID de articulos de un usuario
-get_ids_articulos = "SELECT * FROM UsuarioArticulos WHERE Usuario={usuario_id};"
-
-# Seleccionar la info de un articulo específico
-get_info_articulo = "SELECT * FROM Articulos WHERE Id={articulo_id};"
-
-# ============================= Estados ==================================== #
-# Obtener el estado de un artículo
-get_estado_articulo = "SELECT * FROM EstadoArticulo WHERE Id={articulo_id};"
-
-# ============================= Likes ==================================== #
-# Obtener la cantidad de likes de un artículo
-get_likes_articulo = "SELECT COUNT(*) AS likes FROM Likes WHERE Articulo={articulo_id};"
-
+# ============================= Usuarios ==================================== #
+# Seleccionar la info de un usuario específico
+get_info_usuario = "SELECT * FROM Usuarios WHERE Id={usuario_id};"
 # ============================= Etiquetas ==================================== #
-# Obtener los ID de las etiquetas de un artículo
-get_etiquetas_articulo = "SELECT * FROM EtiquetasDeArticulo WHERE Articulo={articulo_id};"
+# Obtener los ID de las etiquetas de un usuario
+get_etiquetas_usuario = "SELECT * FROM EtiquetasDeUsuario WHERE Usuario={usuario_id};"
 
 # Obtener el nombre de la etiqueta
 get_nombre_etiqueta = "SELECT * FROM Etiqueta WHERE Id={etiqueta_id};"
 
+# ============================== Notificación =================================== #
+# Obtener los ID de las notificaciones
+get_ids_notificacions = "SELECT Id FROM Notificación WHERE Usuario={usuario_id};"
+
+# Obtener información de un comentario
+get_info_notificacion = "SELECT * FROM Notificación WHERE Id={notificación_id};"
+
+# Obtener el estado de un comentario
+get_estado_notificacion = "SELECT * FROM EstadoNotificaciones WHERE Id={estado_notificaciones_id};"
+
+# ============================= Roles ==================================== #
+# Obtener el rol de un artículo
+get_rol_usuario = "SELECT * FROM Roles WHERE Id={usuario_id};"
+
 # ============================== Comentarios =================================== #
 # Obtener los ID de los comentarios
-get_ids_comentarios = "SELECT Id FROM Comentarios WHERE Articulo={articulo_id};"
+get_ids_comentarios = "SELECT Id FROM Comentarios WHERE Articulo={usuario_id};"
 
 # Obtener información de un comentario
 get_info_comentario = "SELECT * FROM Comentarios WHERE Id={comentario_id};"
 
 # Obtener el estado de un comentario
 get_estado_comentario = "SELECT * FROM EstadoComentarios WHERE Id={estado_comentario_id};"
+
+# ============================== Likes =================================== #
+# Obtener la cantidad de likes de un usuario
+get_likes_usuario = "SELECT COUNT(*) AS likes FROM Likes WHERE Usuario={usuario_id};"

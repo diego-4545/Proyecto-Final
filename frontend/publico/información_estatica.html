@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conocenos</title>
+    <link rel="stylesheet" href="css/estiloconocenos.css">
+
+    <!--Font Awesome-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+     crossorigin="anonymous" referrerpolicy="no-referrer" 
+     />
+ 
+     <!-- Importamos el CSS de Bootstrap v5.3.3 -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" 
+     integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" 
+     crossorigin="anonymous" referrerpolicy="no-referrer" 
+     />
+
+     <!-- Estilos -->
+    <link rel="stylesheet" href="./css/navbar.css">
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Metropolitan
+            </a>
+            <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./información_estatica.html">Conocenos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../usuario/inicio_editor.html">Escribe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../admin/inicio.html">Administrar</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Información y foto del usuario -->
+            <div class="d-flex align-items-center user-info ms-auto">
+                <div class="text-end" id="nombre-rol">
+                    <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
+                    <span class="role" id="navbar-info-usuario-rol">Rol</span>
+                </div>
+                <a href="./perfil.html">
+                    <img id="navbar-info-usuario-foto" src="./img/perfil_default.png" alt="Foto de perfil">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container text-center my-5">
+        <h2 class="mb-4">CONÓCENOS</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="profile-box">
+                    <img src="" alt="Frontend Developer" class="img-fluid">
+                    <h4>Frontend Developer</h4>
+                    <h5>Mariana Navarro</h5>
+                    <p>Responsable de crear y mejorar la interfaz de usuario para una experiencia de navegación intuitiva y atractiva. Maneja tecnologías como HTML, CSS y JavaScript para garantizar la funcionalidad y el diseño visual de aplicaciones web.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="profile-box">
+                    <img src="" alt="Backend Developer" class="img-fluid">
+                    <h4>Backend Developer</h4>
+                    <h5>Manuel Magaña</h5>
+                    <p>Encargado de construir y mantener el lado del servidor de aplicaciones, gestionando bases de datos y lógica empresarial. Usa tecnologías como Node.js, Python y SQL para asegurar que los sistemas funcionen de manera eficiente y segura.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="profile-box">
+                    <img src="" alt="DB Administrator" class="img-fluid">
+                    <h4>DB Administrator</h4>
+                    <h5></h5>
+                    <p>Especialista en la gestión y mantenimiento de bases de datos. Asegura la integridad de los datos, realiza optimizaciones de rendimiento y supervisa las copias de seguridad. Utiliza herramientas como MySQL, PostgreSQL o MongoDB.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="profile-box">
+                    <img src="" alt="Product Manager" class="img-fluid">
+                    <h4>Product Manager</h4>
+                    <p>Lidera la estrategia y visión del producto, asegurándose de que los equipos de desarrollo construyan soluciones alineadas con las necesidades del cliente. Coordina entre equipos y supervisa el ciclo de vida del producto desde su concepción hasta el lanzamiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mision-section">
+        <h2 class="mb-4">MISIÓN</h2>
+        <div class="mision-container">
+            <h3>TODOS TIENEN UNA HISTORIA QUE CONTAR</h3>
+            <p>
+                En Metropolitan, nos comprometemos a ofrecer a nuestros lectores una fuente confiable, imparcial y actualizada de noticias nacionales que reflejen la realidad política, económica, social y cultural de nuestra nación. A través de reportajes profundos, coberturas en tiempo real y análisis rigurosos, buscamos ser el punto de referencia para aquellos que desean entender los temas que realmente impactan a nuestro país. 
+            </p>
+            <p>
+                Fomentamos una plataforma abierta y participativa, donde todos los ciudadanos puedan compartir su visión, aportar información y enriquecer el debate público, contribuyendo así a una sociedad más informada y activa.
+            </p>
+        </div>
+    </section>
+
+    <div class="container mt-5">
+        <h2 class="text-left font-weight-bold">Contactanos</h2>
+        <div class="row">
+          <!-- Formulario -->
+          <div class="col-md-6">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nombre Completo" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Correo Electronico" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-dark btn-block" onclick="alert('El mensaje ha sido enviado')">Enviar</button>
+            </form>
+          </div>
+          <!-- Imagen -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <label class="upload-container">
+              <input type="file" accept="image/*" class="file-input">
+              <img src="https://via.placeholder.com/150" class="img-fluid" alt="Placeholder Image">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Importamos JQuery v3.7.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Importamos el JS de Bootstrap v5.3.3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+    integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    
+    <!-- Importamos el JS de Sweetalert2 v11.14.0 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.all.js"
+    integrity="sha512-HE6XTjw3UV1hqENThKtsSn4mr3sx/lXbTSVPlOdIU3pprqz5ti16sGIGw8y5EAePRYg80O3OEBRnXPwON7vOUA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+</body>
+</html>

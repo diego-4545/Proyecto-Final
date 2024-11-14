@@ -13,3 +13,11 @@
 #nombre-rol {
     margin-right: 1em;
 }
+
+#navbar-info-usuario-nombre a {
+    color: #000000; 
+}
+
+#navbar-info-usuario-nombre a:hover {
+    color: #0088c7; 
+}
