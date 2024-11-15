@@ -12,14 +12,13 @@ class GET_EtiquetasUsuario_Response(BaseModel):
     articulos: list[int]
 
 
-# Obten la fecha y el contenido de un comentario 
+# Obten el contenido de un comentario 
 class GET_NombreEtiquetas_Request(BaseModel):
     articulo_id: int
 
 class GET_NombreEtiquetas_Response(BaseModel):
     articulo_id: int
     usuario: str
-    fecha: str
     titulo: str
     etiquetas: str
     contenido: str
