@@ -14,7 +14,7 @@ DB_NAME = os.getenv("DB_NAME")
 
 
 # Funcion para conectarse a la BD y ejecutar las queries
-def mod_articulos_query(query, parametros=None):
+def comentarios_query(query, parametros=None):
     try:
         # Conectar a la base de datos
         conexion = mysql.connector.connect(
@@ -51,8 +51,31 @@ def mod_articulos_query(query, parametros=None):
             conexion.close()
     return None
 
-### ============================= Moderación de articulos ==================================== ###
-# Selecciona los IDs de articulos de un usuario especifico
-get_ids_articulos = "SELECT Articulo FROM UsuarioArticulos WHERE Usuario={usuario_id};"
-# Obten el contenido de un comentario 
-get_info_comentarios = "SELECT * FROM Comentarios;"
+
+# Código SQL para extraer datos (GET)
+# ============================== Comentarios =================================== #
+# Obtener información de un comentario
+get_comentario_info = "SELECT * FROM Comentarios WHERE Id={comentario_id};"
+
+# Obtener el estado de un comentario
+get_comentario_nombre_estado = "SELECT * FROM EstadoComentarios WHERE Id={estado_comentario_id};"
+
+
+# Código SQL para insertar registros (POST)
+# ============================= Comentarios ==================================== #
+# Añade un nuevo comentario
+post_comentario_crear = "INSERT INTO Comentarios (Id, Articulo, Usuario, Estado, Contenido)"
+
+
+
+# Código SQL para modificar registros existentes (PUT)
+# ============================= Comentarios ==================================== #
+# Cambia el estado de un comentario
+put_comentario_cambiar_estado = "UPDATE Comentarios SET Estado={estado_id} WHERE Id={comentario_id}"
+
+
+
+# Código SQL para eliminar registros (DELETE)
+# ============================= Comentarios ==================================== #
+# Eliminar un comentario
+delete_comentario_eliminar = "DELETE FROM Comentarios WHERE Id={comentario_id};"
