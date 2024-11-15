@@ -55,72 +55,55 @@ def articulos_query(query, parametros=None):
 # Código SQL para extraer datos (GET)
 # ============================= Articulos ==================================== #
 # Seleccionar todos los ID de articulos de un usuario
-get_ids_articulos = "SELECT * FROM UsuarioArticulos WHERE Usuario={usuario_id};"
+get_articulos = "SELECT * FROM UsuarioArticulos WHERE Usuario={usuario_id};"
 
 # Seleccionar la info de un articulo específico
-get_info_articulo = "SELECT * FROM Articulos WHERE Id={articulo_id};"
+get_articulo_info = "SELECT * FROM Articulos WHERE Id={articulo_id};"
 
 # ============================= Estados ==================================== #
 # Obtener el estado de un artículo
-get_estado_articulo = "SELECT * FROM EstadoArticulo WHERE Id={articulo_id};"
+get_articulo_estado = "SELECT * FROM EstadoArticulo WHERE Id={articulo_id};"
 
 # ============================= Likes ==================================== #
 # Obtener la cantidad de likes de un artículo
-get_likes_articulo = "SELECT COUNT(*) AS likes FROM Likes WHERE Articulo={articulo_id};"
+get_articulo_likes = "SELECT COUNT(*) AS likes FROM Likes WHERE Articulo={articulo_id};"
 
 # ============================= Etiquetas ==================================== #
 # Obtener los ID de las etiquetas de un artículo
-get_etiquetas_articulo = "SELECT * FROM EtiquetasDeArticulo WHERE Articulo={articulo_id};"
+get_articulo_etiquetas = "SELECT * FROM EtiquetasDeArticulo WHERE Articulo={articulo_id};"
 
 # Obtener el nombre de la etiqueta
-get_nombre_etiqueta = "SELECT * FROM Etiqueta WHERE Id={etiqueta_id};"
+get_etiqueta_nombre = "SELECT * FROM Etiqueta WHERE Id={etiqueta_id};"
 
 # ============================== Comentarios =================================== #
 # Obtener los ID de los comentarios
-get_ids_comentarios = "SELECT Id FROM Comentarios WHERE Articulo={articulo_id};"
+get_articulo_comentarios = "SELECT Id FROM Comentarios WHERE Articulo={articulo_id};"
 
-# Obtener información de un comentario
-get_info_comentario = "SELECT * FROM Comentarios WHERE Id={comentario_id};"
-
-# Obtener el estado de un comentario
-get_estado_comentario = "SELECT * FROM EstadoComentarios WHERE Id={estado_comentario_id};"
 
 
 # Código SQL para insertar registros (POST)
 # ============================= Articulos ==================================== #
 # Publica un nuevo articulo
-post_nuevo_articulo = "INSERT INTO Articulos (Id, Nombre, FechaDeCreacion, Visitas, Usuario, Estado, Contenido, Imagen)"
+post_articulo_crear = "INSERT INTO Articulos (Id, Nombre, FechaDeCreacion, Visitas, Usuario, Estado, Contenido, Imagen)"
 
 # ============================= Likes ==================================== #
 # Añade el like de un usuario a un articulo
-post_dar_like = "INSERT INTO Likes (Usuario, Articulo)"
+post_articulo_like = "INSERT INTO Likes (Usuario, Articulo)"
 
 # ============================= Etiquetas ==================================== #
 # Añade una etiqueta a un articulo
-post_asignar_etiquetas = "INSERT INTO EtiquetasDeArticulo (Articulo, Etiqueta)"
-
-# ============================= Comentarios ==================================== #
-# Añade un nuevo comentario
-post_publicar_comentario = "INSERT INTO Comentarios (Id, Articulo, Usuario, Estado, Contenido)"
+post_etiquetas_asignar = "INSERT INTO EtiquetasDeArticulo (Articulo, Etiqueta)"
 
 
 
 # Código SQL para modificar registros existentes (PUT)
 # ============================= Etiquetas ==================================== #
 # Cambia el estado de un artículo
-put_estado_articulo = "UPDATE Articulos SET Estado={estado_id} WHERE Id={articulo_id}"
-
-# ============================= Comentarios ==================================== #
-# Cambia el estado de un comentario
-put_estado_comentario = "UPDATE Comentarios SET Estado={estado_id} WHERE Id={comentario_id}"
+put_articulo_cambiar_estado = "UPDATE Articulos SET Estado={estado_id} WHERE Id={articulo_id}"
 
 
 
 # Código SQL para eliminar registros (DELETE)
 # ============================= Etiquetas ==================================== #
 # Eliminar un articulo
-delete_eliminar_articulo = "DELETE FROM Articulos WHERE Id={articulo_id};"
-
-# ============================= Comentarios ==================================== #
-# Eliminar un comentario
-delete_eliminar_comentario = "DELETE FROM Comentarios WHERE Id={comentario_id};"
+delete_articulo_eliminar = "DELETE FROM Articulos WHERE Id={articulo_id};"
