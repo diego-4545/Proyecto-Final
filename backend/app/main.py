@@ -23,3 +23,8 @@ def inicializar_applicacion():
     return app
 
 app = inicializar_applicacion()
+
+# Imprime todas las rutas de la API
+for routes in app.routes:
+    print(routes.path)
+    
