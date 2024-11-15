@@ -95,7 +95,6 @@ class GET_NombreEstadoComentario_Request(BaseModel):
 class GET_NombreEstadoComentario_Response(BaseModel):
     comentario_id: int
     nombre: str
-### ================================================================= ###
 
 
 
@@ -116,6 +115,7 @@ class POST_CrearArticulo_Request(BaseModel):
 ### ============================= Likes ==================================== ###
 # Añade un like a un articulo
 class POST_LikeArticulo_Request(BaseModel):
+    usuario_id: int
     articulo_id: int
 
 ### ============================= Etiquetas ==================================== ###
@@ -143,18 +143,17 @@ class PUT_CambiarEstadoArticulo_Request(BaseModel):
 
 ### ============================= Estado Comentario ==================================== ###
 # Cambia el estado de un comentario
-class PUT_EstadoComentario_Request(BaseModel):
+class PUT_CambiarEstadoComentario_Request(BaseModel):
     comentario_id: int
     estado_id: int
 
 
 
-
 ### DELETE
 ### ============================= Articulos ==================================== ###
-class DELETE_BorrarArticulo(BaseModel):
+class DELETE_BorrarArticulo_Request(BaseModel):
     articulo_id: int
 
 ### ============================= Comentarios ==================================== ###
-class DELETE_BorrarComentario(BaseModel):
+class DELETE_BorrarComentario_Request(BaseModel):
     comentario_id: int

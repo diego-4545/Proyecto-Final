@@ -52,7 +52,7 @@ def articulos_query(query, parametros=None):
     return None
 
 
-# Código SQL para extraer datos (SQL Queries)
+# Código SQL para extraer datos (GET)
 # ============================= Articulos ==================================== #
 # Seleccionar todos los ID de articulos de un usuario
 get_ids_articulos = "SELECT * FROM UsuarioArticulo WHERE Usuario={usuario_id};"
@@ -84,3 +84,43 @@ get_info_comentario = "SELECT * FROM Comentarios WHERE Id={comentario_id};"
 
 # Obtener el estado de un comentario
 get_estado_comentario = "SELECT * FROM EstadoComentarios WHERE Id={estado_comentario_id};"
+
+
+# Código SQL para insertar registros (POST)
+# ============================= Articulos ==================================== #
+# Publica un nuevo articulo
+post_nuevo_articulo = "INSERT INTO Articulos (Id, Nombre, FechaDeCreacion, Visitas, Usuario, Estado, Contenido, Imagen)"
+
+# ============================= Likes ==================================== #
+# Añade el like de un usuario a un articulo
+post_dar_like = "INSERT INTO Likes (Usuario, Articulo)"
+
+# ============================= Etiquetas ==================================== #
+# Añade una etiqueta a un articulo
+post_asignar_etiquetas = "INSERT INTO EtiquetasDeArticulo (Articulo, Etiqueta)"
+
+# ============================= Comentarios ==================================== #
+# Añade un nuevo comentario
+post_publicar_comentario = "INSERT INTO Comentarios (Id, Articulo, Usuario, Estado, Contenido)"
+
+
+
+# Código SQL para modificar registros existentes (PUT)
+# ============================= Etiquetas ==================================== #
+# Cambia el estado de un artículo
+put_estado_articulo = "UPDATE Articulos SET Estado={estado_id} WHERE Id={articulo_id}"
+
+# ============================= Comentarios ==================================== #
+# Cambia el estado de un comentario
+put_estado_comentario = "UPDATE Comentarios SET Estado={estado_id} WHERE Id={comentario_id}"
+
+
+
+# Código SQL para eliminar registros (DELETE)
+# ============================= Etiquetas ==================================== #
+# Eliminar un articulo
+delete_eliminar_articulo = "DELETE FROM Articulos WHERE Id={articulo_id};"
+
+# ============================= Comentarios ==================================== #
+# Eliminar un comentario
+delete_eliminar_comentario = "DELETE FROM Comentarios WHERE Id={comentario_id};"
