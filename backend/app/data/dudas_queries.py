@@ -66,3 +66,14 @@ get_ids_dudas = "SELECT Id FROM Dudas;"
 
 # Seleccionar información de una duda especidica
 get_info_dudas = "SELECT * FROM Dudas WHERE Id={dudas_id};"
+
+### POST (Añadir datos)
+### ============================= Dudas ==================================== ###
+# Crea una nueva duda
+post_nueva_duda = "INSERT INTO Dudas (Id, Nombre, Correo, Descripcion, ImagenDeAyudaAlProblema, FechaDeReporte)"
+
+
+### DELETE
+### ============================= Usuario ==================================== ###
+# Borrar la duda
+delete_eliminar_duda = "DELETE FROM Dudas WHERE Id={duda_id}"
