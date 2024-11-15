@@ -54,5 +54,20 @@ def mod_articulos_query(query, parametros=None):
 ### ============================= Moderación de articulos ==================================== ###
 # Selecciona los IDs de articulos de un usuario especifico
 get_ids_articulos = "SELECT Articulo FROM UsuarioArticulos WHERE Usuario={usuario_id};"
-# Obten el contenido de un comentario 
-get_info_comentarios = "SELECT * FROM Comentarios;"
+# Obten el contenido de un articulo 
+get_info_articulo = "SELECT * FROM Articulos;"
+
+### PUT
+### ============================= Estado De Articulo ==================================== ###
+# Cambia el estado del articulo
+put_cambiar_estado_articulo = "UPDATE EstadoArticulos SET Rol={estadoarticulo_id} WHERE Id={articulo_id}"
+
+### ============================= Rol de usuario ==================================== ###
+# Cambia el rol de algun usuario
+put_cambiar_rol = "UPDATE Usuario SET Rol={rol_id} WHERE Id={usuario_id}"
+
+
+### DELETE
+### ============================= Articulo ==================================== ###
+# Borrar articulo
+delete_eliminar_articulo = "DELETE FROM Articulos WHERE Id={articulo_id}"

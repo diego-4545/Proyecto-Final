@@ -122,3 +122,56 @@ class GET_LikesArticulo_Response(BaseModel):
     likes: int
 
 ### ================================================================= ###
+
+### POST (Añadir datos)
+### ============================= Usuarios ==================================== ###
+# Crea un nuevo usuario
+class POST_CrearUsuario_Request(BaseModel):
+    # Columnas de la tabla usuarios
+    usuario_id: int
+    nombre: str 
+    usuario: str 
+    email: str
+    fecha: str
+    descripcion: int
+    fotoperfil: str # path to the image
+    estado: int
+    contenido: str
+    rol_id: int
+    contraseña: str
+### ============================= Likes ==================================== ###
+# Añade un like a un usuario
+class POST_LikeUsuario_Request(BaseModel):
+    usuario_id: int
+
+### ============================= Etiquetas ==================================== ###
+# Asigna etiquetas a un usuario
+class POST_AsignarEtiquetas_Request(BaseModel):
+    usuario_id: int
+    etiquetas_id: list[int]
+### ============================= Comentarios ==================================== ###
+# Publica un comentario
+class POST_PublicarComentario(BaseModel):
+    usuario_id: int
+    articulo_id: int
+    estado_id: int
+    contenido: str
+### ============================= Notificaciones ==================================== ###
+# Asigna notificaciones a un usuario
+class POST_AsignarNotificacniones_Request(BaseModel):
+    usuario_id: int
+    notificacion_id: list[int]
+
+### PUT
+### ============================= Rol ==================================== ###
+# Cambia el rol del usuario
+class PUT_CambiarRolUsuario_Request(BaseModel):
+    usuario_id: int
+    rol_id: int
+
+
+### DELETE
+### ============================= Usuario ==================================== ###
+# Borrar el usuario
+class DELETE_BorrarUsuario(BaseModel):
+    usuario_id: int
