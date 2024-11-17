@@ -52,25 +52,21 @@ def dudas_query(query, parametros=None):
     return None
 
 
+### GET
 ### ============================= Dudas ==================================== ###
 # Seleccionar todos los ID de dudas 
-get_ids_dudas = "SELECT * FROM Dudas WHERE Dudas={dudas_id};"
-
-# Seleccionar la info de una duda específico
-get_info_duda = "SELECT * FROM Dudas WHERE Id={dudas_id};"
-
-# Código SQL para extraer datos (SQL Queries)
-### ============================= Dudas ==================================== ###
-# Selecciona todos los IDs de dudas 
 get_ids_dudas = "SELECT Id FROM Dudas;"
 
-# Seleccionar información de una duda especidica
-get_info_dudas = "SELECT * FROM Dudas WHERE Id={dudas_id};"
+# Seleccionar la info de una duda específico
+get_info_duda = "SELECT * FROM Dudas WHERE Id={duda_id};"
+
+
 
 ### POST (Añadir datos)
 ### ============================= Dudas ==================================== ###
 # Crea una nueva duda
-post_nueva_duda = "INSERT INTO Dudas (Id, Nombre, Correo, Descripcion, ImagenDeAyudaAlProblema, FechaDeReporte)"
+post_nueva_duda = "INSERT INTO Dudas (Nombre, Correo, Descripcion, FechaDeReporte) VALUES (%s, %s, %s, %s)"
+
 
 
 ### DELETE

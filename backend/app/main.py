@@ -8,7 +8,6 @@ def inicializar_applicacion():
     app = FastAPI(
         title="Metropolitan",
         description="Una página para subir y leer artículos",
-        version="1.0.0"
     )
 
     app.add_middleware(
@@ -23,8 +22,3 @@ def inicializar_applicacion():
     return app
 
 app = inicializar_applicacion()
-
-# Imprime todas las rutas de la API
-for routes in app.routes:
-    print(routes.path)
-    

@@ -12,7 +12,6 @@ DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME")
 
-
 # Funcion para conectarse a la BD y ejecutar las queries
 def usuarios_query(query, parametros=None):
     try:
@@ -29,6 +28,7 @@ def usuarios_query(query, parametros=None):
             
             # Ejecutar la consulta
             if parametros:
+                print(query, parametros)
                 cursor.execute(query, parametros)
             else:
                 cursor.execute(query)
@@ -52,41 +52,71 @@ def usuarios_query(query, parametros=None):
     return None
 
 
-# Código SQL para extraer datos (SQL Queries)
+### GET
 # ============================= Usuarios ==================================== #
 # Seleccionar la info de un usuario específico
-get_info_usuario = "SELECT * FROM Usuarios WHERE Id={usuario_id};"
+get_usuario = "SELECT * FROM Usuarios WHERE Id={usuario_id}"
 # ============================= Etiquetas ==================================== #
 # Obtener los ID de las etiquetas de un usuario
-get_etiquetas_usuario = "SELECT * FROM EtiquetasDeUsuario WHERE Usuario={usuario_id};"
+get_usuario_etiquetas = "SELECT * FROM EtiquetasDeUsuario WHERE Usuario={usuario_id}"
 
 # Obtener el nombre de la etiqueta
-get_nombre_etiqueta = "SELECT * FROM Etiqueta WHERE Id={etiqueta_id};"
+get_etiqueta_nombre = "SELECT * FROM Etiqueta WHERE Id={etiqueta_id}"
 
 # ============================== Notificación =================================== #
 # Obtener los ID de las notificaciones
-get_ids_notificacions = "SELECT Id FROM Notificación WHERE Usuario={usuario_id};"
+get_notificaciones_ids = "SELECT Id FROM Notificación WHERE Usuario={usuario_id}"
 
 # Obtener información de un comentario
-get_info_notificacion = "SELECT * FROM Notificación WHERE Id={notificación_id};"
+get_notificacion = "SELECT * FROM Notificación WHERE Id={notificación_id}"
 
 # Obtener el estado de un comentario
-get_estado_notificacion = "SELECT * FROM EstadoNotificaciones WHERE Id={estado_notificaciones_id};"
+get_notificacion_estado_nombre = "SELECT * FROM EstadoNotificaciones WHERE Id={estado_notificaciones_id}"
 
 # ============================= Roles ==================================== #
 # Obtener el rol de un artículo
-get_rol_usuario = "SELECT * FROM Roles WHERE Id={usuario_id};"
+get_usuario_rol_nombre = "SELECT * FROM Roles WHERE Id={rol_id}"
 
 # ============================== Comentarios =================================== #
 # Obtener los ID de los comentarios
-get_ids_comentarios = "SELECT Id FROM Comentarios WHERE Articulo={usuario_id};"
-
-# Obtener información de un comentario
-get_info_comentario = "SELECT * FROM Comentarios WHERE Id={comentario_id};"
-
-# Obtener el estado de un comentario
-get_estado_comentario = "SELECT * FROM EstadoComentarios WHERE Id={estado_comentario_id};"
+get_comentarios_ids = "SELECT Id FROM Comentarios WHERE Usuario={usuario_id}"
 
 # ============================== Likes =================================== #
 # Obtener la cantidad de likes de un usuario
-get_likes_usuario = "SELECT COUNT(*) AS likes FROM Likes WHERE Usuario={usuario_id};"
+get_usuario_likes = "SELECT COUNT(*) AS likes FROM Likes WHERE Usuario={usuario_id}"
+
+
+
+### POST
+# ============================= Usuarios ==================================== #
+# Crea un nuevo usuario
+post_usuario_crear = "INSERT INTO Usuarios (Nombre, Usuario, Email, FechaRegistro, Descripción, FotoPerfil, Rol, Contraseña) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+
+# ============================= Etiquetas ==================================== #
+# Asigna una nueva etiqueta
+post_usuario_etiqueta_asignar = "INSERT INTO EtiquetasDeUsuario (Usuario, Etiqueta) VALUES (%s, %s)"
+
+# ============================= Notificacion ==================================== #
+# Crea una nueva notificacion
+post_notificacion_crear = "INSERT INTO Notificación (Mensaje, FechaDeEnvio, Usuario, Estado) VALUES (%s, %s)"
+
+
+
+### PUT
+# ============================= Usuarios ==================================== #
+# Actualiza info de un ususario
+put_usuario_info_cambiar = "UPDATE Usuarios SET Nombre=%s, Usuario=%s, Email=%s, FechaRegistro=%s, Descripción=%s, FotoPerfil=%s, Rol=%s, Contraseña=%s WHERE Id=%s"
+
+# ============================= Notificacion ==================================== #
+# Crea una nueva notificacion
+put_notificacion_estado_cambiar = "UPDATE Notificación SET Estado=%s, WHERE Id=%s"
+
+
+
+### DELETE
+# ============================= Elimina ==================================== #
+# Elimina un usuario
+delete_usuario_eliminar = "DELETE FROM Usuarios WHERE Id={usuario_id}"
+
+# Elimina las etiqueta del perfil de un usuario
+delete_usuario_etiqueta = "DELETE FROM EtiquetasDeUsuario Where Usuario={usuario_id}"

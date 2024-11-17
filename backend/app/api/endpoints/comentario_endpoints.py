@@ -37,15 +37,15 @@ async def comentario_estado(id):
 @router.post("/api/comentario")
 async def articulo_añadir_comentario(input: coms.POST_ComentarioCrear_Request):
     # Accedemos a los valores de la solicitud
-    usuario_id = input.usuario_id
-    articulo_id = input.articulo_id
-    estado_id = input.estado_id
-    contenido = input.contenido
-
+    params = (
+        input.usuario_id,
+        input.articulo_id,
+        input.estado_id,
+        input.contenido,
+    )
     # Insertamos los valores en la BD
-    valores = f'VALUES ({usuario_id}, {articulo_id}, {estado_id}, {contenido})'
-    comq.comentarios_query(comq.post_comentario_crear, valores)
-    return None
+    comq.comentarios_query(comq.post_comentario_crear, params)
+    return {"message": "Se creo un comentario exitosamente"}
 
 
 
@@ -59,7 +59,7 @@ async def comentario_cambiar_estado(input: coms.PUT_ComentarioCambiarEstado_Requ
 
     # Realizamos los cambios en la BD
     comq.comentarios_query(comq.put_comentario_cambiar_estado.format(estado_id=estado_id, comentario_id=comentario_id))
-    return None
+    return {"message": "Se cambio el estado de un comentario exitosamente"}
 
 
 
@@ -68,4 +68,4 @@ async def comentario_cambiar_estado(input: coms.PUT_ComentarioCambiarEstado_Requ
 @router.delete("/api/comentario/{id}")
 async def comentario_borrar(id):
     comq.comentarios_query(comq.delete_comentario_eliminar.format(comentario_id=id))
-    return None
+    return {"message": "Se elimino el comentario exitosamente"}

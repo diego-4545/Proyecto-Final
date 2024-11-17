@@ -84,26 +84,26 @@ get_articulo_comentarios = "SELECT Id FROM Comentarios WHERE Articulo={articulo_
 # Código SQL para insertar registros (POST)
 # ============================= Articulos ==================================== #
 # Publica un nuevo articulo
-post_articulo_crear = "INSERT INTO Articulos (Id, Nombre, FechaDeCreacion, Visitas, Usuario, Estado, Contenido, Imagen)"
+post_articulo_crear = "INSERT INTO Articulos (Nombre, FechaDeCreacion, Visitas, Usuario, Estado, Contenido, Imagen) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 
 # ============================= Likes ==================================== #
 # Añade el like de un usuario a un articulo
-post_articulo_like = "INSERT INTO Likes (Usuario, Articulo)"
+post_articulo_like = "INSERT INTO Likes (Usuario, Articulo) VALUES (%s, %s)"
 
 # ============================= Etiquetas ==================================== #
 # Añade una etiqueta a un articulo
-post_etiquetas_asignar = "INSERT INTO EtiquetasDeArticulo (Articulo, Etiqueta)"
+post_etiquetas_asignar = "INSERT INTO EtiquetasDeArticulo (Articulo, Etiqueta) VALUES (%s, %s)"
 
 
 
 # Código SQL para modificar registros existentes (PUT)
-# ============================= Etiquetas ==================================== #
+# ============================= Articulo ==================================== #
 # Cambia el estado de un artículo
-put_articulo_cambiar_estado = "UPDATE Articulos SET Estado={estado_id} WHERE Id={articulo_id}"
+put_articulo_cambiar_estado = "UPDATE Articulos SET Nombre=%s, FechaDeCreacion=%s, Visitas=%s, Usuario=%s, Estado=%s, Contenido=%s, Imagen=%s WHERE Id=%s"
 
 
 
 # Código SQL para eliminar registros (DELETE)
-# ============================= Etiquetas ==================================== #
+# ============================= Articulo ==================================== #
 # Eliminar un articulo
 delete_articulo_eliminar = "DELETE FROM Articulos WHERE Id={articulo_id};"

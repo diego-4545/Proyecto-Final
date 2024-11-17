@@ -64,7 +64,7 @@ get_comentario_nombre_estado = "SELECT * FROM EstadoComentarios WHERE Id={estado
 # Código SQL para insertar registros (POST)
 # ============================= Comentarios ==================================== #
 # Añade un nuevo comentario
-post_comentario_crear = "INSERT INTO Comentarios (Id, Articulo, Usuario, Estado, Contenido)"
+post_comentario_crear = "INSERT INTO Comentarios (Articulo, Usuario, Estado, Contenido) VALUES (%s, %s, %s, %s)"
 
 
 

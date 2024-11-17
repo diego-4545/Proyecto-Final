@@ -61,7 +61,6 @@ class GET_ArticuloComentarios_Response(BaseModel):
 class POST_ArticuloCrear_Request(BaseModel):
     # Columnas de la tabla articulos
     usuario_id: int
-    articulo_id: int
     nombre: str # titulo
     fecha: str
     visitas: int
@@ -88,7 +87,13 @@ class POST_EtiquetasAsignar_Request(BaseModel):
 # Cambia el estado del articulo
 class PUT_ArticuloCambiarEstado_Request(BaseModel):
     articulo_id: int
+    nombre: str
+    fecha: str
+    visitas: int
+    usuario_id: int
     estado_id: int
+    contenido: str
+    imagen: str
 
 
 

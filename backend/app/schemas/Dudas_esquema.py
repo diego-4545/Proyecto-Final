@@ -32,6 +32,6 @@ class POST_CrearDuda_Request(BaseModel):
 ### DELETE
 ### ============================= Dudas ==================================== ###
 # Borrar duda
-class DELETE_BorrarDuda(BaseModel):
+class DELETE_BorrarDuda_Request(BaseModel):
     duda_id: int
 
