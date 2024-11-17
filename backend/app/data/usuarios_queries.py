@@ -90,3 +90,38 @@ get_estado_comentario = "SELECT * FROM EstadoComentarios WHERE Id={estado_coment
 # ============================== Likes =================================== #
 # Obtener la cantidad de likes de un usuario
 get_likes_usuario = "SELECT COUNT(*) AS likes FROM Likes WHERE Usuario={usuario_id};"
+
+
+# Código SQL para insertar datos (POST)
+
+### POST (Añadir datos)
+### ============================= Usuarios ==================================== ###
+# Crea un nuevo usuario
+post_nuevo_usuario = "INSERT INTO Usuarios (Id, Nombre, Usuario, Email, Fecha, Descripcion, Fotoperfil, Estado, Contenido, Rol, Contraseña)"
+
+### ============================= Likes ==================================== ###
+# Añade un like a un usuario
+post_dar_like = "INSERT INTO Likes (Usuario, Articulo)"
+
+### ============================= Etiquetas ==================================== ###
+# Asigna etiquetas a un usuario
+post_asignar_etiquetas = "INSERT INTO EtiquetasDeUsuario (Usuario, Etiqueta)"
+
+### ============================= Comentarios ==================================== ###
+# Publica un comentario
+post_publicar_comentario = "INSERT INTO Comentarios (Usuario, Comentario)"
+
+### ============================= Notificaciones ==================================== ###
+# Asigna notificaciones a un usuario
+post_asignar_notificacion = "INSERT INTO Notificación (Usuario, Notificación)"
+
+
+### PUT
+### ============================= Rol ==================================== ###
+# Cambia el rol del usuario
+put_cambiar_rol = "UPDATE Usuario SET Rol={rol_id} WHERE Id={usuario_id}"
+
+### DELETE
+### ============================= Usuario ==================================== ###
+# Borrar el usuario
+delete_eliminar_usuario = "DELETE FROM Usuarios WHERE Id={usuarios_id}"
