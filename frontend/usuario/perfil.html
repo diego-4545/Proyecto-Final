@@ -89,26 +89,34 @@
                     <!-- Los articulos del usuario -->
                     <div id="contenedor-galeria-articulos" class="col-12">
                         <h3>TUS NOTICIAS</h3>
-                        <div id="carrusel-articulos" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <!-- Aquí se añadiran los articulos de cada usuario  -->
-                                <div class="carousel-item active">
-                                    <div class="card articulo">
-                                        <img id="info-articulo-imagen" src="" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 id="info-articulo-titulo" class="card-title text-center">Card title</h5>
-                                        </div>
+                        <div class="row">
+                            <!-- Noticia 1 -->
+                            <div class="col-md-4">
+                                <div class="card articulo">
+                                    <img id="info-articulo-imagen-1" src="" class="card-img-top" alt="Noticia 1">
+                                    <div class="card-body">
+                                        <h5 id="info-articulo-titulo-1" class="card-title text-center">Noticia 1</h5>
                                     </div>
                                 </div>
                             </div>
-                            <button class="carousel-control-prev carrusel-control" type="button" data-bs-target="#carrusel-articulos" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon control-icon-btn" aria-hidden="true"></span>
-                                <span class="visually-hidden">Anterior</span>
-                            </button>
-                            <button class="carousel-control-next carrusel-control" type="button" data-bs-target="#carrusel-articulos" data-bs-slide="next">
-                                <span class="carousel-control-next-icon control-icon-btn" aria-hidden="true"></span>
-                                <span class="visually-hidden">Siguiente</span>
-                            </button>
+                            <!-- Noticia 2 -->
+                            <div class="col-md-4">
+                                <div class="card articulo">
+                                    <img id="info-articulo-imagen-2" src="" class="card-img-top" alt="Noticia 2">
+                                    <div class="card-body">
+                                        <h5 id="info-articulo-titulo-2" class="card-title text-center">Noticia 2</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Noticia 3 -->
+                            <div class="col-md-4">
+                                <div class="card articulo">
+                                    <img id="info-articulo-imagen-3" src="" class="card-img-top" alt="Noticia 3">
+                                    <div class="card-body">
+                                        <h5 id="info-articulo-titulo-3" class="card-title text-center">Noticia 3</h5>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -208,23 +216,37 @@
     </div>
 
     <!-- Modal para administrar etiquetas -->
-    <div class="modal fade" id="etiquetas-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Etiquetas</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Aqui se añadiran o eliminaran etiquetas
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Guardar</button>
-                </div>
+<div class="modal fade" id="etiquetas-modal" tabindex="-1" aria-labelledby="etiquetasModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="etiquetasModalLabel">Etiquetas</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-etiquetas">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Etiqueta 1" id="etiqueta1">
+                        <label class="form-check-label" for="etiqueta1">Etiqueta 1</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Etiqueta 2" id="etiqueta2">
+                        <label class="form-check-label" for="etiqueta2">Etiqueta 2</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Etiqueta 3" id="etiqueta3">
+                        <label class="form-check-label" for="etiqueta3">Etiqueta 3</label>
+                    </div>
+                    <!-- Añade más etiquetas según sea necesario -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" id="guardar-etiquetas" class="btn btn-success">Guardar</button>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Modal para cambiar imagen -->
     <div class="modal fade" id="cambiar-imagen-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
