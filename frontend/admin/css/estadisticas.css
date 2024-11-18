@@ -176,6 +176,7 @@ body {
     padding: 10px 10px; 
     font-weight: bold; 
     transition: all 0.3s ease; 
+}
 
 .btn-group .btn:hover {
     border: none;
