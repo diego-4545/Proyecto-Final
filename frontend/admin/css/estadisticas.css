@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #f3f3f3;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    background-color: #f3f3f3;
+}
+
+.logo-img {
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.menu {
+    flex-grow: 1;
+}
+
+.menu a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.menu a:hover {
+    background-color: #ddd;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    background-color: #fff;
+}
+
+.header {
+    background-color: #e8e8e8;
+}
+
+.header h1 {
+    font-size: 1.5em;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.user-info {
+    text-align: right;
+}
+
+.content {
+    padding: 40px;
+}
+
+.divider {
+    border: none;
+    border-top: 2px solid #000000;
+    margin: 0;
+}
+
+.vertical-divider {
+    width: 2px;
+    background-color: #000000;
+    position: fixed;
+    left: 260px;
+    top: 0;
+    bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .vertical-divider {
+        display: none;
+        /* Oculta la línea divisoria vertical en pantallas pequeñas */
+    }
+
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    .logo,
+    .menu a {
+        justify-content: center;
+    }
+}
+
+.content-section {
+    display: none;
+    margin-top: 20px;
+}
+
+.content-section canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.content-section:first-of-type {
+    display: block;
+}
+
+/* Centrar la barra de navegación de secciones */
+.tabs {
+    display: flex;
+    justify-content: center; /* Centra las pestañas */
+    gap: 20px; /* Espaciado entre pestañas */
+    padding: 10px 0; /* Espaciado vertical dentro de la barra */
+    background-color: #f8f9fa; /* Fondo de la barra (opcional, ajusta según el diseño) */
+    border-bottom: 2px solid #ddd; /* Línea debajo de las pestañas (opcional) */
+}
+
+/* Estilo para cada pestaña */
+.tabs .tab-link {
+    padding: 10px 20px; /* Espaciado interno en cada pestaña */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Cambia el estilo al pasar el mouse */
+.tabs .tab-link:hover {
+    background-color: #ddd;
+    color: #000;
+}
+
+/* Indica la pestaña activa */
+.tabs .active {
+    background-color: #4a5461;
+    color: white;
+    border-color: #212529;
+}
+
+/* Centrar el grupo de botones */
+.btn-group {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    margin-top: 30px; /* Ajusta la distancia desde la parte superior */
+}
+
+/* Opcional: Personaliza el estilo de los botones */
+.btn-group .btn {
+    background-color: #4a5461;
+    color: white;
+    border: none;
+    margin: 0 30px; /* Espaciado horizontal entre los botones */
+    padding: 10px 10px; /* Ajusta el tamaño interno de los botones */
+    font-weight: bold; /* Letras más destacadas */
+    transition: all 0.3s ease; /* Animación suave al interactuar */
+}
+
+/* Cambia el estilo de los botones al pasar el cursor */
+.btn-group .btn:hover {
+    border: none;
+    background-color: #212529; /* Color de fondo al pasar el mouse */
+    color: white; /* Color del texto al pasar el mouse */
+}
