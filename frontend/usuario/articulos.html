@@ -63,20 +63,20 @@
     </nav>
 
     <!-- Contenido -->
-    <h1 id="info-articulo-titulo" class="text-center mt-5">Titulo</h1>
-    <h5 id="info-articulo-descripcion" class="text-center">Descripción</h5>
+    <h1 id="info-articulo-titulo" class="text-center mt-5">Monte Everest</h1>
+    <h5 id="info-articulo-descripcion" class="text-center">La historia de la montaña mas alta</h5>
     
     <!-- Información del escritor y del artículo -->
     <div id="contenedor-info-articulo">
         <div id="info-escritor">
             <!-- Informacion del escritor -->
             <img id="foto-perfil-escritor" src="./img/perfil_default.png" alt="Foto del escrito"> <!-- Foto de perfil del escritor -->
-            <span id="info-escritor-nombre">Nombre</span> <!-- Nombre del escritor -->
+            <span id="info-escritor-nombre">Manuel Magaña López</span> <!-- Nombre del escritor -->
         </div>
         <div id="info-etiquetas">
             <!-- Lista de etiquetas que componen el artículo -->
             <div class="etiqueta">
-                <span id="info-etiqueta-nombre">Tecnología</span>
+                <span id="info-etiqueta-nombre">Naturaleza</span>
             </div>
         </div>    
     </div>
@@ -85,14 +85,51 @@
     <div id="contenedor-contenido-articulo" class="container-fluid">
         <div id="imagen-articulo" class="col-12">
             <!-- Imagen del artículo -->
-            <img src="" alt="Banner articulo">
+            <img src="../img_biblioteca/articulos/montañas_nevadas.png" alt="Banner articulo">
         </div>
         <div id="contenido-articulo" class="col-12">
             <!-- Contenido del artículo -->
-            <span></span>
+            <span>El Monte Everest, con 8,848.86 metros, es la montaña más alta del mundo, símbolo de desafío humano, espiritualidad y un recordatorio de nuestra responsabilidad ambiental.</span>
         </div>
     </div>
 
+    <!-- Seccion de comentarios -->
+    <div id="contenedor-comentarios">
+        <!-- Input para escribir un comentario -->
+        <div id="escribe-comentario">
+            <input type="text" id="input-comentario" placeholder="Escribe un comentario..." />
+            <button type="submit" class="btn btn-success">Publicar</button>
+        </div>
+    
+        <!-- Lista de comentarios -->
+        <ul id="lista-comentarios">
+            <li class="comentario-item">
+                <div class="contenedor-info-usuario-comentario">
+                    <span class="comentario-nombre-usuario">Manuel</span>
+                </div>
+                <div class="contenedor-contenido-comentario">
+                    <span class="comentario-contenido">Este es un comentario.</span>
+                </div>
+            </li>
+            <li class="comentario-item">
+                <div class="contenedor-info-usuario-comentario">
+                    <span class="comentario-nombre-usuario">Mariana</span>
+                </div>
+                <div class="contenedor-contenido-comentario">
+                    <span class="comentario-contenido">Otro comentario interesante.</span>
+                </div>
+            </li>
+            <li class="comentario-item">
+                <div class="contenedor-info-usuario-comentario">
+                    <span class="comentario-nombre-usuario">Diego</span>
+                </div>
+                <div class="contenedor-contenido-comentario">
+                    <span class="comentario-contenido">Un tercer comentario.</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
 
     <!-- Importamos JQuery v3.7.1 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
