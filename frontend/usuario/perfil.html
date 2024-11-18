@@ -77,9 +77,9 @@
                     </div>
                     <div id="contenedor-info-usuario" class="col-12 mt-5">
                         <!-- Información del usuario -->
-                        <p><b>NOMBRE: </b><span id="info-usuario-nombre"></span></p>
-                        <p><b>CORREO: </b><span id="info-usuario-correo"></span></p>
-                        <p><b>DESCRIPCIÓN: </b><span id="info-usuario-descripcion"></span></p>
+                        <p><b>NOMBRE: </b><span id="info-usuario-nombre">Manuel Magaña López</span></p>
+                        <p><b>CORREO: </b><span id="info-usuario-correo">manuel@metropolitan.com</span></p>
+                        <p><b>DESCRIPCIÓN: </b><span id="info-usuario-descripcion">Me gusta mucho la tecnología, los temas de moda y los coches deportivos. Soy un escritor desde hace 4 años, pasate por mis artículos y deja un like y un comentario positivo en los que te gusten.</span></p>
                     </div>
                 </div>
             </div>
@@ -118,6 +118,7 @@
                                 </div>
                             </div>
                         </div>
+                        <button class="btn btn-dark mt-3" onclick="location.href='./inicio_editor.html'">Ver más</button>
                     </div>
 
                     <!-- Las etiquetas del usuario -->
@@ -128,7 +129,13 @@
                                 <ul id="lista">
                                     <!-- Aqui se añadiran las etiquetas de cada usuario -->
                                     <li class="etiquetas">
-                                        <span id="info-etiqueta-nombre">Etiqueta 1</span>
+                                        <span id="info-etiqueta-nombre">Tecnología</span>
+                                    </li>
+                                    <li class="etiquetas">
+                                        <span id="info-etiqueta-nombre">Moda</span>
+                                    </li>
+                                    <li class="etiquetas">
+                                        <span id="info-etiqueta-nombre">Carros</span>
                                     </li>
                                 </ul>
                             </div>
@@ -216,37 +223,34 @@
     </div>
 
     <!-- Modal para administrar etiquetas -->
-<div class="modal fade" id="etiquetas-modal" tabindex="-1" aria-labelledby="etiquetasModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="etiquetasModalLabel">Etiquetas</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="form-etiquetas">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Etiqueta 1" id="etiqueta1">
-                        <label class="form-check-label" for="etiqueta1">Etiqueta 1</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Etiqueta 2" id="etiqueta2">
-                        <label class="form-check-label" for="etiqueta2">Etiqueta 2</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Etiqueta 3" id="etiqueta3">
-                        <label class="form-check-label" for="etiqueta3">Etiqueta 3</label>
-                    </div>
-                    <!-- Añade más etiquetas según sea necesario -->
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" id="guardar-etiquetas" class="btn btn-success">Guardar</button>
+    <div class="modal fade" id="etiquetas-modal" tabindex="-1" aria-labelledby="etiquetasModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="etiquetasModalLabel">Etiquetas</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-etiquetas">
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Animales</button>
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Comida</button>
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Carros</button>
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Educación</button>
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Finanzas</button>
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Videojuegos</button>
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Naturaleza</button>
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Tecnología</button>
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)">Moda</button>
+                        <!-- Añade más etiquetas según sea necesario -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="guardar-etiquetas" class="btn btn-success">Guardar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Modal para cambiar imagen -->
     <div class="modal fade" id="cambiar-imagen-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -257,7 +261,30 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Aqui se cambiara la imagen
+                    <form id="form-foto-perfil">
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="../img_biblioteca/perfiles/bolas.jpg" alt="Opcion-1">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="../img_biblioteca/perfiles/default.png" alt="Opcion-2">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="../img_biblioteca/perfiles/netflix.png" alt="Opcion-3">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="../img_biblioteca/perfiles/pato.jpg" alt="Opcion-4">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="../img_biblioteca/perfiles/rana.png" alt="Opcion-5">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="../img_biblioteca/perfiles/snoopy.png" alt="Opcion-6">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="../img_biblioteca/perfiles/xbox_donut.png" alt="Opcion-7">
+                        </button>
+                        <!-- Añade más etiquetas según sea necesario -->
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

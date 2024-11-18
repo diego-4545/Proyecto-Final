@@ -1,26 +1,23 @@
-document.getElementById("guardar-etiquetas").addEventListener("click", function () {
-    // Obtener todas las etiquetas seleccionadas
-    const checkboxes = document.querySelectorAll("#form-etiquetas .form-check-input");
-    const etiquetasSeleccionadas = [];
-
-    checkboxes.forEach((checkbox) => {
-        if (checkbox.checked) {
-            etiquetasSeleccionadas.push(checkbox.value);
-        }
-    });
-
-    // Mostrar las etiquetas seleccionadas en el perfil
-    const listaEtiquetas = document.getElementById("lista");
-    listaEtiquetas.innerHTML = ""; // Limpiar la lista actual
-
-    etiquetasSeleccionadas.forEach((etiqueta) => {
-        const li = document.createElement("li");
-        li.className = "etiquetas";
-        li.innerHTML = `<span>${etiqueta}</span>`;
-        listaEtiquetas.appendChild(li);
-    });
-
-    // Cerrar el modal
-    const etiquetasModal = bootstrap.Modal.getInstance(document.getElementById("etiquetas-modal"));
-    etiquetasModal.hide();
+// Previene el comportamiento predeterminado del formulario
+document.getElementById("myForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Evita que el formulario se envíe
+    console.log("Formulario no enviado");
 });
+
+// Cambia el estado de los botones al hacer clic
+function toggleButton(event, button) {
+    event.preventDefault(); // Evita cualquier comportamiento predeterminado
+    button.classList.toggle("active"); // Cambia la clase para mostrar que está seleccionado
+}
+
+
+function selectImage(selectedButton) {
+    // Encuentra todos los botones dentro del contenedor
+    const buttons = document.querySelectorAll('#form-foto-perfil .toggle-btn');
+
+    // Elimina la clase "active" de todos los botones
+    buttons.forEach((button) => button.classList.remove('active'));
+
+    // Agrega la clase "active" al botón que se seleccionó
+    selectedButton.classList.add('active');
+}

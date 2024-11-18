@@ -84,7 +84,7 @@
     align-items: center;
 
     border: 1px solid lightgray;
-    border-radius: 80px;
+    border-radius: 5px;
     padding: 8px 10px 8px 10px;
     font-size: medium;
     margin: 5px;
@@ -119,4 +119,43 @@
 #contenedor-galeria-articulos .col-md-4 {
     flex: 0 0 auto; 
     max-width: 25%;
+}
+
+
+.opcion-etiqueta {
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.toggle-btn.active {
+    background-color: #56c35a; /* Color verde al marcar */
+    border: 3px solid #56c35a;
+}
+
+
+#form-foto-perfil {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.opcion-foto-perfil {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.opcion-foto-perfil img {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
 }
