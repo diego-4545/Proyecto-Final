@@ -28,27 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Función para cargar imágenes desde una carpeta con nombres conocidos
+    // Función para cargar imágenes, incluyendo bolas.jpg
     function cargarImagenesEstaticas() {
         const cantidadImagenes = 10; // Número de imágenes en la carpeta
+
+        // Añadir bolas.jpg como la primera imagen
+        const imgBolas = document.createElement('div');
+        imgBolas.innerHTML = `<img src="imagenes/bolas.jpg" class="preview-imagen" alt="Bolas">`;
+        $('#contenedorImagenes').slick('slickAdd', imgBolas);
+
+        // Cargar las imágenes restantes
         for (let i = 1; i <= cantidadImagenes; i++) {
             const imgContainer = document.createElement('div');
             imgContainer.innerHTML = `<img src="imagenes/imagen${i}.jpg" class="preview-imagen" alt="Imagen ${i}">`;
-            $('#contenedorImagenes').slick('slickAdd', imgContainer); // Añade la imagen al carrusel
+            $('#contenedorImagenes').slick('slickAdd', imgContainer);
         }
     }
-
-    // Inicializar el carrusel con Slick Carousel
-    $(document).ready(function() {
-        $('#contenedorImagenes').slick({
-            infinite: true,
-            speed: 300,
-            slidesToShow: 1,
-            adaptiveHeight: true,
-            arrows: true, // Muestra las flechas
-            prevArrow: '<button type="button" class="slick-prev">←</button>', // Flecha izquierda
-            nextArrow: '<button type="button" class="slick-next">→</button>'  // Flecha derecha
-        });
 
         // Llamar a la función para cargar las imágenes
         cargarImagenesEstaticas();
@@ -98,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         containment: 'parent',
         tolerance: 'pointer'
     });
-});
+
 
 // Contador de caracteres para título y contenido
 $(document).ready(function() {

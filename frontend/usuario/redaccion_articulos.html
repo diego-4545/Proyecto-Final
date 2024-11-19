@@ -85,45 +85,77 @@
     
     <div class="container">
         <h1>Escribe tu artículo</h1>
-        
+
         <label for="titulo">Título</label>
         <input type="text" id="titulo" placeholder="Título">
-        
+
         <label for="etiquetas">Etiquetas</label>
         <div class="etiquetas-input">
             <input type="text" id="entradaEtiqueta" placeholder="Añadir etiqueta">
             <button id="agregarEtiquetaBtn">+</button>
             <div id="contenedorEtiquetas"></div>
         </div>
-        
+
         <label for="contenido">Contenido</label>
         <textarea id="contenido" placeholder="Contenido"></textarea>
-        <!-- El contenedor donde se mostrarán las imágenes cargadas -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
         <label>Imágenes</label>
         <div id="contenedorImagenes"></div>
-        <div id="contenedorImagenes" class="carrusel-imagenes"></div>
-        <button id="agregarImagenBtn">Añadir Imagen</button>
+        <button id="agregarImagenBtn" data-bs-toggle="modal" data-bs-target="#cambiar-imagen-modal">Añadir Imagen</button>
         <div id="galeriaImagenes"></div>
-        
+
         <div class="botones">
             <button id="guardarCambiosBtn">Guardar</button>
             <button id="publicarArticuloBtn">Publicar</button>
-            <button id="eliminarArticuloBtn">Eliminar</button>
+            <button id="eliminarArticuloBtn" data-bs-toggle="modal" data-bs-target="#modalEliminar">Eliminar</button>
         </div>
     </div>
 
-    <!-- Modal para eliminar -->
-    <div id="modalEliminar" class="modal">
-        <div class="contenido-modal">
-            <p>¿Estás seguro de que quieres eliminar este artículo? Los datos se borrarán después de esto.</p>
-            <button id="confirmarEliminarBtn">Aceptar</button>
-            <button id="cancelarEliminarBtn">Cancelar</button>
+<!-- Modal para cambiar imagen -->
+<div class="modal fade" id="cambiar-imagen-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Foto de perfil</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-foto-articulo">
+                    <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <img src="../img_biblioteca/articulos/montañas_nevadas.png" alt="Opcion-1" class="img-pequeña">
+                    </button>
+                    <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <img src="../img_biblioteca/articulos/Ciudad.jpg" alt="Opcion-2" class="img-pequeña">
+                    </button>
+                    <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <img src="../img_biblioteca/articulos/Bosque.jpg" alt="Opcion-3" class="img-pequeña">
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
-    
+</div>
+
+
+    <!-- Modal para eliminar -->
+    <div id="modalEliminar" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>¿Estás seguro de que quieres eliminar este artículo? Los datos se borrarán después de esto.</p>
+                    <button id="confirmarEliminarBtn">Aceptar</button>
+                    <button id="cancelarEliminarBtn" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectImage(button) {
+            const selectedImage = button.querySelector("img").src;
+            const contenedorImagenes = document.getElementById("contenedorImagenes");
+            contenedorImagenes.innerHTML += `<img src="${selectedImage}" alt="Imagen seleccionada">`;
+        }
+    </script>
 </body>
 </html>
