@@ -320,3 +320,61 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+-- INSERCIÓN DE DATOS INICIALES --
+
+-- Inserta un nuevo rol para el administrador
+INSERT INTO `metropolitan`.`Roles` (`NombreDelRol`) 
+VALUES ('Usuario');
+
+INSERT INTO `metropolitan`.`Roles` (`NombreDelRol`) 
+VALUES ('Administrador');
+
+INSERT INTO `metropolitan`.`Roles` (`NombreDelRol`) 
+VALUES ('Suspendido');
+
+
+-- Inserta un usuario administrador --
+INSERT INTO `metropolitan`.`Usuarios` 
+(`Nombre`, `Usuario`, `Email`, `FechaRegistro`, `Descripción`, `FotoPerfil`, `Rol`, `Contraseña`) 
+VALUES 
+('Admin', 'admin', 'admin@metropolitan.com', CURDATE(), 'Usuario administrador del sistema', NULL, 2, 'admin');
+
+
+-- Insertar las etiquetas --
+INSERT INTO `metropolitan`.`Etiqueta` (`Nombre`, `FechaDeCreacion`)
+VALUES ('Naturaleza', CURDATE());
+
+INSERT INTO `metropolitan`.`Etiqueta` (`Nombre`, `FechaDeCreacion`)
+VALUES ('Tecnología', CURDATE());
+
+INSERT INTO `metropolitan`.`Etiqueta` (`Nombre`, `FechaDeCreacion`)
+VALUES ('Moda', CURDATE());
+
+
+-- Insertar estados de Notificaciones --
+INSERT INTO `metropolitan`.`EstadoNotificaciones` (`Nombre`)
+VALUES ('Enviado');
+
+INSERT INTO `metropolitan`.`EstadoNotificaciones` (`Nombre`)
+VALUES ('Leido');
+
+
+-- Insertar estados de Articulos --
+INSERT INTO `metropolitan`.`EstadoArticulos` (`Nombre`)
+VALUES ('En progreso');
+
+INSERT INTO `metropolitan`.`EstadoArticulos` (`Nombre`)
+VALUES ('Publicado');
+
+INSERT INTO `metropolitan`.`EstadoArticulos` (`Nombre`)
+VALUES ('Suspendido');
+
+
+-- Insertar estados de Comentarios --
+INSERT INTO `metropolitan`.`EstadoComentarios` (`Nombre`)
+VALUES ('Publico');
+
+INSERT INTO `metropolitan`.`EstadoComentarios` (`Nombre`)
+VALUES ('Suspendido');

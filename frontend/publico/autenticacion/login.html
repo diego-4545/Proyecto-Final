@@ -4,26 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesión</title>
-    <link rel="stylesheet" href="../css/estiloautenticacion.css">
 
     <!--Bootstrap icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
 
-
     <!--Font Awesome-->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
-     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
-     crossorigin="anonymous" referrerpolicy="no-referrer" 
-     />
- 
-     <!-- Importamos el CSS de Bootstrap v5.3.3 -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" 
-     integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" 
-     crossorigin="anonymous" referrerpolicy="no-referrer" 
-     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" 
+    />
 
-     <!-- Estilos -->
-    <link rel="stylesheet" href="../css/navbar.css">
+    <!-- Importamos el CSS de Bootstrap v5.3.3 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" 
+    integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" 
+    />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/frontend/publico/css/estiloautenticacion.css">
+    <link rel="stylesheet" href="/frontend/publico/css/navbar.css">
 
 </head>
 <body>
@@ -32,7 +31,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="frontend/publico/img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 Metropolitan
             </a>
             <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../inicio.html">Inicio</a>
+                        <a class="nav-link" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../información_estatica.html">Conocenos</a>
@@ -50,7 +49,7 @@
                         <a class="nav-link" href="../../usuario/inicio_editor.html">Escribe</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../admin/inicio.html">Administrar</a>
+                        <a id="admin-nav-link" class="nav-link" href="/admin">Administrar</a>
                     </li>
                 </ul>
             </div>
@@ -59,7 +58,7 @@
             <div class="d-flex align-items-center user-info ms-auto">
                 <div class="text-end" id="nombre-rol">
                     <span class="username" id="navbar-info-usuario-nombre">
-                        <a href="registro.html">Regístrate</a>
+                        <a href="/registro">Regístrate</a>
                     </span><br>
                 </div>
             </div>
@@ -70,12 +69,12 @@
         <div class="aut-box text-center p-4">
             <h1 class="title">METROPOLITAN</h1>
             <h3 class="mb-4">INICIA SESIÓN</h3>
-            <form>
+            <form id="login-form">
                 <div class="mb-3">
-                    <input type="text" class="form-control input-field" placeholder="USUARIO" required>
+                    <input id="login-form-usuario" type="text" class="form-control input-field" placeholder="USUARIO" required>
                 </div>
                 <div class="mb-4">
-                    <input type="password" class="form-control input-field" placeholder="CONTRASEÑA" required>
+                    <input id="login-form-password" type="password" class="form-control input-field" placeholder="CONTRASEÑA" required>
                 </div>
                 <button type="submit" class="btn btn-dark w-100">SIGUIENTE</button>
             </form>
@@ -98,5 +97,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.all.js"
     integrity="sha512-HE6XTjw3UV1hqENThKtsSn4mr3sx/lXbTSVPlOdIU3pprqz5ti16sGIGw8y5EAePRYg80O3OEBRnXPwON7vOUA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Scripts JS -->
+    <script src="/frontend/publico/js/login_ajax.js"></script>
 </body>
 </html>
