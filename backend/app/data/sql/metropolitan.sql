@@ -362,19 +362,19 @@ VALUES ('Leido');
 
 
 -- Insertar estados de Articulos --
-INSERT INTO `metropolitan`.`EstadoArticulos` (`Nombre`)
+INSERT INTO `metropolitan`.`EstadoArticulos` (`NombreDelEstado`)
 VALUES ('En progreso');
 
-INSERT INTO `metropolitan`.`EstadoArticulos` (`Nombre`)
+INSERT INTO `metropolitan`.`EstadoArticulos` (`NombreDelEstado`)
 VALUES ('Publicado');
 
-INSERT INTO `metropolitan`.`EstadoArticulos` (`Nombre`)
+INSERT INTO `metropolitan`.`EstadoArticulos` (`NombreDelEstado`)
 VALUES ('Suspendido');
 
 
 -- Insertar estados de Comentarios --
-INSERT INTO `metropolitan`.`EstadoComentarios` (`Nombre`)
+INSERT INTO `metropolitan`.`EstadoComentarios` (`NombreDelEstado`)
 VALUES ('Publico');
 
-INSERT INTO `metropolitan`.`EstadoComentarios` (`Nombre`)
+INSERT INTO `metropolitan`.`EstadoComentarios` (`NombreDelEstado`)
 VALUES ('Suspendido');
