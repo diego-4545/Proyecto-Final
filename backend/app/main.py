@@ -54,7 +54,7 @@ def serve_registro():
 def serve_perfil():
     return FileResponse("frontend/usuario/perfil.html")
 
-    @app.get("/redaccionarticulos")
+@app.get("/redaccionarticulos")
 def serve_usuario_redaccion_atrticulos():
     return FileResponse("frontend/admin/redaccion_articulos.html")
 
