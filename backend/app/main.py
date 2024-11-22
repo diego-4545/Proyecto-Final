@@ -54,6 +54,10 @@ def serve_registro():
 def serve_perfil():
     return FileResponse("frontend/usuario/perfil.html")
 
+    @app.get("/redaccionarticulos")
+def serve_usuario_redaccion_atrticulos():
+    return FileResponse("frontend/admin/redaccion_articulos.html")
+
 
 
 # Páginas de administrador
@@ -88,6 +92,4 @@ def serve_admin_moderación_articulos():
 @app.get("/moderacioncomentarios")
 def serve_admin_moderación_comentarios():
     return FileResponse("frontend/admin/moderacion_comentarios.html")
-
-
 
