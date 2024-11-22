@@ -60,3 +60,34 @@ def serve_perfil():
 @app.get("/admin")
 def serve_admin_inicio():
     return FileResponse("frontend/admin/inicio.html")
+
+@app.get("/crudarticulos")
+def serve_admin_crud_articulos():
+    return FileResponse("frontend/admin/crud_articulos.html")
+
+@app.get("/crudusuarios")
+def serve_admin_crud_usuarios():
+    return FileResponse("frontend/admin/crud_usuarios.html")
+
+@app.get("/crudetiquetas")
+def serve_admin_crud_etiquetas():
+    return FileResponse("frontend/admin/crud_etiquetas.html")
+
+@app.get("/dudas")
+def serve_admin_dudas():
+    return FileResponse("frontend/admin/dudas.html")
+
+@app.get("/estadisticas")
+def serve_admin_estadisticas():
+    return FileResponse("frontend/admin/estadísticas.html")
+
+@app.get("/moderacionarticulos")
+def serve_admin_moderación_articulos():
+    return FileResponse("frontend/admin/moderación_artículos.html")
+
+@app.get("/moderacioncomentarios")
+def serve_admin_moderación_comentarios():
+    return FileResponse("frontend/admin/moderacion_comentarios.html")
+
+
+
