@@ -36,6 +36,10 @@ app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 def serve_inicio():
     return FileResponse("frontend/publico/inicio.html")
 
+@app.get("/conocenos")
+def serve_conocenos():
+    return FileResponse("frontend/publico/información_estatica.html")
+
 
 
 # Autenticación
@@ -47,6 +51,10 @@ def serve_login():
 def serve_registro():
     return FileResponse("frontend/publico/autenticacion/registro.html")
 
+@app.get("/auth/pagina-intermedia")
+def serve_pagina_intermedia():
+    return FileResponse("frontend/publico/autenticacion/pagina_intermedia.html")
+
 
 
 # Solo usuarios autenticados
@@ -54,9 +62,9 @@ def serve_registro():
 def serve_perfil():
     return FileResponse("frontend/usuario/perfil.html")
 
-@app.get("/redaccionarticulos")
+@app.get("/redaccion")
 def serve_usuario_redaccion_atrticulos():
-    return FileResponse("frontend/admin/redaccion_articulos.html")
+    return FileResponse("frontend/usuario/redaccion_articulos.html")
 
 
 
@@ -65,31 +73,31 @@ def serve_usuario_redaccion_atrticulos():
 def serve_admin_inicio():
     return FileResponse("frontend/admin/inicio.html")
 
-@app.get("/crudarticulos")
+@app.get("/admin/articulos")
 def serve_admin_crud_articulos():
     return FileResponse("frontend/admin/crud_articulos.html")
 
-@app.get("/crudusuarios")
+@app.get("/admin/usuarios")
 def serve_admin_crud_usuarios():
     return FileResponse("frontend/admin/crud_usuarios.html")
 
-@app.get("/crudetiquetas")
+@app.get("/admin/etiquetas")
 def serve_admin_crud_etiquetas():
     return FileResponse("frontend/admin/crud_etiquetas.html")
 
-@app.get("/dudas")
+@app.get("/admin/dudas")
 def serve_admin_dudas():
     return FileResponse("frontend/admin/dudas.html")
 
-@app.get("/estadisticas")
+@app.get("/admin/estadisticas")
 def serve_admin_estadisticas():
     return FileResponse("frontend/admin/estadísticas.html")
 
-@app.get("/moderacionarticulos")
+@app.get("/admin/mod-articulos")
 def serve_admin_moderación_articulos():
     return FileResponse("frontend/admin/moderación_artículos.html")
 
-@app.get("/moderacioncomentarios")
+@app.get("/admin/mod-comentarios")
 def serve_admin_moderación_comentarios():
     return FileResponse("frontend/admin/moderacion_comentarios.html")
 

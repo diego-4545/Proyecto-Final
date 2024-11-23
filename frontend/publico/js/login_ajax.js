@@ -16,19 +16,17 @@ $(document).ready(() => {
                 password,
             }),
             success: (response) => {
+                const token = response.access_token;
                 const usuario_id = response.usuario_id;
                 const rol_id = response.rol_id;
 
                 // Guardar datos en localStorage
+                localStorage.setItem("access_token", token);
                 localStorage.setItem("usuario_id", usuario_id);
                 localStorage.setItem("rol_id", rol_id);
-                alert("Iniciaste sesión");
-
-                if (rol_id == 2) {
-                    window.location.href = "/admin";
-                } else {
-                    window.location.href = "/";
-                }
+                
+                // Redireccion a la página de inicio
+                window.location.href = "/";
             },
             error: (response) => {
                 alert("Usuario o contraseña incorrectos");
