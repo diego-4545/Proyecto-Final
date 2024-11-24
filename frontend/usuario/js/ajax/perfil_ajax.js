@@ -73,6 +73,17 @@ function cambiar_perfil_con_info_usuario(usuario_info) {
     $("#info-usuario-descripcion").text(usuario_info.descripcion);
 }
 
+// Cambiar etiquetas
+function cambiar_perfil_etiquetas_usuario() {
+
+}
+
+
+// Cambiar articulos
+function cambiar_perfil_articulos_usuario() {
+    
+}
+
 
 // Función del boton de cerrar sesión
 function cerrar_sesion() {
