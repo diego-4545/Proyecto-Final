@@ -7,5 +7,7 @@ class POST_Login_Request(BaseModel):
     password: str
 
 # Esquema para verificar si un usuario es admin
-class POST_Verificar_Admin_Request(BaseModel):
+class POST_Verificar_Request(BaseModel):
     token: str
+    usuario_id: int
+    rol_id: int
