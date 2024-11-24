@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from backend.app.api.endpoints import usuarios_endpoints, articulos_endpoints, comentario_endpoints, dudas_endpoints
-from backend.app.api.endpoints import auth_endpoints
+from backend.app.services.auth import auth_endpoints
 
 router = APIRouter()
 router.include_router(usuarios_endpoints.router, tags=["Endpoints de Usuarios"])

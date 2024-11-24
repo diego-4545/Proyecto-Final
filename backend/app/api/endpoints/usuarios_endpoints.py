@@ -12,6 +12,9 @@ router = APIRouter()
 async def usuario_info(id):
     # Funcion que obtiene la info de un usuario por su ID
     data: list[tuple] = usrq.usuarios_query(usrq.get_usuario.format(usuario_id=id))
+    if not data:
+        print(data)
+        return None
     return usrs.GET_UsuarioInfo_Response(
         usuario_id=data[0][0],
         nombre=data[0][1],

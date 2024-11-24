@@ -56,36 +56,35 @@ def crear_token(data: dict):
 
 # Verificar el token JWT
 def verificar_token(token: str):
-    print("Verifying this token: ", token)
     try:
         payload: dict = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         if payload.get("usuario_id", None):
-            return {
-                "autenticado": True, 
-                "usuario_id": payload.get("usuario_id"), 
-                "rol_id": payload.get("rol_id")
-            }
-        return {"autenticado": False}
+            return {"autenticado": True, "usuario_id": payload.get("usuario_id"), "rol_id": payload.get("rol_id")}
+        return {"autenticado": False, "message": "Verificación fallida - Token invalido"}
     except jwt.ExpiredSignatureError:
-        return {"Verificacion fallida - Token expirado"}
+        return {"autenticado": False, "message": "Verificacion fallida - Token expirado"}
     except jwt.InvalidTokenError:
-        return {"Verificacion fallida - Token invalido"}
+        return {"autenticado": False, "message": "Verificacion fallida - Token invalido"}
 
 
 # Verificar que el token provenga de una cuenta administrador
 async def verificar_admin(token: str):
     payload = verificar_token(token)
+    # Levantar errores para que JQuery los atrape
     if not payload["autenticado"]:
-        raise HTTPException(status_code=401, detail="Hubo un problema con el token, inicia sesión nuevamente")
+        raise HTTPException(status_code=401, detail="Hubo un problema con el token, inicia sesión nuevamente") # Expiro o es invalido
     if payload["rol_id"] != 2:
         raise HTTPException(status_code=403, detail="El usuario no es administrador")
+    # Si no hay errores retornar el payload
     return payload
 
 # Verificar que el token provenga de una cuenta logeada
 async def verificar_usuario(token: str):
     payload = verificar_token(token)
+    # Levantar errores para que JQuery los atrape
     if not payload["autenticado"]:
         raise HTTPException(status_code=401, detail="Hubo un problema con el token, inicia sesión nuevamente")
     if (payload["rol_id"] != 1 and payload["rol_id"] != 2):
-        raise HTTPException(status_code=403, detail="Inicia sesión")
+        raise HTTPException(status_code=403, detail="El usuario no esta autenticado")
+    # Si no hay errores retornar el payload
     return payload
