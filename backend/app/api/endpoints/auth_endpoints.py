@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from fastapi import HTTPException
-from backend.app.services.auth.auth import login, crear_token
+from backend.app.services.auth.auth import login, crear_token, verificar_admin, verificar_usuario
 from backend.app.services.auth.auth_esquemas import POST_Login_Request, POST_Verificar_Request
 
 
@@ -18,12 +18,13 @@ async def verificar_login(input: POST_Login_Request):
 
 
 @router.post("/auth/verificar-admin")
-async def verificar_admin(input: POST_Verificar_Request):
+async def auth_verificar_admin(input: POST_Verificar_Request):
     token = input.token
     usuario_id = input.usuario_id
     rol_id = input.rol_id
 
-    verificar_admin(token)
+    respuesta = await verificar_admin(token)
+    print("RESPUESTA: ", respuesta)
     return {
         "message": "Acceso garantizado exitosamente",
         "access_token": token,
@@ -33,12 +34,13 @@ async def verificar_admin(input: POST_Verificar_Request):
 
 
 @router.post("/auth/verificar-usuario")
-async def verificar_usuario(input: POST_Verificar_Request):
+async def auth_verificar_usuario(input: POST_Verificar_Request):
     token = input.token
     usuario_id = input.usuario_id
     rol_id = input.rol_id
 
-    verificar_usuario(token)
+    respuesta = await verificar_usuario(token)
+    print("RESPUESTA: ", respuesta)
     return {
         "message": "Acceso garantizado exitosamente",
         "access_token": token,

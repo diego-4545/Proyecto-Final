@@ -73,7 +73,7 @@ def verificar_token(token: str):
 
 
 # Verificar que el token provenga de una cuenta administrador
-def verificar_admin(token: str):
+async def verificar_admin(token: str):
     payload = verificar_token(token)
     if not payload["autenticado"]:
         raise HTTPException(status_code=401, detail="Hubo un problema con el token, inicia sesión nuevamente")
@@ -82,7 +82,7 @@ def verificar_admin(token: str):
     return payload
 
 # Verificar que el token provenga de una cuenta logeada
-def verificar_usuario(token: str):
+async def verificar_usuario(token: str):
     payload = verificar_token(token)
     if not payload["autenticado"]:
         raise HTTPException(status_code=401, detail="Hubo un problema con el token, inicia sesión nuevamente")

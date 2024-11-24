@@ -45,7 +45,7 @@
                         <a class="nav-link" href="/redaccion">Escribe</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/pagina-intermedia">Administrar</a>
+                        <a class="nav-link" href="/admin">Administrar</a>
                     </li>
                 </ul>
             </div>
@@ -56,7 +56,7 @@
                     <span class="role" id="navbar-info-usuario-rol">Rol</span>
                 </div>
                 <a href="/perfil">
-                    <img id="navbar-info-usuario-foto" src="frontend/publico/img/perfil_default.png" alt="Foto de perfil">
+                    <img id="navbar-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="Foto de perfil">
                 </a>
             </div>
         </div>
@@ -72,7 +72,7 @@
                     <div id="contenedor-foto-perfil" class="col-12">
                         <h3>TU INFORMACIÓN</h3>
                         <button id="boton-editar-imagen-perfil" type="button" data-bs-toggle="modal" data-bs-target="#cambiar-imagen-modal">
-                            <img id="main-info-usuario-foto" src="/frontend/usuario/img/perfil_default.png" alt="Foto de perfil">
+                            <img id="main-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="Foto de perfil">
                         </button>
                     </div>
                     <div id="contenedor-info-usuario" class="col-12 mt-5">
@@ -151,14 +151,17 @@
                     <div id="contenedor-configuracion-perfil" class="col-12 mt-5">
                         <h3>CONFIGURACIÓN</h3>
                         <div>
-                            <button id="boton-cambiar-info" type="button" data-bs-toggle="modal" data-bs-target="#modificar-datos-modal" class="btn btn-dark">
+                            <button id="boton-cambiar-info" type="button" data-bs-toggle="modal" data-bs-target="#modificar-datos-modal" class="btn btn-dark mt-3">
                                 Modificar datos
                             </button>
-                            <button id="boton-notificaciones" class=" btn btn-dark">
+                            <button id="boton-notificaciones" class=" btn btn-dark mt-3">
                                 Activar notificaciones
                             </button> 
-                            <button id="boton-eliminar-cuenta" type="button" data-bs-toggle="modal" data-bs-target="#eliminar-cuenta-modal" class="btn btn-danger">
+                            <button id="boton-eliminar-cuenta" type="button" data-bs-toggle="modal" data-bs-target="#eliminar-cuenta-modal" class="btn btn-danger mt-3">
                                 Eliminar cuenta
+                            </button>
+                            <button id="boton-cerrar-cuenta" type="button" class="btn btn-danger mt-3">
+                                Cerrar sesión
                             </button>
                         </div>
                     </div>
@@ -263,7 +266,7 @@
                 <div class="modal-body">
                     <form id="form-foto-perfil">
                         <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
-                            <img src="/frontend/img_biblioteca/perfiles/bolas.jpg" alt="Opcion-1">
+                            <img src="/frontend/img_biblioteca/perfiles/bolas.png" alt="Opcion-1">
                         </button>
                         <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
                             <img src="/frontend/img_biblioteca/perfiles/default.png" alt="Opcion-2">
@@ -272,7 +275,7 @@
                             <img src="/frontend/img_biblioteca/perfiles/netflix.png" alt="Opcion-3">
                         </button>
                         <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
-                            <img src="/frontend/img_biblioteca/perfiles/pato.jpg" alt="Opcion-4">
+                            <img src="/frontend/img_biblioteca/perfiles/pato.png" alt="Opcion-4">
                         </button>
                         <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
                             <img src="/frontend/img_biblioteca/perfiles/rana.png" alt="Opcion-5">
