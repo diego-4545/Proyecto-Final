@@ -27,12 +27,12 @@ function get_usuario_info() {
             cambiar_perfil_con_info_usuario(usuario_info);
         },
         error: (response) => {
-            alert("Respuesta: " + response);
+            console.log("Respuesta: " + response);
         },
     });
 }
 
-
+// Cambiar info de la barra de navegación
 async function cambiar_navbar_con_info_usuario(usuario_info) {
     // Cambiamos el nombre de usuario de la barra de navegación
     $("#navbar-info-usuario-nombre").text(usuario_info.usuario);
@@ -47,7 +47,7 @@ async function cambiar_navbar_con_info_usuario(usuario_info) {
             });
             return response.nombre; // Devuelve el nombre del rol
         } catch (error) {
-            alert("Error al obtener el rol: " + error.responseText);
+            console.log("Error al obtener el rol: " + error.responseText);
             return null;
         }
     }
@@ -62,7 +62,7 @@ async function cambiar_navbar_con_info_usuario(usuario_info) {
     $("#navbar-info-usuario-foto").attr("src", usuario_info.foto_perfil);
 }
 
-
+// Cambiar info de la página en general
 function cambiar_perfil_con_info_usuario(usuario_info) {
     // Cambiando la imagen de perfil
     $("#main-info-usuario-foto").attr("src", usuario_info.foto_perfil);
@@ -73,8 +73,19 @@ function cambiar_perfil_con_info_usuario(usuario_info) {
     $("#info-usuario-descripcion").text(usuario_info.descripcion);
 }
 
+// Cambiar etiquetas
+function cambiar_perfil_etiquetas_usuario() {
 
-// Funcion para cerrar sesión
+}
+
+
+// Cambiar articulos
+function cambiar_perfil_articulos_usuario() {
+    
+}
+
+
+// Función del boton de cerrar sesión
 function cerrar_sesion() {
     localStorage.removeItem("access_token");
     localStorage.removeItem("usuario_id");
@@ -84,14 +95,10 @@ function cerrar_sesion() {
 }
 
 
+// Cargar todo al cargar la página
 $(document).ready(async () => {
     // Autenticación
-    try {
-        const usuario = await verificarUsuario();
-        console.log("Usuario autenticado:", usuario);
-    } catch (error) {
-        window.location.href = "/login";
-    }
+    await verificarUsuario();
 
     // Cambios de pantalla dinamico con la info de la BD
     get_usuario_info();

@@ -5,9 +5,10 @@ export async function verificarUsuario() {
     const usuario_id = localStorage.getItem("usuario_id");
     const rol_id = localStorage.getItem("rol_id");
 
+    // Revisar si hay token
     if (!token) {
-        alert("Inicia sesión");
-        window.location.href = "/login";
+        console.error("El usuario no ha iniciado sesión")
+        window.location.href = "/error/403";
         return;
     }
 
@@ -24,17 +25,17 @@ export async function verificarUsuario() {
             }),
         });
 
-        // Validar si el token es incorrecto desde la respuesta
-        if (response.message !== "Acceso garantizado exitosamente") {
-            throw new Error("Acceso denegado");
-        }
-
         console.log("Verificación exitosa", response);
         return response;
     } catch (error) {
-        console.error("Error en la verificacion:", error);
-        alert("Error de autenticación. Por favor, vuelve a iniciar sesión.");
-        window.location.href = "/login";
-        throw error;
+        // Capturar el código de estado
+        if (error.status === 403) {
+            console.error("Acceso denegado (403)");
+            window.location.href = "/error/403";
+        } else {
+            console.error("No autorizado (401)");
+            window.location.href = "/error/401";
+            throw error;
+        }
     }
 }

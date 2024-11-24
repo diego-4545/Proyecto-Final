@@ -5,7 +5,7 @@ from backend.app.services.auth.auth_esquemas import POST_Login_Request, POST_Ver
 
 
 router = APIRouter()
-
+# Endpoint que llama a la funcion para que verifique que la cuenta exista
 @router.post("/auth/login")
 async def verificar_login(input: POST_Login_Request):
     existe, usuario_id, rol_id = login(input.usuario, input.password)
@@ -17,6 +17,7 @@ async def verificar_login(input: POST_Login_Request):
     return {"access_token": token, "token_type": "bearer", "usuario_id": usuario_id, "rol_id": rol_id}
 
 
+# Endpoint que llama a la funcion para que verifique la cuenta sea de un admin
 @router.post("/auth/verificar-admin")
 async def auth_verificar_admin(input: POST_Verificar_Request):
     token = input.token
@@ -32,7 +33,7 @@ async def auth_verificar_admin(input: POST_Verificar_Request):
         "rol_id": rol_id,
     }
 
-
+# Endpoint que llama a la funcion para que verifique la cuenta sea de un usuario logeado
 @router.post("/auth/verificar-usuario")
 async def auth_verificar_usuario(input: POST_Verificar_Request):
     token = input.token

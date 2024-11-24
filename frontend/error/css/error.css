@@ -1,0 +1,8 @@
+#contenedor-botones {
+    display: flex;
+    flex-direction: row;
+}
+
+#contenedor-botones .btn {
+    margin: 5px;
+}

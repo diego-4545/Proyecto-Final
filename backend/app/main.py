@@ -51,10 +51,14 @@ def serve_login():
 def serve_registro():
     return FileResponse("frontend/publico/autenticacion/registro.html")
 
-@app.get("/auth/pagina-intermedia")
-def serve_pagina_intermedia():
-    return FileResponse("frontend/publico/autenticacion/pagina_intermedia.html")
+# Errores
+@app.get("/error/401")
+def serve_error_401():
+    return FileResponse("frontend/error/401.html")
 
+@app.get("/error/403")
+def serve_error_403():
+    return FileResponse("frontend/error/403.html")
 
 
 # Solo usuarios autenticados
