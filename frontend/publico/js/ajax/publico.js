@@ -1,5 +1,3 @@
-import { verificarUsuario } from "../../../usuario/js/ajax/auth_ajax";
-
 var global_url = "http://127.0.0.1:8000";
 
 // Conseguir información del usuario
@@ -77,9 +75,6 @@ function cerrar_sesion() {
 
 // Cargar todo al cargar la página
 $(document).ready(async () => {
-    // Verificar si el usuario está autenticado
-    await verificarUsuario();
-
     // Obtener la información del usuario y actualizar la interfaz
     get_usuario_info();
 

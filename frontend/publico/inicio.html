@@ -22,8 +22,8 @@
      />
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="frontend/publico/css/estiloinicio.css">
-    <link rel="stylesheet" href="frontend/publico/css/navbar.css">
+    <link rel="stylesheet" href="/frontend/publico/css/navbar.css">
+    <link rel="stylesheet" href="/frontend/publico/css/estiloinicio.css">
 </head>
 <body>
 
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="frontend/publico/img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="/frontend/publico/img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 Metropolitan
             </a>
             <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@
                         <a class="nav-link" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./información_estatica.html">Conocenos</a>
+                        <a class="nav-link" href="/conocenos">Conocenos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/escritor">Escribe</a>
@@ -59,13 +59,13 @@
                         <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
                         <span class="role" id="navbar-info-usuario-rol">Rol</span>
                     </div>
-                    <a href="../usuario/perfil.html">
-                        <img id="navbar-info-usuario-foto" src="../img_biblioteca/perfiles/default.png" alt="Foto de perfil">
+                    <a href="/perfil">
+                        <img id="navbar-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="Foto de perfil">
                     </a>
                 </div>
                 <!-- Enlace "Inicia sesión" -->
                 <div id="inicia-sesion" style="display: none;">
-                    <a href="autenticacion/login.html" class="btn btn-primary">Inicia Sesión</a>
+                    <a href="/login" class="btn btn-primary">Inicia Sesión</a>
                 </div>
             </div>
         </div>
@@ -113,6 +113,6 @@
     integrity="sha512-HE6XTjw3UV1hqENThKtsSn4mr3sx/lXbTSVPlOdIU3pprqz5ti16sGIGw8y5EAePRYg80O3OEBRnXPwON7vOUA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="js/ajax/publico.js" ></script>
+    <script src="/frontend/publico/js/ajax/publico.js" ></script>
 </body>
 </html>
