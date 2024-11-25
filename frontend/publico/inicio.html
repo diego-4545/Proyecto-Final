@@ -53,20 +53,16 @@
                     </li>
                 </ul>
             </div>
-                <!-- Ícono de perfil -->
-                <div id="perfil-icono" style="display: none;">
-                    <div class="text-end" id="nombre-rol">
-                        <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
-                        <span class="role" id="navbar-info-usuario-rol">Rol</span>
-                    </div>
-                    <a href="/perfil">
-                        <img id="navbar-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="Foto de perfil">
-                    </a>
-                </div>
-                <!-- Enlace "Inicia sesión" -->
-                <div id="inicia-sesion" style="display: none;">
-                    <a href="/login" class="btn btn-primary">Inicia Sesión</a>
-                </div>
+            <!-- Botón de Inicio de Sesión -->
+            <a id="inicia-sesion" href="/frontend/publico/autenticacion/login.html" class="btn btn-secondary">Inicia Sesión</a>
+
+            <!-- Contenedor de información del usuario -->
+            <div id="perfil-icono" style="display: none;">
+            <a href="/frontend/usuario/perfil.html">
+            <img id="navbar-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="" width="40" height="40">
+            </a>
+            <span id="navbar-info-usuario-nombre"></span>
+            <span id="navbar-info-usuario-rol"></span>
             </div>
         </div>
     </nav>

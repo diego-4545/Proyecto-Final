@@ -3,6 +3,9 @@ var global_url = "http://127.0.0.1:8000";
 // Conseguir información del usuario
 function get_usuario_info() {
     const usuario_id = localStorage.getItem("usuario_id");
+    if(!usuario_id){
+        mostrar_inicia_sesion();
+    }
 
     $.ajax({
         url: global_url + "/api/usuario/" + usuario_id,
