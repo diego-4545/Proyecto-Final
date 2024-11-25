@@ -7,6 +7,21 @@ from backend.app.schemas import articulos_esquema as arts
 router = APIRouter()
 
 ### Solicitudes GET
+# Obtener todos los ID de los usuarios
+@router.get("/api/articulos")
+async def usuarios_ids():
+    # Funcion para obtener los IDs
+    data: list[tuple] = artq.articulos_query(artq.get_articulos_all)
+    # Si no hay usuarios retornar nada
+    if not data:
+        return None
+    ids = list()
+    for i in range(len(data)):
+        ids.append(data[i][0])
+    return arts.GET_ArticulosAll_Response(
+        articulos_ids=ids
+    )
+
 # Obtener TODOS los articulos de un usuario
 @router.get("/api/articulos-usuario/{id}")
 async def todos_los_articulos(id):

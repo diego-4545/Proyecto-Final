@@ -53,6 +53,8 @@ def usuarios_query(query, parametros=None):
 
 ### GET
 # ============================= Usuarios ==================================== #
+# Seleccionar todos los Id de todos los usuarios
+get_usuarios_all = "SELECT Id FROM Usuarios;"
 # Seleccionar la info de un usuario específico
 get_usuario = "SELECT * FROM Usuarios WHERE Id={usuario_id}"
 # ============================= Etiquetas ==================================== #

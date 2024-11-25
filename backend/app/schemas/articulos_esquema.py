@@ -3,6 +3,10 @@ from pydantic import BaseModel
 
 ### GET
 ### ============================= Articulos ==================================== ###
+# Obtener todos los usuarios
+class GET_ArticulosAll_Response(BaseModel):
+    articulos_ids: list[int]
+
 # Obtener todos los IDs de articulos de cierto usuario
 class GET_Articulos_Response(BaseModel):
     usuario_id: int
