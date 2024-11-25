@@ -4,4 +4,4 @@ python-dotenv
 mysql-connector-python
 uvicorn
 uvicorn[standard]
-jwt
+PyJWT

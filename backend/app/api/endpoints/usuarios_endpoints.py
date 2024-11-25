@@ -12,8 +12,8 @@ router = APIRouter()
 async def usuario_info(id):
     # Funcion que obtiene la info de un usuario por su ID
     data: list[tuple] = usrq.usuarios_query(usrq.get_usuario.format(usuario_id=id))
+    # Si no hay usuario con ese ID no regresar nada
     if not data:
-        print(data)
         return None
     return usrs.GET_UsuarioInfo_Response(
         usuario_id=data[0][0],
@@ -32,9 +32,21 @@ async def usuario_info(id):
 async def usuario_etiquetas(id):
     # Funcion para obtener las etiqueta de un usuario
     data: list[tuple] = usrq.usuarios_query(usrq.get_usuario_etiquetas.format(usuario_id=id))
-    return usrs.GET_usuarioEtiquetas_Response(
+    # Si no hay etiquetas asignadas a ese usuario no regresar una lista vacias
+    if not data:
+        return usrs.GET_UsuarioEtiquetas_Response(
+            usuario_id=id,
+            etiquetas=[],
+        )
+    
+    etiquetas_id = list()
+    # Convertirlo a una lista (1 => [1])
+    for i in range(len(data)):
+        etiquetas_id.append(data[i][1])
+
+    return usrs.GET_UsuarioEtiquetas_Response(
         usuario_id=data[0][0],
-        etiquetas=data[0][1],
+        etiquetas=etiquetas_id,
     )
 
 # Obtener el nombre de la etiqueta

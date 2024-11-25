@@ -1,9 +1,3 @@
-// Previene el comportamiento predeterminado del formulario
-document.getElementById("myForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Evita que el formulario se envíe
-    console.log("Formulario no enviado");
-});
-
 // Cambia el estado de los botones al hacer clic
 function toggleButton(event, button) {
     event.preventDefault(); // Evita cualquier comportamiento predeterminado
