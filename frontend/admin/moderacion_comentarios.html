@@ -45,11 +45,11 @@
             </div>
             <div class="user-info d-flex align-items-center">
                 <div class="text-right mr-2">
-                    <span>Nombre de usuario</span><br>
+                  <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
                     <small>Administrador</small>
                 </div>
                 <a href="/perfil">
-                  <img src="/frontend/admin/img/perfil_default.png" alt="Foto de perfil" class="rounded-circle" width="40" height="40">
+                  <img id="navbar-info-usuario-foto" src="/frontend/admin/img/perfil_default.png" alt="Foto de perfil" class="rounded-circle" width="40" height="40">
               </a>
             </div>
         </header>
@@ -118,6 +118,7 @@
       
       <script src="/frontend/admin/js/moderacion_comentarios.js"></script>
       <link rel="stylesheet" href="/frontend/admin/css/moderacion_comentarios.css">
+      <script type="module" src="/frontend/usuario/js/ajax/perfil_ajax.js"></script>
 
 </body>
 

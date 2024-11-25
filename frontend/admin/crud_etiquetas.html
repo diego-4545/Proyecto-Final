@@ -48,11 +48,11 @@
                     <i class="fas fa-plus"></i> Añadir Etiqueta
                 </button>
                 <div class="text-right mr-2">
-                    <span>Nombre de usuario</span><br>
+                    <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
                     <small>Administrador</small>
                 </div>
                 <a href="/perfil">
-                    <img src="/frontend/admin/img/perfil_default.png" alt="Foto de perfil" class="rounded-circle" width="40" height="40">
+                    <img id="navbar-info-usuario-foto" src="/frontend/admin/img/perfil_default.png" alt="Foto de perfil" class="rounded-circle" width="40" height="40">
                 </a>
             </div>
         </header>
@@ -147,6 +147,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="/frontend/admin/js/crud_etiquetas.js"></script>
+    <script type="module" src="/frontend/usuario/js/ajax/perfil_ajax.js"></script>
+
 </body>
 
 </html>
