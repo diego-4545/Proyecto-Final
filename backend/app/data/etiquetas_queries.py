@@ -53,6 +53,9 @@ def articulos_query(query, parametros=None):
 
 ### GET
 ### ============================= Etiqueta ==================================== ###
+# Seleccionar todos los Id de todos los usuarios
+get_etiqueta_all = "SELECT Id FROM Etiqueta;"
+
 # Seleccionar la info de una etiqueta específica
 get_etiqueta_info = "SELECT * FROM Etiqueta WHERE Id={etiqueta_id};"
 

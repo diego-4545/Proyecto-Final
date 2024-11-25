@@ -9,7 +9,7 @@ router = APIRouter()
 ### Solicitudes GET
 # Obtener todos los ID de los usuarios
 @router.get("/api/articulos")
-async def usuarios_ids():
+async def articulos_ids():
     # Funcion para obtener los IDs
     data: list[tuple] = artq.articulos_query(artq.get_articulos_all)
     # Si no hay usuarios retornar nada
