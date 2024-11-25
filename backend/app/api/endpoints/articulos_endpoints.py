@@ -12,9 +12,19 @@ router = APIRouter()
 async def todos_los_articulos(id):
     # Funcion con código SQL para extraer todos los IDs de articulos de un usuario especifico
     data: list[tuple] = artq.articulos_query(artq.get_articulos.format(usuario_id=id))
+    # Si no hay etiquetas asignadas a ese usuario no regresar una lista vacias
+    if not data:
+        return arts.GET_Articulos_Response(
+            usuario_id=id,
+            articulo_ids=[],
+        )
+    articulos_id = list()
+    # Convertirlo a una lista (1 => [1])
+    for i in range(len(data)):
+        articulos_id.append(data[i][1])
     return arts.GET_Articulos_Response(
-        usuario_id=data[0][0] ,
-        articulo_ids=data[0][1] ,
+        usuario_id=data[0][0],
+        articulo_ids=articulos_id,
     )
 
 # Obtener info de un articulo
@@ -22,12 +32,15 @@ async def todos_los_articulos(id):
 async def articulo_info(id):
     # Funcion que obtiene la info de un articulo por su ID
     data: list[tuple] = artq.articulos_query(artq.get_articulo_info.format(articulo_id=id))
+    # Regresar nada si no hay articulos de ese usuario
+    if not data:
+        return None
     return arts.GET_ArticuloInfo_Response(
-        usuario_id=data[0][0],
-        articulo_id=data[0][1],
-        nombre=data[0][2],
-        fecha=data[0][3].isoformat(),
-        visitas=data[0][4],
+        articulo_id=data[0][0],
+        nombre=data[0][1],
+        fecha=data[0][2].isoformat(),
+        visitas=data[0][3],
+        usuario_id=data[0][4],
         estado=data[0][5],
         contenido=data[0][6],
         imagen=data[0][7],

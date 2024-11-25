@@ -203,12 +203,11 @@ async def actualizar_estado_notificacion(notificacion: usrs.PUT_UsuarioNotificac
 # Borramos un usuario
 @router.delete("/api/usuario/{id}")
 async def usuario_borrar(id):
-    usrq.usuarios_query(usrq.delete_usuario_eliminar(usuario_id=id))
+    usrq.usuarios_query(usrq.delete_usuario_eliminar.format(usuario_id=id))
     return {"message": "Usuario eliminado exitosamente"}
 
 # Eliminar etiquetas de un usuario
 @router.delete("/api/usuario-etiquetas/{id}")
 async def eliminar_etiquetas_usuario(id: int):
-    query = usrq.delete_usuario_etiqueta
-    usrq.usuarios_query(query.format(usuario_id=id))
+    usrq.usuarios_query(usrq.delete_usuario_etiqueta.format(usuario_id=id))
     return {"message": "Etiquetas del usuario eliminadas exitosamente"}

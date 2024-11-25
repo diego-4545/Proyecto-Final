@@ -78,6 +78,7 @@
                     <div id="contenedor-info-usuario" class="col-12 mt-5">
                         <!-- Información del usuario -->
                         <p><b>NOMBRE: </b><span id="info-usuario-nombre"></span></p>
+                        <p><b>USUARIO: </b><span id="info-usuario-username"></span></p>
                         <p><b>CORREO: </b><span id="info-usuario-correo"></span></p>
                         <p><b>DESCRIPCIÓN: </b><span id="info-usuario-descripcion"></span></p>
                     </div>
@@ -89,36 +90,10 @@
                     <!-- Los articulos del usuario -->
                     <div id="contenedor-galeria-articulos" class="col-12">
                         <h3>TUS NOTICIAS</h3>
-                        <div class="row">
-                            <!-- Noticia 1 -->
-                            <div class="col-md-4">
-                                <div class="card articulo">
-                                    <img id="info-articulo-imagen-1" src="" class="card-img-top" alt="Noticia 1">
-                                    <div class="card-body">
-                                        <h5 id="info-articulo-titulo-1" class="card-title text-center">Noticia 1</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Noticia 2 -->
-                            <div class="col-md-4">
-                                <div class="card articulo">
-                                    <img id="info-articulo-imagen-2" src="" class="card-img-top" alt="Noticia 2">
-                                    <div class="card-body">
-                                        <h5 id="info-articulo-titulo-2" class="card-title text-center">Noticia 2</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Noticia 3 -->
-                            <div class="col-md-4">
-                                <div class="card articulo">
-                                    <img id="info-articulo-imagen-3" src="" class="card-img-top" alt="Noticia 3">
-                                    <div class="card-body">
-                                        <h5 id="info-articulo-titulo-3" class="card-title text-center">Noticia 3</h5>
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="galeria-articulos" class="row">
+                            <!-- Articulos -->
                         </div>
-                        <button class="btn btn-dark mt-3" onclick="location.href=''">Ver más</button>
+                        <button class="btn btn-dark mt-3" onclick="location.href='/escritor'">Ver más</button>
                     </div>
 
                     <!-- Las etiquetas del usuario -->
@@ -147,12 +122,12 @@
                             </button>
                             <button id="boton-notificaciones" class=" btn btn-dark mt-3">
                                 Activar notificaciones
+                            </button>
+                            <button id="boton-cerrar-cuenta" type="button" data-bs-toggle="modal" data-bs-target="#cerrar-cuenta-modal" class="btn btn-danger mt-3">
+                                Cerrar sesión
                             </button> 
                             <button id="boton-eliminar-cuenta" type="button" data-bs-toggle="modal" data-bs-target="#eliminar-cuenta-modal" class="btn btn-danger mt-3">
                                 Eliminar cuenta
-                            </button>
-                            <button id="boton-cerrar-cuenta" type="button" class="btn btn-danger mt-3">
-                                Cerrar sesión
                             </button>
                         </div>
                     </div>
@@ -215,6 +190,25 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button id="boton-modal-eliminar-cuenta" type="button" class="btn btn-danger">Eliminar cuenta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para cerrar la cuenta (cerrar sesion) -->
+    <div class="modal fade" id="cerrar-cuenta-modal" tabindex="-1" aria-labelledby="cerrarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="cerrarModalLabel">Cuidado</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Seguro que quieras cerrar la sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="boton-modal-cerrar-cuenta" type="button" class="btn btn-danger">Cerrar sesión</button>
                 </div>
             </div>
         </div>

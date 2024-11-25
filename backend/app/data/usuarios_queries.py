@@ -28,7 +28,6 @@ def usuarios_query(query, parametros=None):
             
             # Ejecutar la consulta
             if parametros:
-                print(query, parametros)
                 cursor.execute(query, parametros)
             else:
                 cursor.execute(query)
