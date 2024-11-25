@@ -9,10 +9,17 @@ router = APIRouter()
 ### GET
 # Obtener todos los IDs de dudas
 @router.get("/api/duda")
-async def duda_ids():
-    data = dudq.dudas_query(dudq.get_ids_dudas)
+async def dudas_ids():
+    # Funcion para obtener los IDs
+    data: list[tuple] = dudq.dudas_query(dudq.get_ids_dudas)
+    # Si no hay dudas no retornar nada
+    if not data:
+        return None
+    ids = list()
+    for i in range(len(data)):
+        ids.append(data[i][0])
     return duds.GET_TodasDudas_Response(
-        duda_ids=data[0]
+        duda_ids=ids
     )
 
 # Obtener informacion de una duda

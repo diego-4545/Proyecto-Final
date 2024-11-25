@@ -14,7 +14,7 @@ DB_NAME = os.getenv("DB_NAME")
 
 
 # Funcion para conectarse a la BD y ejecutar las queries
-def articulos_query(query, parametros=None):
+def etiquetas_query(query, parametros=None):
     try:
         # Conectar a la base de datos
         conexion = mysql.connector.connect(
@@ -69,7 +69,7 @@ post_etiqueta_crear = "INSERT INTO Etiqueta (Nombre, FechaDeCreacion) VALUES (%s
 ### PUT
 ### ============================= Etiqueta ==================================== ###
 # Cambia una etiqueta
-put_etiqueta_estado = "UPDATE Etiqueta SET Nombre=%s, FechaDeCreacion=%s"
+put_etiqueta_estado = "UPDATE Etiqueta SET Nombre=%s, FechaDeCreacion=%s WHERE Id=%s"
 
 ### DELETE
 ### ============================= Etiqueta ==================================== ###
