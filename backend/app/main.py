@@ -66,6 +66,10 @@ def serve_error_403():
 def serve_perfil():
     return FileResponse("frontend/usuario/perfil.html")
 
+@app.get("/escritor")
+def serve_perfil():
+    return FileResponse("frontend/usuario/inicio_editor.html")
+
 @app.get("/redaccion")
 def serve_usuario_redaccion_atrticulos():
     return FileResponse("frontend/usuario/redaccion_articulos.html")

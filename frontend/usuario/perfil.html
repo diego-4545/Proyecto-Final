@@ -42,7 +42,7 @@
                         <a class="nav-link" href="/conocenos">Conocenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/redaccion">Escribe</a>
+                        <a class="nav-link" href="/escritor">Escribe</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin">Administrar</a>
@@ -77,9 +77,9 @@
                     </div>
                     <div id="contenedor-info-usuario" class="col-12 mt-5">
                         <!-- Información del usuario -->
-                        <p><b>NOMBRE: </b><span id="info-usuario-nombre">Manuel Magaña López</span></p>
-                        <p><b>CORREO: </b><span id="info-usuario-correo">manuel@metropolitan.com</span></p>
-                        <p><b>DESCRIPCIÓN: </b><span id="info-usuario-descripcion">Me gusta mucho la tecnología, los temas de moda y los coches deportivos. Soy un escritor desde hace 4 años, pasate por mis artículos y deja un like y un comentario positivo en los que te gusten.</span></p>
+                        <p><b>NOMBRE: </b><span id="info-usuario-nombre"></span></p>
+                        <p><b>CORREO: </b><span id="info-usuario-correo"></span></p>
+                        <p><b>DESCRIPCIÓN: </b><span id="info-usuario-descripcion"></span></p>
                     </div>
                 </div>
             </div>
@@ -128,15 +128,6 @@
                             <div id="lista-etiquetas">
                                 <ul id="lista">
                                     <!-- Aqui se añadiran las etiquetas de cada usuario -->
-                                    <li class="etiquetas">
-                                        <span id="info-etiqueta-nombre">Tecnología</span>
-                                    </li>
-                                    <li class="etiquetas">
-                                        <span id="info-etiqueta-nombre">Moda</span>
-                                    </li>
-                                    <li class="etiquetas">
-                                        <span id="info-etiqueta-nombre">Carros</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div>
@@ -182,15 +173,19 @@
                     <form class="row g-3">
                         <div class="col-md-6">
                             <label for="inputEmail4" class="form-label">Nombre</label>
-                            <input type="email" class="form-control" id="form-usuario-nombre">
+                            <input type="text" class="form-control" id="form-usuario-nombre">
                         </div>
                         <div class="col-md-6">
-                            <label for="inputPassword4" class="form-label">Correo</label>
-                            <input type="password" class="form-control" id="form-usuario-perfil" placeholder="example@gmail.com">
+                            <label class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="form-usuario-email" placeholder="example@gmail.com">
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" id="form-usuario-username">
+                        </div>
+                        <div class="col-6">
                             <label for="inputAddress" class="form-label">Contraseña</label>
-                            <input type="text" class="form-control" id="form-usuario-contraseña">
+                            <input type="password" class="form-control" id="form-usuario-contraseña">
                         </div>
                         <div class="col-12">
                             <label for="inputAddress2" class="form-label">Descripción</label>
@@ -200,7 +195,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Guardar</button>
+                    <button id="boton-cambiar-datos-usuario" type="button" class="btn btn-success">Guardar</button>
                 </div>
             </div>
         </div>
@@ -219,7 +214,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-danger">Eliminar cuenta</button>
+                    <button id="boton-modal-eliminar-cuenta" type="button" class="btn btn-danger">Eliminar cuenta</button>
                 </div>
             </div>
         </div>
@@ -265,37 +260,42 @@
                 </div>
                 <div class="modal-body">
                     <form id="form-foto-perfil">
-                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
-                            <img src="/frontend/img_biblioteca/perfiles/bolas.png" alt="Opcion-1">
-                        </button>
-                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)" value="/frontend/img_biblioteca/perfiles/default.png">
                             <img src="/frontend/img_biblioteca/perfiles/default.png" alt="Opcion-2">
                         </button>
-                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)" value="/frontend/img_biblioteca/perfiles/bolas.png">
+                            <img src="/frontend/img_biblioteca/perfiles/bolas.png" alt="Opcion-1">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)" value="/frontend/img_biblioteca/perfiles/netflix.png">
                             <img src="/frontend/img_biblioteca/perfiles/netflix.png" alt="Opcion-3">
                         </button>
-                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)" value="/frontend/img_biblioteca/perfiles/pato.png">
                             <img src="/frontend/img_biblioteca/perfiles/pato.png" alt="Opcion-4">
                         </button>
-                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)" value="/frontend/img_biblioteca/perfiles/rana.png">
                             <img src="/frontend/img_biblioteca/perfiles/rana.png" alt="Opcion-5">
                         </button>
-                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)" value="/frontend/img_biblioteca/perfiles/snoopy.png">
                             <img src="/frontend/img_biblioteca/perfiles/snoopy.png" alt="Opcion-6">
                         </button>
-                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)" value="/frontend/img_biblioteca/perfiles/xbox_donut.png">
                             <img src="/frontend/img_biblioteca/perfiles/xbox_donut.png" alt="Opcion-7">
                         </button>
-                        <!-- Añade más etiquetas según sea necesario -->
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)" value="/frontend/img_biblioteca/perfiles/oceano.png">
+                            <img src="/frontend/img_biblioteca/perfiles/oceano.png" alt="Opcion-8">
+                        </button>
+                        <!-- Campo oculto para almacenar la selección -->
+                        <input type="hidden" id="foto-perfil-seleccionada" name="foto-perfil-seleccionada">
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Guardar</button>
+                    <button id="guardar-imagen-btn" type="button" class="btn btn-success">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Importamos JQuery v3.7.1 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -315,6 +315,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <!-- Scripts de JS -->
-    <script type="module" src="frontend/usuario/js/ajax/perfil_ajax.js"></script>
+    <script type="module" src="/frontend/usuario/js/ajax/perfil_ajax.js"></script>
+    <script src="/frontend/usuario/js/perfil.js"></script>
 </body>
 </html>
