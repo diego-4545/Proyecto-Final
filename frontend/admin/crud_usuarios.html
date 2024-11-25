@@ -13,23 +13,23 @@
     <aside class="sidebar d-flex flex-column">
         <div class="logo d-flex align-items-center p-3">
             <a href="/">
-                <img src="frontend/admin/img/logo.PNG" alt="Logo Metropolitan" class="logo-img mr-2">
+                <img src="/frontend/admin/img/logo.PNG" alt="Logo Metropolitan" class="logo-img mr-2">
             </a>
         </div>
         <nav class="menu d-flex flex-column flex-grow-1">
-            <a href="/admin/articulos" class="d-flex align-items-center p-3"><img src="frontend/admin/img/crud_articulos.png"
+            <a href="/admin/articulos" class="d-flex align-items-center p-3"><img src="/frontend/admin/img/crud_articulos.png"
                     alt="Crud_articulos" class="icon mr-2"> CRUD DE ARTICULOS</a>
-            <a href="/admin/etiquetas" class="d-flex align-items-center p-3"><img src="frontend/admin/img/crud_etiquetas.png"
+            <a href="/admin/etiquetas" class="d-flex align-items-center p-3"><img src="/frontend/admin/img/crud_etiquetas.png"
                     alt="Etiquetas" class="icon mr-2"> CRUD ETIQUETAS</a>
-            <a href="/admin/usuarios" class="d-flex align-items-center p-3"><img src="frontend/admin/img/crud_usuarios.png"
+            <a href="/admin/usuarios" class="d-flex align-items-center p-3"><img src="/frontend/admin/img/crud_usuarios.png"
                     alt="Usuarios" class="icon mr-2"> CRUD USUARIOS</a>
-            <a href="/admin/mod-articulos" class="d-flex align-items-center p-3"><img src="frontend/admin/img/mod_articulos.png"
+            <a href="/admin/mod-articulos" class="d-flex align-items-center p-3"><img src="/frontend/admin/img/mod_articulos.png"
                     alt="Artículos" class="icon mr-2"> MOD. ARTÍCULOS</a>
             <a href="/admin/mod-comentarios" class="d-flex align-items-center p-3"><img
-                    src="frontend/admin/img/mod_comentarios.png" alt="Comentarios" class="icon mr-2"> MOD. COMENTARIOS</a>
-            <a href="/admin/estadisticas" class="d-flex align-items-center p-3"><img src="frontend/admin/img/estadisticas.png"
+                    src="/frontend/admin/img/mod_comentarios.png" alt="Comentarios" class="icon mr-2"> MOD. COMENTARIOS</a>
+            <a href="/admin/estadisticas" class="d-flex align-items-center p-3"><img src="/frontend/admin/img/estadisticas.png"
                     alt="Estadísticas" class="icon mr-2"> ESTADÍSTICAS</a>
-            <a href="/admin/dudas" class="d-flex align-items-center p-3"><img src="frontend/admin/img/dudas.png" alt="Dudas"
+            <a href="/admin/dudas" class="d-flex align-items-center p-3"><img src="/frontend/admin/img/dudas.png" alt="Dudas"
                     class="icon mr-2"> DUDAS DE USUARIOS</a>
         </nav>
     </aside>
@@ -40,7 +40,7 @@
         <header class="header d-flex align-items-center justify-content-between p-3">
             <div class="d-flex align-items-center">
                 <h1 class="mb-0 d-flex align-items-center">
-                    <img src="frontend/admin/img/crud_usuarios.png" alt="Icono Título" class="icon mr-2"> CRUD DE USUARIOS
+                    <img src="/frontend/admin/img/crud_usuarios.png" alt="Icono Título" class="icon mr-2"> CRUD DE USUARIOS
                 </h1>
             </div>
             <div class="user-info d-flex align-items-center">
@@ -48,11 +48,11 @@
                     <i class="fas fa-plus"></i> Añadir Usuarios
                 </button>
                 <div class="text-right mr-2">
-                    <span>Nombre de usuario</span><br>
+                    <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
                     <small>Administrador</small>
                 </div>
                 <a href="/perfil">
-                    <img src="frontend/admin/img/perfil_default.png" alt="Foto de perfil" class="rounded-circle" width="40" height="40">
+                    <img id="navbar-info-usuario-foto" src="/frontend/admin/img/perfil_default.png" alt="Foto de perfil" class="rounded-circle" width="40" height="40">
                 </a>
             </div>
         </header>
@@ -200,5 +200,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/frontend/admin/js/crud_usuarios.js"></script>
+        <script type="module" src="/frontend/usuario/js/ajax/perfil_ajax.js"></script>
     </body>
     </html>
