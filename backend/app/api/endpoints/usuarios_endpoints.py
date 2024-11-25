@@ -7,6 +7,21 @@ from backend.app.schemas import usuarios_esquema as usrs
 router = APIRouter()
 
 ### Solicitudes GET
+# Obtener todos los ID de los usuarios
+@router.get("/api/usuario")
+async def usuarios_ids():
+    # Funcion para obtener los IDs
+    data: list[tuple] = usrq.usuarios_query(usrq.get_usuarios_all)
+    # Si no hay usuarios retornar nada
+    if not data:
+        return None
+    ids = list()
+    for i in range(len(data)):
+        ids.append(data[i][0])
+    return usrs.GET_UsuariosAll_Response(
+        usuarios_ids=ids
+    )
+
 # Obtener info de un usuario
 @router.get("/api/usuario/{id}")
 async def usuario_info(id):
@@ -136,9 +151,9 @@ async def crear_usuario(input: usrs.POST_UsuarioCrear_Request):
         input.email,
         input.fecha,
         input.descripcion,
-        None, # La foto de perfil se cambia solamente en la pagina de perfil
-        1, # El usuario siempre empezara siendo 'rol: usuario' no admin
-        input.contraseña,
+        input.foto_perfil, # La foto de perfil se cambia solamente en la pagina de perfil
+        input.rol_id, # El usuario siempre empezara siendo 'rol: usuario' no admin
+        input.contraseña
     )
 
     usrq.usuarios_query(usrq.post_usuario_crear, params)

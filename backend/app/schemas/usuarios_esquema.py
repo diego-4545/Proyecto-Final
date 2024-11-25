@@ -3,6 +3,10 @@ from pydantic import BaseModel
 
 ### GET
 ### ============================= Usuarios ==================================== ###
+# Obtener todos los usuarios
+class GET_UsuariosAll_Response(BaseModel):
+    usuarios_ids: list[int]
+
 # Obtener información de un usuario especifico
 class GET_UsuarioInfo_Response(BaseModel):
     # Columnas de la tabla usuarios

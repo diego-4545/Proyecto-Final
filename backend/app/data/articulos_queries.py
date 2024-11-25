@@ -54,6 +54,9 @@ def articulos_query(query, parametros=None):
 
 # Código SQL para extraer datos (GET)
 # ============================= Articulos ==================================== #
+# Seleccionar todos los Id de todos los usuarios
+get_articulos_all = "SELECT Id FROM Articulos;"
+
 # Seleccionar todos los ID de articulos de un usuario
 get_articulos = "SELECT * FROM UsuarioArticulos WHERE Usuario={usuario_id};"
 
