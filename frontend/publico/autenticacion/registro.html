@@ -72,19 +72,19 @@
             <h2 class="mb-4">REGISTRATE</h2>
             <form>
                 <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="NOMBRE COMPLETO">
+                    <input id="form-nombre" type="text" class="form-control" placeholder="NOMBRE COMPLETO">
                 </div>
                 <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="CORREO">
+                    <input id="form-correo" type="email" class="form-control" placeholder="CORREO">
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="USUARIO">
+                    <input id="form-usuario" type="text" class="form-control" placeholder="USUARIO">
                 </div>
                 <div class="mb-4">
-                    <input type="password" class="form-control" placeholder="CONTRASEÑA">
+                    <input id="form-contraseña" type="password" class="form-control" placeholder="CONTRASEÑA">
                 </div>
-                <button type="submit" class="btn btn-dark w-100">SIGUIENTE</button>
             </form>
+            <button id="boton-ejecutar" type="button" class="btn btn-dark w-100">SIGUIENTE</button>
         </div>
     </div>
 
@@ -104,5 +104,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.all.js"
     integrity="sha512-HE6XTjw3UV1hqENThKtsSn4mr3sx/lXbTSVPlOdIU3pprqz5ti16sGIGw8y5EAePRYg80O3OEBRnXPwON7vOUA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="/frontend/publico/js/ajax/registro_ajax.js"></script>
 </body>
 </html>
