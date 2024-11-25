@@ -50,7 +50,8 @@ async def articulo_info(id):
 @router.get("/api/articulo-estado/{id}")
 async def articulo_estado(id):
     # Funcion que obtiene el nombre del estado de un articulo
-    data: list[tuple] = artq.articulos_query(artq.get_articulo_estado.format(articulo_id=id))
+    data: list[tuple] = artq.articulos_query(artq.get_articulo_estado.format(estado_id=id))
+    print(data)
     return arts.GET_ArticuloNombreEstado_Response(
         estado_id=data[0][0],
         nombre=data[0][1],
