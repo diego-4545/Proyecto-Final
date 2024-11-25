@@ -143,7 +143,7 @@ async def obtener_likes_usuario(id: int):
 
 ### POST
 # Crear un nuevo usuario
-@router.post("/api/usuario/")
+@router.post("/api/usuario")
 async def crear_usuario(input: usrs.POST_UsuarioCrear_Request):
     params =  (
         input.nombre, 
