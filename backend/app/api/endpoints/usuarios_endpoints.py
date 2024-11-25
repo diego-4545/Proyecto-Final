@@ -27,6 +27,7 @@ async def usuarios_ids():
 async def usuario_info(id):
     # Funcion que obtiene la info de un usuario por su ID
     data: list[tuple] = usrq.usuarios_query(usrq.get_usuario.format(usuario_id=id))
+    print(data)
     # Si no hay usuario con ese ID no regresar nada
     if not data:
         return None
