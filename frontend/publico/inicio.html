@@ -53,15 +53,20 @@
                     </li>
                 </ul>
             </div>
-            <!-- Información y foto del usuario -->
-            <div class="d-flex align-items-center user-info ms-auto">
-                <div class="text-end" id="nombre-rol">
-                    <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
-                    <span class="role" id="navbar-info-usuario-rol">Rol</span>
+                <!-- Ícono de perfil -->
+                <div id="perfil-icono" style="display: none;">
+                    <div class="text-end" id="nombre-rol">
+                        <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
+                        <span class="role" id="navbar-info-usuario-rol">Rol</span>
+                    </div>
+                    <a href="../usuario/perfil.html">
+                        <img id="navbar-info-usuario-foto" src="../img_biblioteca/perfiles/default.png" alt="Foto de perfil">
+                    </a>
                 </div>
-                <a href="/perfil">
-                    <img id="navbar-info-usuario-foto" src="frontend/publico/img/perfil_default.png" alt="Foto de perfil">
-                </a>
+                <!-- Enlace "Inicia sesión" -->
+                <div id="inicia-sesion" style="display: none;">
+                    <a href="autenticacion/login.html" class="btn btn-primary">Inicia Sesión</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -107,5 +112,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.all.js"
     integrity="sha512-HE6XTjw3UV1hqENThKtsSn4mr3sx/lXbTSVPlOdIU3pprqz5ti16sGIGw8y5EAePRYg80O3OEBRnXPwON7vOUA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="js/ajax/publico.js" ></script>
 </body>
 </html>
