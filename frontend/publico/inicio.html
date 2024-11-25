@@ -54,15 +54,17 @@
                 </ul>
             </div>
             <!-- Inicio de Sesión -->
-            <a id="inicia-sesion" href="/login" class="btn btn-secondary">Inicia Sesión</a>
+            <a id="inicia-sesion" href="/login" class="inicia-sesion">Inicia Sesión</a>
 
             <!-- Contenedor de información del usuario -->
-            <div id="perfil-icono" style="display: none;">
-            <a href="/frontend/usuario/perfil.html">
-            <img id="navbar-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="" width="40" height="40">
-            </a>
-            <span id="navbar-info-usuario-nombre"></span>
-            <span id="navbar-info-usuario-rol"></span>
+            <div id="perfil-icono" style="display: none; align-items: center; gap: 10px;">
+                <a href="/frontend/usuario/perfil.html">
+                <img id="navbar-info-usuario-foto" src="" alt="" width="40" height="40">
+                </a>
+                <div style="display: flex; flex-direction: column;">
+                    <span id="navbar-info-usuario-nombre" style="font-weight: bold;"></span>
+                    <span id="navbar-info-usuario-rol" style="font-size: 12px; color: gray;"></span>
+                </div>
             </div>
         </div>
     </nav>

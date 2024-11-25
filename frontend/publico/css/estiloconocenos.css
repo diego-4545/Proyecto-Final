@@ -98,3 +98,8 @@ form button {
     padding: 10px 15px; 
     font-size: 1.2rem; 
 }
+
+#inicia-sesion {
+    color: black;
+    text-decoration: none;
+}
