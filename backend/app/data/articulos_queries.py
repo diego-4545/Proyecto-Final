@@ -62,7 +62,7 @@ get_articulo_info = "SELECT * FROM Articulos WHERE Id={articulo_id};"
 
 # ============================= Estados ==================================== #
 # Obtener el estado de un artículo
-get_articulo_estado = "SELECT * FROM EstadoArticulo WHERE Id={articulo_id};"
+get_articulo_estado = "SELECT * FROM EstadoArticulos WHERE Id={estado_id};"
 
 # ============================= Likes ==================================== #
 # Obtener la cantidad de likes de un artículo

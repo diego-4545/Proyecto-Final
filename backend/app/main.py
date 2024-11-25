@@ -40,6 +40,10 @@ def serve_inicio():
 def serve_conocenos():
     return FileResponse("frontend/publico/información_estatica.html")
 
+@app.get("/articulo")
+def serve_articulo():
+    return FileResponse("frontend/usuario/articulos.html")
+
 
 
 # Autenticación

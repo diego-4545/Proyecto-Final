@@ -12,11 +12,11 @@ class GET_Articulos_Response(BaseModel):
 # Obtener información de un artículo especifico
 class GET_ArticuloInfo_Response(BaseModel):
     # Columnas de la tabla articulos
-    usuario_id: int
     articulo_id: int
     nombre: str # titulo
     fecha: str
     visitas: int
+    usuario_id: int
     estado: int
     contenido: str
     imagen: str # path to the image
