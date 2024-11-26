@@ -1,4 +1,4 @@
-import { verificarUsuario } from "./auth_ajax.js";
+import { verificarAdmin } from "./auth_ajax.js";
 
 var global_url = "http://127.0.0.1:8000"
 
@@ -59,7 +59,7 @@ async function cambiar_navbar_con_info_usuario(usuario_info) {
     $("#navbar-info-usuario-foto").attr("src", usuario_info.foto_perfil);
 }
 
-function addTag(event, this) {
+function addTag() {
     isEditing = false; 
     currentUserId = null
 

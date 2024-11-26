@@ -1,5 +1,5 @@
 
-import { verificarUsuario } from "./auth_ajax.js";
+import { verificarAdmin } from "./auth_ajax.js";
 
 var global_url = "http://127.0.0.1:8000"
 
@@ -182,3 +182,44 @@ $('#editTagForm').on('keydown', function(event) {
         event.preventDefault();
     }
 });
+
+// Función para obtener e imprimir todas las etiquetas y sus datos
+async function imprimir_todas_las_etiquetas() {
+    try {
+        // Paso 1: Obtener todos los IDs de las etiquetas
+        const etiquetas_ids = await $.ajax({
+            url: global_url + "/api/etiqueta",
+            method: "GET",
+            contentType: "application/json",
+        });
+
+        if (!etiquetas_ids || etiquetas_ids.etiquetas_ids.length === 0) {
+            console.log("No hay etiquetas disponibles.");
+            return;
+        }
+
+        // Paso 2: Iterar sobre los IDs y obtener los datos de cada etiqueta
+        for (const etiqueta_id of etiquetas_ids.etiquetas_ids) {
+            const etiqueta_info = await $.ajax({
+                url: global_url + "/api/etiqueta/" + etiqueta_id,
+                method: "GET",
+                contentType: "application/json",
+            });
+
+            if (etiqueta_info) {
+                // Imprimir los datos de cada etiqueta
+                console.log(`Etiqueta ID: ${etiqueta_info.etiqueta_id}`);
+                console.log(`Nombre: ${etiqueta_info.nombre}`);
+                console.log(`Fecha: ${etiqueta_info.fecha}`);
+                console.log("----------------------");
+            } else {
+                console.log(`No se pudo obtener información para la etiqueta con ID ${etiqueta_id}.`);
+            }
+        }
+    } catch (error) {
+        console.error("Error al obtener las etiquetas: " + error);
+    }
+}
+
+// Llamada a la función
+imprimir_todas_las_etiquetas();
