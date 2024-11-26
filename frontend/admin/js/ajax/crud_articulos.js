@@ -77,7 +77,7 @@ async function mostrar_todos_los_articulos() {
     async function obtener_id_articulo() {
         try {    
             const articulos_ids = await $.ajax({
-                url: global_url + "/api/articulo",
+                url: global_url + "/api/articulos",
                 method: "GET",
                 contentType: "application/json",
             });
@@ -117,13 +117,6 @@ async function mostrar_todos_los_articulos() {
             // Iterar sobre los articulos y agregar las filas a la tabla
             for (const articulo of info_articulos) {
                 if (articulo) {
-                    // Obtener las etiquetas del artículo
-                    const etiquetas = await obtener_etiquetas_articulo(articulo.articulo_id);
-                    const etiquetas_info = await Promise.all(etiquetas.map(id => obtener_info_etiqueta(id)));
-
-                    // Crear una cadena de texto con las etiquetas
-                    const etiquetasTexto = etiquetas_info.join(", ");
-
                     const fila = `
                         <tr>
                             <td>
@@ -134,7 +127,6 @@ async function mostrar_todos_los_articulos() {
                             <td>${new Date(articulo.fecha).toLocaleDateString()}</td>
                             <td>${articulo.estado}</td>
                             <td>${articulo.creador}</td>
-                            <td>${etiquetasTexto}</td> <!-- Mostrar las etiquetas aquí -->
                         </tr>
                     `;
                     // Agregar la fila al cuerpo de la tabla
@@ -156,7 +148,6 @@ async function eliminar_articulo(articulo_id) {
             contentType: "application/json",
         });
         console.log("Articulo eliminado exitosamente");
-        window.location.href = "/admin/articulo"
     } catch (error) {
         console.error(`Error al eliminar el articulo con ID ${articulo_id}:`, error);
     }
@@ -176,10 +167,9 @@ $(document).ready(async () => {
     // Mostrar la lista de todos los usuarios
     mostrar_todos_los_articulos();
 
-    // Eliminar los articulos
-    $(document).on("click", ".delete-btn", function () {
+    $(document).on("click", ".delete-btn", async function () {
         articulo_id = $(this).data("id");
-        eliminar_articulo(articulo_id);
+        await eliminar_articulo(articulo_id);
     });
 
     // Para la barra de busqueda
