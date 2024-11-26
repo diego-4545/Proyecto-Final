@@ -53,14 +53,14 @@
             <a id="inicia-sesion" href="/login" class="inicia-sesion">Inicia Sesión</a>
 
             <!-- Contenedor de información del usuario -->
-            <div id="perfil-icono" style="display: none; align-items: center; gap: 10px;">
-                <a href="/frontend/usuario/perfil.html">
-                <img id="navbar-info-usuario-foto" src="" alt="" width="40" height="40">
-                </a>
-                <div style="display: flex; flex-direction: column;">
-                    <span id="navbar-info-usuario-nombre" style="font-weight: bold;"></span>
-                    <span id="navbar-info-usuario-rol" style="font-size: 12px; color: gray;"></span>
+            <div id="perfil-icono" class="d-flex align-items-center user-info ms-auto">
+                <div class="text-end" id="nombre-rol">
+                    <span class="username" id="navbar-info-usuario-nombre">Nombre</span><br>
+                    <span class="role" id="navbar-info-usuario-rol">Rol</span>
                 </div>
+                <a href="/perfil">
+                    <img id="navbar-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="">
+                </a>
             </div>
         </div>
     </nav>
@@ -123,15 +123,15 @@
             <div class="col-md-12">
                 <form>
                     <div class="form-group">
-                        <input id="duda-nombre" type="text" class="form-control" placeholder="Nombre Completo" required>
+                        <input type="text" class="form-control" placeholder="Nombre Completo" required>
                     </div>
                     <div class="form-group">
-                        <input id="duda-correo" type="email" class="form-control" placeholder="Correo Electronico" required>
+                        <input type="email" class="form-control" placeholder="Correo Electronico" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="duda-descripcion" class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+                        <textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
                     </div>
-                    <button id="boton-enviar" type="submit" class="btn btn-dark btn-block">Enviar</button>
+                    <button type="submit" class="btn btn-dark btn-block" onclick="alert('El mensaje ha sido enviado')">Enviar</button>
                 </form>
             </div>
         </div>
@@ -155,6 +155,5 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="/frontend/publico/js/ajax/publico.js" ></script>
-    <script src="/frontend/publico/js/ajax/dudas_ajax.js"></script>
 </body>
 </html>
