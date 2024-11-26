@@ -48,15 +48,41 @@ async function cambiar_navbar_con_info_usuario(usuario_info) {
     $("#navbar-info-usuario-foto").attr("src", usuario_info.foto_perfil);
 }
 
-document.querySelector('.submit-button').addEventListener('click', function() {
-    location.reload();
-});
 
-function refrescarPagina() { 
-    location.reload();
-    return false;
+// Eliminar duda
+async function eliminar_duda(duda_id) {
+    try {
+        await $.ajax({
+            url: global_url + "/api/duda/" + duda_id,
+            method: "DELETE",
+            contentType: "application/json",
+        });
+        console.log("Duda eliminado exitosamente");
+        window.location.href = "/admin/duda"
+        alert("Respuesta enviada a correo electronico");
+        location.reload();
+    } catch (error) {
+        console.error(`Error al eliminar la duda con ID ${duda_id}:`, error);
+    }
 }
-function autoResize(textarea) {
-    textarea.style.height = 'auto'; 
-    textarea.style.height = (textarea.scrollHeight) + 'px'; 
-}
+
+$(document).ready(async () => {
+    // Autenticacion
+    await verificarAdmin();
+
+    // Obtener infor del usuario
+    const usuario_info = await get_usuario_info();
+
+    // Cambiar informacion de la navbar
+    cambiar_navbar_con_info_usuario(usuario_info);
+
+    // Mostrar la duda en pantalla
+    mostrar_la_duda();
+
+    // Eliminar la duda
+    $(document).on("click", ".submit-button", function () {
+        duda_id = $(this).data("id");
+        eliminar_duda(duda_id);
+    });
+
+});
