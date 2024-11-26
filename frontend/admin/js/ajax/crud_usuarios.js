@@ -135,7 +135,7 @@ async function editar_usuario() {
     const rol_id = await mapear_rol_a_id(rol_nombre); // Función para mapear el nombre del rol a su ID
 
     try {
-        $.ajax({
+        await $.ajax({
             url: global_url + "/api/usuario",
             method: "PUT",
             contentType: "application/json",
@@ -152,9 +152,9 @@ async function editar_usuario() {
             }) 
         });
         console.log("Etiqueta modificada exitosamente");
-        window.location.href = "/admin/etiquetas"
+        window.location.href = "/admin/usuarios"
     } catch (error) {
-        console.error("Error al modificar la etiqueta: " + error);
+        console.error("Error al modificar el usuario: " + error);
     }
 }
 
@@ -168,7 +168,7 @@ async function eliminar_usuario(usuario_id) {
             contentType: "application/json",
         });
         console.log("Usuario eliminado exitosamente");
-        window.location.href = "/admin/usuario"
+        window.location.href = "/admin/usuarios"
     } catch (error) {
         console.error(`Error al eliminar el usuario con ID ${usuario_id}:`, error);
     }
