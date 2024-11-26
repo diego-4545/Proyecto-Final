@@ -7,6 +7,7 @@
     <title>Pantalla de Administración</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/frontend/admin/css/dudas.css">
+    <link rel="stylesheet" href="/frontend/admin/css/moderacion_comentarios.css">
 </head>
 
 <body>
@@ -56,27 +57,45 @@
 
         <hr class="divider">
 
-        <div class="contact-form-container">
-            <form onsubmit="return refrescarPagina()">
-                <div class="name-image-container">
-                    <div class="name-container">
-                        <input id="imput-nombre" type="text" placeholder="NOMBRE COMPLETO" disabled>
-                    </div>
-                    <div class="image-container">
-                        <img src="/frontend/admin/img/mas.png" alt="Imagen de ejemplo" class="image-preview">
-                    </div>
-                </div>
-            
-                <input id="imput-correo" type="email" placeholder="CORREO ELECTRÓNICO" disabled>
-            
-                <textarea id="imput-mensaje" placeholder="MENSAJE" disabled></textarea>
-            
-                <textarea name="archivo" class="feedback-input" placeholder="Ingrese la retroalimentación" oninput="autoResize(this)"></textarea>
-            
-                <button type="submit" class="submit-button">ENVIAR</button>
-            </form>
-            
+        <!-- Comentario -->
+    <div id="comentarios-container" class="comentarios-container">
+        <div class="comentario">    
+          <div class="contenido-comentario">
+            <a href="/frontend/usuario/perfil.html" class="nombre-usuario">Correo</a>
+            <p id="contenido-duda">Este es una duda de ejemplo que será contestada.</p>
+            <input id="respuesta" type="text" class="form-control" placeholder="Escribe tu respuesta" required>
+            <div class="botones-moderacion">
+              <button class="btn aceptar" onclick="enviarRespuesta(this)">Enviar</button>
+            </div>
+          </div>
         </div>
+      </div>
+      <!-- Comentario 2 -->
+      <div id="comentarios-container" class="comentarios-container">
+        <div class="comentario">    
+          <div class="contenido-comentario">
+            <a href="/frontend/usuario/perfil.html" class="nombre-usuario">Correo</a>
+            <p id="contenido-duda">Este es una duda de ejemplo que será contestada.</p>
+            <input id="respuesta" type="text" class="form-control" placeholder="Escribe tu respuesta" required>
+            <div class="botones-moderacion">
+              <button class="btn aceptar" onclick="enviarRespuesta(this)">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Comentario 3 -->
+      <div id="comentarios-container" class="comentarios-container">
+        <div class="comentario">    
+          <div class="contenido-comentario">
+            <a href="/frontend/usuario/perfil.html" class="nombre-usuario">Correo</a>
+            <p id="contenido-duda">Este es una duda de ejemplo que será contestada.</p>
+            <input id="respuesta" type="text" class="form-control" placeholder="Escribe tu respuesta" required>
+            <div class="botones-moderacion">
+              <button class="btn aceptar" onclick="enviarRespuesta(this)">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="/frontend/admin/js/dudas.js"></script> 
@@ -84,6 +103,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="/frontend/admin/js/ajax/inicio_ajax.js"></script>
+    <script src="/frontend/admin/js/ajax/dudas_ajax.js" typw="module"></script> 
 
 </body>
 
