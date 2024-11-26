@@ -43,6 +43,7 @@ async function registroUsuario() {
         });
 
         console.log("Verificación exitosa", response);
+        window.location.href = "/";
         return response;
     } catch (error) {
         console.error("Error al crear la cuenta: " + error);
