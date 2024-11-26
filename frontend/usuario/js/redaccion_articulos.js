@@ -45,9 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-        // Llamar a la función para cargar las imágenes
-        cargarImagenesEstaticas();
-    });
+    // Llamar a la función para cargar las imágenes
+    cargarImagenesEstaticas();
 
     // Función para el botón de guardar cambios
     guardarCambiosBtn.addEventListener('click', () => {
@@ -62,7 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para el botón de publicar
     publicarArticuloBtn.addEventListener('click', () => {
-        window.location.href = 'publicar.html'; // Redirigir a la página de publicación
+        Swal.fire({
+            icon: 'success',
+            title: 'Publicado',
+            text: 'El artículo se ha publicado correctamente.'
+        }).then(() => {
+            window.location.href = 'pagina_publicada.html'; // Cambia a la página de destino
+        });
     });
 
     // Función para mostrar el modal de eliminación
@@ -75,15 +80,31 @@ document.addEventListener('DOMContentLoaded', () => {
         modalEliminar.style.display = 'none';
     });
 
-    // Confirmar eliminación con redirección
+    // Confirmar eliminación con redirección y notificación
     document.getElementById('confirmarEliminarBtn').addEventListener('click', () => {
+        // Ocultar el modal de eliminación
         modalEliminar.style.display = 'none';
+
+        // Mostrar notificación de eliminación utilizando Swal
         Swal.fire({
             icon: 'success',
             title: 'Eliminado',
-            text: 'El artículo ha sido eliminado.'
+            text: 'El artículo ha sido eliminado correctamente.'
         }).then(() => {
-            window.location.href = 'inicio_editor.html'; // Redirigir después de eliminar
+            // Vaciar campos y contenedores como parte del proceso de eliminación
+            document.getElementById('titulo').value = ''; // Vaciar el campo de título
+            document.getElementById('contenido').value = ''; // Vaciar el contenido del artículo
+
+            // Eliminar etiquetas existentes
+            const etiquetas = document.querySelectorAll('#contenedorEtiquetas .etiqueta');
+            etiquetas.forEach(etiqueta => etiqueta.remove());
+
+            // Eliminar imágenes cargadas
+            const imagenes = document.querySelectorAll('#contenedorImagenes .preview-imagen');
+            imagenes.forEach(imagen => imagen.parentElement.remove()); // Eliminar contenedor de imagen
+
+            // Redirigir después de eliminar
+            window.location.href = 'inicio_editor.html'; // Cambiar a la página de inicio del editor
         });
     });
 
@@ -94,18 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
         tolerance: 'pointer'
     });
 
+    // Contador de caracteres para título y contenido
+    $(document).ready(function() {
+        $('#titulo').on('input', function() {
+            const maxLength = 100;
+            const length = $(this).val().length;
+            $(this).next('.contador').text(`${length}/${maxLength}`);
+        });
 
-// Contador de caracteres para título y contenido
-$(document).ready(function() {
-    $('#titulo').on('input', function() {
-        const maxLength = 100;
-        const length = $(this).val().length;
-        $(this).next('.contador').text(`${length}/${maxLength}`);
-    });
-
-    $('#contenido').on('input', function() {
-        const maxLength = 1000;
-        const length = $(this).val().length;
-        $(this).next('.contador').text(`${length}/${maxLength}`);
+        $('#contenido').on('input', function() {
+            const maxLength = 1000;
+            const length = $(this).val().length;
+            $(this).next('.contador').text(`${length}/${maxLength}`);
+        });
     });
 });
