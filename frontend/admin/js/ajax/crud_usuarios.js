@@ -118,10 +118,10 @@ async function mostrar_todos_los_usuarios() {
 
 // Editar la usuario
 async function editar_usuario() {
-    const usuario = $("#editar-usuario-nombre").val(); // Obtener el nombre de usuario
-    const rol_nombre = $("#editar-rol-nombre").val(); // Obtener el nombre del rol (usando el valor del select)
-    const contraseña = $("#editar-contraseña-nombre").val();
-    const email = $("#editar-correo-nombre").val();
+    const usuario = $("#editUser").val(); // Obtener el nombre de usuario
+    const rol_nombre = $("#editRol").val(); // Obtener el nombre del rol (usando el valor del select)
+    const contraseña = $("#editPassword").val();
+    const email = $("#editEmail").val();
     const fechaActual = new Date();
     const año = fechaActual.getFullYear();
     const mes = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses empiezan desde 0
@@ -135,7 +135,7 @@ async function editar_usuario() {
     const rol_id = await mapear_rol_a_id(rol_nombre); // Función para mapear el nombre del rol a su ID
 
     try {
-        $.ajax({
+        await $.ajax({
             url: global_url + "/api/usuario",
             method: "PUT",
             contentType: "application/json",
@@ -152,9 +152,9 @@ async function editar_usuario() {
             }) 
         });
         console.log("Etiqueta modificada exitosamente");
-        window.location.href = "/admin/etiquetas"
+        window.location.href = "/admin/usuarios"
     } catch (error) {
-        console.error("Error al modificar la etiqueta: " + error);
+        console.error("Error al modificar el usuario: " + error);
     }
 }
 
@@ -168,7 +168,7 @@ async function eliminar_usuario(usuario_id) {
             contentType: "application/json",
         });
         console.log("Usuario eliminado exitosamente");
-        window.location.href = "/admin/usuario"
+        window.location.href = "/admin/usuarios"
     } catch (error) {
         console.error(`Error al eliminar el usuario con ID ${usuario_id}:`, error);
     }
@@ -177,10 +177,10 @@ async function eliminar_usuario(usuario_id) {
 
 // Función para añadir un usuario
 async function añadir_usuario() {
-    const usuario = $("#añadir-usuario-nombre").val(); // Obtener el nombre de usuario
-    const rol_nombre = $("#añadir-rol-nombre").val(); // Obtener el nombre del rol (usando el valor del select)
-    const contraseña = $("#añadir-contraseña-nombre").val();
-    const email = $("#añadir-correo-nombre").val();
+    const usuario = $("#User").val(); // Obtener el nombre de usuario
+    const rol_nombre = $("#Rol").val(); // Obtener el nombre del rol (usando el valor del select)
+    const contraseña = $("#Password").val();
+    const email = $("#Email").val();
 
     // Mapear el nombre del rol al rol_id
     const rol_id = await mapear_rol_a_id(rol_nombre); // Función para mapear el nombre del rol a su ID

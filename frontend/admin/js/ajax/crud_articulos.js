@@ -1,14 +1,7 @@
 import { verificarAdmin } from "./auth_ajax.js";
 
 var global_url = "http://127.0.0.1:8000"
-
-
-
-let currentPage = 1;
-const rowsPerPage = 5;
-
-
-let currentEditRow = null;
+let articulo_id = "";
 
 // Conseguir informacion del usuarios
 async function get_usuario_info() {
@@ -32,12 +25,6 @@ async function get_usuario_info() {
             "rol_id": response.rol_id,
             "contraseña": response.contraseña,
         };
-
-        cambiar_navbar_con_info_usuario(usuario_info);
-        cambiar_perfil_con_info_usuario(usuario_info);
-        cambiar_perfil_etiquetas_usuario();
-        cambiar_perfil_articulos_usuario();
-
         return usuario_info; // Retorna los datos del usuario
     } catch (error) {
         console.error("Error al obtener los datos del usuario:", error);
@@ -50,108 +37,155 @@ async function get_usuario_info() {
 async function cambiar_navbar_con_info_usuario(usuario_info) {
     // Cambiamos el nombre de usuario de la barra de navegación
     $("#navbar-info-usuario-nombre").text(usuario_info.usuario);
-
-
+    
     // Cambiamos la imagen de perfil de la barra de navegación
     $("#navbar-info-usuario-foto").attr("src", usuario_info.foto_perfil);
 }
 
-
-function editTag(button) {
-    currentEditRow = $(button).closest('tr');
-    
-    const article = currentEditRow.find('td:eq(1)').text();
-    const image = currentEditRow.find('td:eq(2)').text();
-    const date = currentEditRow.find('td:eq(3)').text();
-    const status = currentEditRow.find('td:eq(4)').text();
-    const creator = currentEditRow.find('td:eq(5)').text();
-    const tags = currentEditRow.find('td:eq(6)').text();
-    
-    $('#editArticleName').val(article);
-    $('#editImage').val(image);
-    $('#editDate').val(date);
-    $('#editStatus').val(status);
-    $('#editCreator').val(creator);
-    $('#editTagName').val(tags);
-    
-    $('#editTagModal').modal('show');
+// Obtener las etiquetas de un artículo
+async function obtener_etiquetas_articulo(articulo_id) {
+    try {
+        const response = await $.ajax({
+            url: global_url + "/api/articulo-etiqueta/" + articulo_id,
+            method: "GET",
+            contentType: "application/json",
+        });
+        return response.etiquetas || []; // Retorna las etiquetas, o una lista vacía si no hay
+    } catch (error) {
+        console.error("Error al obtener las etiquetas del artículo:", error);
+        return [];
+    }
 }
 
-$('#updateTagBtn').on('click', function() {
-    const updatedArticle = $('#editArticleName').val().trim();
-    const updatedImage = $('#editImage').val().trim();
-    const updatedDate = $('#editDate').val();
-    const updatedStatus = $('#editStatus').val();
-    const updatedCreator = $('#editCreator').val().trim();
-    const updatedTags = $('#editTagName').val().trim();
-    
-    if (updatedArticle === "" || updatedImage === "" || updatedDate === "" || updatedCreator === "" || updatedTags === "") {
-        alert("Por favor, complete todos los campos.");
-        return;
+// Obtener la información de cada etiqueta
+async function obtener_info_etiqueta(etiqueta_id) {
+    try {
+        const response = await $.ajax({
+            url: global_url + "/api/etiqueta/" + etiqueta_id,
+            method: "GET",
+            contentType: "application/json",
+        });
+        return response ? response.nombre : "Etiqueta desconocida"; // Retorna el nombre de la etiqueta
+    } catch (error) {
+        console.error("Error al obtener la información de la etiqueta:", error);
+        return "Etiqueta desconocida";
     }
-    
-    currentEditRow.find('td:eq(1)').text(updatedArticle);
-    currentEditRow.find('td:eq(2)').text(updatedImage);
-    currentEditRow.find('td:eq(3)').text(updatedDate);
-    currentEditRow.find('td:eq(4)').text(updatedStatus);
-    currentEditRow.find('td:eq(5)').text(updatedCreator);
-    currentEditRow.find('td:eq(6)').text(updatedTags);
-    
-    $('#editTagModal').modal('hide');
-});
-
-
-function deleteTag(button) {
-    const confirmation = confirm("¿Estás seguro de que deseas eliminar esta etiqueta?");
-    if (confirmation) {
-        const row = button.parentNode.parentNode;
-        row.remove();
-    }
-    updateTable();
 }
 
-function updateTable() {
-    const rows = $('#tableBody tr');
-    const totalRows = rows.length;
-    const totalPages = Math.ceil(totalRows / rowsPerPage);
-
-    rows.each((index, row) => {
-        $(row).hide();
-        if (index >= (currentPage - 1) * rowsPerPage && index < currentPage * rowsPerPage) {
-            $(row).show();
+async function mostrar_todos_los_articulos() {
+    // Obtener IDs de articulos
+    async function obtener_id_articulo() {
+        try {    
+            const articulos_ids = await $.ajax({
+                url: global_url + "/api/articulo",
+                method: "GET",
+                contentType: "application/json",
+            });
+            return articulos_ids.articulos_ids;
+        } catch (error) {
+            console.error("Error al obtener los IDs de los articulos: " + error);
+            return null;
         }
+    }
+
+    // Obtener la información de un articulo especifico
+    async function obtener_info_articulo(articulos_ids) {
+        try {
+            const articulo_info = await $.ajax({
+                url: global_url + "/api/articulo/" + articulos_ids,
+                method: "GET",
+                contentType: "application/json",
+            });
+            return articulo_info;
+        } catch (error) {
+            console.error("Error al obtener el nombre del articulo: " + error);
+            return null;
+        }
+    }
+
+    // Limpiar la lista de articulos antes de agregar las nuevas filas
+    $("#tableBody").empty();
+
+    const articulos_ids = await obtener_id_articulo();
+    if (articulos_ids) {
+        try {
+            // Obtener la información de los articulos en paralelo
+            const info_articulos = await Promise.all(
+                articulos_ids.map(id => obtener_info_articulo(id))
+            );
+
+            // Iterar sobre los articulos y agregar las filas a la tabla
+            for (const articulo of info_articulos) {
+                if (articulo) {
+                    // Obtener las etiquetas del artículo
+                    const etiquetas = await obtener_etiquetas_articulo(articulo.articulo_id);
+                    const etiquetas_info = await Promise.all(etiquetas.map(id => obtener_info_etiqueta(id)));
+
+                    // Crear una cadena de texto con las etiquetas
+                    const etiquetasTexto = etiquetas_info.join(", ");
+
+                    const fila = `
+                        <tr>
+                            <td>
+                                <button class="btn btn-danger delete-btn" data-id="${articulo.articulo_id}">Eliminar</button>
+                            </td>
+                            <td>${articulo.nombre}</td>
+                            <td><img src="${articulo.imagen.startsWith('http') ? articulo.imagen : global_url + articulo.imagen}" alt="${articulo.nombre}" style="width: 100px; height: auto;"></td>
+                            <td>${new Date(articulo.fecha).toLocaleDateString()}</td>
+                            <td>${articulo.estado}</td>
+                            <td>${articulo.creador}</td>
+                            <td>${etiquetasTexto}</td> <!-- Mostrar las etiquetas aquí -->
+                        </tr>
+                    `;
+                    // Agregar la fila al cuerpo de la tabla
+                    $("#tableBody").append(fila);
+                }
+            }
+        } catch (error) {
+            console.error("Error al procesar los articulos: ", error);
+        }
+    }
+}
+
+// Eliminar articulo
+async function eliminar_articulo(articulo_id) {
+    try {
+        await $.ajax({
+            url: global_url + "/api/articulo/" + articulo_id,
+            method: "DELETE",
+            contentType: "application/json",
+        });
+        console.log("Articulo eliminado exitosamente");
+        window.location.href = "/admin/articulo"
+    } catch (error) {
+        console.error(`Error al eliminar el articulo con ID ${articulo_id}:`, error);
+    }
+}
+
+
+$(document).ready(async () => {
+    // Autenticacion
+    await verificarAdmin();
+
+    // Obtener infor del usuario
+    const usuario_info = await get_usuario_info();
+
+    // Cambiar informacion de la navbar
+    cambiar_navbar_con_info_usuario(usuario_info);
+
+    // Mostrar la lista de todos los usuarios
+    mostrar_todos_los_articulos();
+
+    // Eliminar los articulos
+    $(document).on("click", ".delete-btn", function () {
+        articulo_id = $(this).data("id");
+        eliminar_articulo(articulo_id);
     });
 
-    $('#pageInfo').text(`Página ${currentPage} de ${totalPages}`);
-}
+    // Para la barra de busqueda
+    $(document).on("click", "#searchBar", searchTag);
 
-function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        updateTable();
-    }
-}
-
-function nextPage() {
-    const totalRows = $('#tableBody tr').length;
-    const totalPages = Math.ceil(totalRows / rowsPerPage);
-    if (currentPage < totalPages) {
-        currentPage++;
-        updateTable();
-    }
-}
-
-function goToFirstPage() {
-    currentPage = 1;
-    updateTable();
-}
-
-function goToLastPage() {
-    const totalRows = $('#tableBody tr').length;
-    const totalPages = Math.ceil(totalRows / rowsPerPage);
-    currentPage = totalPages;
-    updateTable();
-}
+});
 
 function searchTag() {
     const searchTerm = document.getElementById("searchBar").value.toLowerCase();
@@ -166,31 +200,3 @@ function searchTag() {
         }
     });
 }
-
-function saveChanges() {
-    alert("Cambios guardados.");
-}
-
-$(document).ready(function() {
-    updateTable();
-});
-
-$('#addTagForm').on('keydown', function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-    }
-});
-
-$('#editTagForm').on('keydown', function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-    }
-});
-function addTag() {
-    $('#addTagModal').modal('show');
-}
-
-function addTag() {
-    $('#addTagModal').modal('show');
-}
-
