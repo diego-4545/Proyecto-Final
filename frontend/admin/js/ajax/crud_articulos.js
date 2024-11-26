@@ -148,6 +148,7 @@ async function eliminar_articulo(articulo_id) {
             contentType: "application/json",
         });
         console.log("Articulo eliminado exitosamente");
+        window.location.href = "/admin/articulos"
     } catch (error) {
         console.error(`Error al eliminar el articulo con ID ${articulo_id}:`, error);
     }
