@@ -32,7 +32,7 @@ async def etiqueta_info(id):
     return etis.GET_EtiquetaInfo_Response(
         etiqueta_id=data[0][0],
         nombre=data[0][1],
-        fecha=data[0][2],
+        fecha=data[0][2].isoformat(),
     )
 
 

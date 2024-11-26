@@ -1,35 +1,37 @@
+# Librería para estructurar la API
 from pydantic import BaseModel
 
 ### GET
-### ============================= Estiquetas ==================================== ###
-# Obten todos los ID de las etiquetas
-class GET_EtiquetaAll_Response(BaseModel):
-    etiquetas_ids: list[int]
-
-# Obten la información de una etiqueta en especifico
+### ============================= Etiqueta ==================================== ###
+# Obtener información de una etiqueta especifico
 class GET_EtiquetaInfo_Response(BaseModel):
+    # Columnas de la tabla etiquetas
     etiqueta_id: int
     nombre: str
     fecha: str
 
 ### POST
-### ============================= Estiquetas ==================================== ###
-# Publica una etiqueta
+### ============================= Etiqueta ==================================== ###
+# Crear una nueva etiqueta
 class POST_EtiquetaCrear_Request(BaseModel):
+    # Columnas de la tabla etiquetas
+    etiqueta_id: int
     nombre: str
     fecha: str
-
 
 ### PUT
-### ============================= Estiquetas ==================================== ###
-# Cambia los datos de una etiqueta
+### ============================= Etiqueta ==================================== ###
+# cambiar datos de una etiqueta 
 class PUT_EtiquetaCambiar_Request(BaseModel):
+    # Columnas de la tabla etiquetas
     etiqueta_id: int
     nombre: str
     fecha: str
 
-
 ### DELETE
-### ============================= Estiquetas ==================================== ###
-class DELETE_EtiquetaBorrar_Request(BaseModel):
+### ============================= Etiqueta ==================================== ###
+# Elimina una etiqueta 
+class DELETE_etiqueta_Request(BaseModel):
     etiqueta_id: int
+    
+    
