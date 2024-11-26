@@ -44,13 +44,21 @@ $(document).ready(() => {
                         method: "GET",
                     });
 
-                    // Renderizar cada artículo en el contenedor
-                    $(".news-container").append(`
-                        <a href="/noticia/${id}" class="news-box">
-                            <h3>Artículo ${id}</h3>
-                            <p>${articulo}</p>
-                        </a>
-                    `);
+                    // Ver la respuesta completa del artículo en la consola para entender su estructura
+                    console.log(`Artículo con ID ${id}:`, articulo);
+
+                    // Verificar si el artículo tiene los campos necesarios
+                    if (articulo && articulo.nombre && articulo.contenido) {
+                        // Renderizar cada artículo en el contenedor
+                        $(".news-container").append(`
+                            <a href="/noticia/${id}" class="news-box">
+                                <h3>${articulo.nombre}</h3>
+                                <p>${articulo.contenido}</p>
+                            </a>
+                        `);
+                    } else {
+                        console.warn(`El artículo con ID ${id} tiene datos incompletos.`);
+                    }
                 } catch (error) {
                     console.error(`No se encontró el artículo con ID ${id}:`, error);
                     continue; // Continuar con los demás artículos

@@ -8,7 +8,7 @@ h1 {
     margin-top: 20px;
 }
 
-h2{
+h2 {
     padding-bottom: 20px;
 }
 
@@ -41,37 +41,90 @@ h2{
     margin-bottom: 10px;
 }
 
+/* Estilo para el contenedor de noticias */
 .news-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
+    display: flex; /* Habilitar el diseño en fila */
+    justify-content: center; /* Centra los artículos en el contenedor */
+    gap: 20px; /* Espacio entre cada artículo */
+    width: 70%; /* Para ocupar el 70% del ancho disponible */
+    height: 100%;
+    flex-wrap: nowrap; /* Evita que los artículos se acomoden en varias filas */
+    overflow-x: auto; /* Permite desplazarse horizontalmente si los artículos no caben en la pantalla */
+    padding: 20px; /* Añadir un pequeño margen alrededor */
+    box-sizing: border-box; /* Para que el padding no se sume al ancho total */
+    margin: 0 auto; /* Centra el contenedor en el centro de la página */
 }
 
+/* Estilo para el texto "NOTICIA" dentro del contenedor */
+.news-container h2 {
+    margin: 0; /* Elimina cualquier margen por defecto */
+    font-size: 24px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+/* Estilo de cada caja de artículo */
 .news-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
+    width: calc(33% - 20px); /* Tres artículos por fila */
     background-color: #ddd;
+    border-radius: 8px;
+    overflow: hidden;
     text-decoration: none;
     color: black;
-    font-size: 26px;
+    font-size: 18px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+/* Efecto hover para los artículos */
 .news-box:hover {
-    background-color: #bbb;
+    transform: translateY(-10px); /* Eleva el artículo al pasar el ratón */
+    background-color: #bbb; /* Cambio de color al pasar el ratón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
 }
 
-#inicia-sesion {
-    color: black;
-    text-decoration: none;
+/* Título del artículo */
+.news-box h3 {
+    font-size: 1.2rem;
+    color: #333;
+    padding: 15px;
+    margin: 0;
+    background-color: #fff;
+    border-bottom: 2px solid #eee; /* Separador debajo del título */
+}
+
+/* Descripción del artículo */
+.news-box p {
+    font-size: 1rem;
+    color: #666;
+    padding: 15px;
+    margin: 0;
+    background-color: #fff;
+    height: 120px; /* Limita el alto para evitar desbordes */
+    overflow: hidden; /* El contenido se corta si es muy largo */
+}
+
+/* Estilo para pantallas medianas y pequeñas */
+@media (max-width: 768px) {
+    .news-box {
+        width: calc(50% - 20px); /* Dos artículos por fila en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .news-box {
+        width: 100%; /* Un solo artículo por fila en pantallas muy pequeñas */
+    }
 }
 
 /* Mostrar los títulos por defecto */
 #seccion-titulo {
     display: block;
+}
+
+/* Estilo del enlace de sesión */
+#inicia-sesion {
+    color: black;
+    text-decoration: none;
 }
