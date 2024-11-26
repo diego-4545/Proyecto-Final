@@ -56,32 +56,11 @@
                     <span class="role" id="navbar-info-usuario-rol">Rol</span>
                 </div>
                 <a href="/perfil">
-                    <img id="navbar-info-usuario-foto" src="frontend/publico/img/perfil_default.png" alt="Foto de perfil">
+                    <img id="navbar-info-usuario-foto" src="/frontend/publico/img/perfil_default.png" alt="Foto de perfil">
                 </a>
             </div>
         </div>
     </nav>
-
-
-    <!-- Importamos JQuery v3.7.1 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- Importamos el JS de Bootstrap v5.3.3 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
-    integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-
-    <!-- Importamos el JS de Sweetalert2 v11.14.0 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.all.js"
-    integrity="sha512-HE6XTjw3UV1hqENThKtsSn4mr3sx/lXbTSVPlOdIU3pprqz5ti16sGIGw8y5EAePRYg80O3OEBRnXPwON7vOUA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- Scripts de JS -->
-    <script src="/frontend/usuario/js/redaccion_articulos.js"></script>
     
     <div class="container">
         <h1>Escribe tu artículo</h1>
@@ -111,30 +90,30 @@
         </div>
     </div>
 
-<!-- Modal para cambiar imagen -->
-<div class="modal fade" id="cambiar-imagen-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Foto de perfil</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="form-foto-articulo">
-                    <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
-                        <img src="/frontend/img_biblioteca/articulos/montañas_nevadas.png" alt="Opcion-1" class="img-pequeña">
-                    </button>
-                    <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
-                        <img src="/frontend/img_biblioteca/articulos/Ciudad.jpg" alt="Opcion-2" class="img-pequeña">
-                    </button>
-                    <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
-                        <img src="/frontend/img_biblioteca/articulos/Bosque.jpg" alt="Opcion-3" class="img-pequeña">
-                    </button>
-                </form>
+    <!-- Modal para cambiar imagen -->
+    <div class="modal fade" id="cambiar-imagen-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Foto de perfil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-foto-articulo">
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="/frontend/img_biblioteca/articulos/montañas_nevadas.png" alt="Opcion-1" class="img-pequeña">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="/frontend/img_biblioteca/articulos/Ciudad.jpg" alt="Opcion-2" class="img-pequeña">
+                        </button>
+                        <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
+                            <img src="/frontend/img_biblioteca/articulos/Bosque.jpg" alt="Opcion-3" class="img-pequeña">
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
     <!-- Modal para eliminar -->
@@ -149,6 +128,26 @@
             </div>
         </div>
     </div>
+
+    <!-- Importamos JQuery v3.7.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Importamos el JS de Bootstrap v5.3.3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+    integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+    <!-- Importamos el JS de Sweetalert2 v11.14.0 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.all.js"
+    integrity="sha512-HE6XTjw3UV1hqENThKtsSn4mr3sx/lXbTSVPlOdIU3pprqz5ti16sGIGw8y5EAePRYg80O3OEBRnXPwON7vOUA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Scripts de JS -->
+    <script src="/frontend/usuario/js/redaccion_articulos.js"></script>
 
     <script>
         function selectImage(button) {

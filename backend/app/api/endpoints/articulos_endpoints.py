@@ -201,5 +201,6 @@ async def articulo_cambiar_estado(input: arts.PUT_ArticuloCambiarEstado_Request)
 # Borramos un articulo
 @router.delete("/api/articulo/{id}")
 async def articulo_borrar(id):
-    artq.articulos_query(artq.delete_articulo_eliminar(articulo_id=id))
+    artq.articulos_query(artq.delete_articulo_all_usuario.format(articulo_id=id))
+    artq.articulos_query(artq.delete_articulo_eliminar.format(articulo_id=id))
     return {"message": "Se borro el articulo exitosamente"}
