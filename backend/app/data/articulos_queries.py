@@ -88,7 +88,9 @@ get_articulo_comentarios = "SELECT Id FROM Comentarios WHERE Articulo={articulo_
 # ============================= Articulos ==================================== #
 # Publica un nuevo articulo
 post_articulo_crear = "INSERT INTO Articulos (Nombre, FechaDeCreacion, Visitas, Usuario, Estado, Contenido, Imagen) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+get_articulo_ultimo_creaado = "SELECT Id FROM Articulos WHERE Nombre=%s AND Usuario=%s"
 
+post_articulo_usuario = "INSERT INTO usuarioarticulos (Usuario, Articulo) VALUES (%s, %s)"
 # ============================= Likes ==================================== #
 # Añade el like de un usuario a un articulo
 post_articulo_like = "INSERT INTO Likes (Usuario, Articulo) VALUES (%s, %s)"

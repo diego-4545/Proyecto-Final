@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="frontend/publico/img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="/frontend/publico/img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 Metropolitan
             </a>
             <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,7 @@
                     <span class="role" id="navbar-info-usuario-rol">Rol</span>
                 </div>
                 <a href="/perfil">
-                    <img id="navbar-info-usuario-foto" src="/frontend/publico/img/perfil_default.png" alt="Foto de perfil">
+                    <img id="navbar-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="Foto de perfil">
                 </a>
             </div>
         </div>
@@ -104,10 +104,10 @@
                             <img src="/frontend/img_biblioteca/articulos/montañas_nevadas.png" alt="Opcion-1" class="img-pequeña">
                         </button>
                         <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
-                            <img src="/frontend/img_biblioteca/articulos/Ciudad.jpg" alt="Opcion-2" class="img-pequeña">
+                            <img src="/frontend/img_biblioteca/articulos/ciudad.png" alt="Opcion-2" class="img-pequeña">
                         </button>
                         <button class="toggle-btn opcion-foto-perfil mt-1" type="button" onclick="selectImage(this)">
-                            <img src="/frontend/img_biblioteca/articulos/Bosque.jpg" alt="Opcion-3" class="img-pequeña">
+                            <img src="/frontend/img_biblioteca/articulos/bosque.png" alt="Opcion-3" class="img-pequeña">
                         </button>
                     </form>
                 </div>
@@ -147,7 +147,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Scripts de JS -->
-    <script src="/frontend/usuario/js/redaccion_articulos.js"></script>
+    
+    <script type="module" src="/frontend/usuario/js/ajax/redaccion_ajax.js"></script>
 
     <script>
         function selectImage(button) {

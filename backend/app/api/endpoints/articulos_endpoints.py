@@ -136,17 +136,33 @@ async def articulo_comentario(id):
 async def articulo_añadir(input: arts.POST_ArticuloCrear_Request):
     # Accedemos a los valores de la solicitud
     params = (
-        input.usuario_id,
         input.nombre,
         input.fecha,
         input.visitas,
+        input.usuario_id,
         input.estado,
         input.contenido,
         input.imagen,
     )
     # Realizamos la inserción de los datos en la BD
     artq.articulos_query(artq.post_articulo_crear, params)
-    return {"message": "Articulo creado exitosamente"}
+
+    params = (
+        input.nombre,
+        input.usuario_id,
+    )
+    # Obtenemos el id del articulo creado
+    data = artq.articulos_query(artq.get_articulo_ultimo_creaado, params)
+    return {"message": "Articulo creado exitosamente", "id": data[0][0]}
+
+@router.post("/api/articulo-usuario")
+async def añadir_articulo_a_usuario(input: arts.POST_ArticuloAUsuario):
+    params = (
+        input.usuario_id,
+        input.articulo_id,
+    )
+    artq.articulos_query(artq.post_articulo_usuario, params)
+    return {"message": "articulo asignado exitosamente"}
 
 # Añadimos un like a un articulo
 @router.post("/api/articulo-likes")

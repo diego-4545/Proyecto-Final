@@ -72,6 +72,9 @@ class POST_ArticuloCrear_Request(BaseModel):
     contenido: str
     imagen: str # path to the image
 
+class POST_ArticuloAUsuario(BaseModel):
+    usuario_id: int
+    articulo_id: int
 ### ============================= Likes ==================================== ###
 # Añade un like a un articulo
 class POST_ArticuloLike_Request(BaseModel):
