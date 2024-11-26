@@ -201,7 +201,6 @@ async function añadir_usuario() {
                 usuario,
                 contraseña,
                 email,
-                fecha
             }),
         });
         console.log("Usuario añadido exitosamente");
@@ -210,6 +209,7 @@ async function añadir_usuario() {
         console.error("Error al añadir el usuario: " + error);
     }
 }
+
 
 // Función para mapear el nombre del rol a su ID
 async function mapear_rol_a_id(rol_nombre) {
