@@ -127,6 +127,10 @@ async function editar_usuario() {
     const mes = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses empiezan desde 0
     const dia = String(fechaActual.getDate()).padStart(2, '0');
     const fecha = `${año}-${mes}-${dia}`;
+    const nombre = "A";
+    const descripcion = "Esta es una cuenta creada por administradores";
+    const foto_perfil ="/frontend/admin/img/perfil_default.png"
+
 
     const rol_id = await mapear_rol_a_id(rol_nombre); // Función para mapear el nombre del rol a su ID
 
@@ -137,12 +141,14 @@ async function editar_usuario() {
             contentType: "application/json",
             data: JSON.stringify({
                 usuario_id,
-                rol_id,
-                fecha,
+                nombre,
                 usuario,
-                contraseña,
                 email,
-                fecha
+                fecha,
+                descripcion,
+                foto_perfil,
+                rol_id,
+                contraseña
             }) 
         });
         console.log("Etiqueta modificada exitosamente");
@@ -184,9 +190,12 @@ async function añadir_usuario() {
     const mes = String(fechaActual.getMonth() + 1).padStart(2, '0');
     const dia = String(fechaActual.getDate()).padStart(2, '0');
     const fecha = `${año}-${mes}-${dia}`;
+    const nombre = "A";
+    const descripcion = "Esta es una cuenta creada por administradores";
+    const foto_perfil ="/frontend/admin/img/perfil_default.png"
 
-    if (!usuario || !rol_id) {
-        alert("Por favor, ingresa un nombre para el usuario y selecciona un rol.");
+    if (!usuario || !rol_id || !contraseña|| !email) {
+        alert("Por favor, ingresa todos los datos.");
         return;
     }
 
@@ -196,11 +205,14 @@ async function añadir_usuario() {
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                rol_id,
-                fecha,
+                nombre,
                 usuario,
-                contraseña,
                 email,
+                fecha,
+                descripcion,
+                foto_perfil,
+                rol_id,
+                contraseña
             }),
         });
         console.log("Usuario añadido exitosamente");
