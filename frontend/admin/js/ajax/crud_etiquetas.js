@@ -209,4 +209,22 @@ $(document).ready(async () => {
         etiqueta_id = $(this).data("id");
         eliminar_etiqueta(etiqueta_id);
     });
+
+    // Para la barra de busqueda
+    $(document).on("click", "#searchBar", searchTag);
+
 });
+
+function searchTag() {
+    const searchTerm = document.getElementById("searchBar").value.toLowerCase();
+    const rows = document.querySelectorAll("#tableBody tr");
+
+    rows.forEach(row => {
+        const labelCell = row.cells[1];
+        if (labelCell && labelCell.textContent.toLowerCase().includes(searchTerm)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+}
