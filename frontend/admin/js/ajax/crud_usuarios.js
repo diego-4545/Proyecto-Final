@@ -116,29 +116,39 @@ async function mostrar_todos_los_usuarios() {
 }
 
 
+// Editar la usuario
 async function editar_usuario() {
+    const usuario = $("#editar-usuario-nombre").val(); // Obtener el nombre de usuario
+    const rol_nombre = $("#editar-rol-nombre").val(); // Obtener el nombre del rol (usando el valor del select)
+    const contraseña = $("#editar-contraseña-nombre").val();
+    const email = $("#editar-correo-nombre").val();
+    const fechaActual = new Date();
+    const año = fechaActual.getFullYear();
+    const mes = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses empiezan desde 0
+    const dia = String(fechaActual.getDate()).padStart(2, '0');
+    const fecha = `${año}-${mes}-${dia}`;
+
+    const rol_id = await mapear_rol_a_id(rol_nombre); // Función para mapear el nombre del rol a su ID
+
     try {
-        // Obtener la información del usuario
-        const usuario = await $.ajax({
-            url: global_url + "/api/usuario/" + usuario_id,
-            method: "GET",
+        $.ajax({
+            url: global_url + "/api/usuario",
+            method: "PUT",
             contentType: "application/json",
+            data: JSON.stringify({
+                usuario_id,
+                rol_id,
+                fecha,
+                usuario,
+                contraseña,
+                email,
+                fecha
+            }) 
         });
-
-        // Llenar el formulario con los datos del usuario
-        $("#editUser").val(usuario.usuario);
-        $("#editEmail").val(usuario.email);
-        $("#editDate").val(usuario.fecha);
-        $("#editPasword").val(usuario.contraseña);
-        
-        // Obtener el nombre del rol para mostrarlo en el select o en otro campo
-        const rol_nombre = await get_rol_nombre(usuario.rol_id);
-
-        // Asignar el nombre del rol al campo correspondiente (por ejemplo, un `select`)
-        $("#editRol").val(rol_nombre); // O si es un `select`, usa el valor del rol
-
+        console.log("Etiqueta modificada exitosamente");
+        window.location.href = "/admin/etiquetas"
     } catch (error) {
-        console.error("Error al obtener los datos del usuario para editar: ", error);
+        console.error("Error al modificar la etiqueta: " + error);
     }
 }
 
@@ -161,9 +171,11 @@ async function eliminar_usuario(usuario_id) {
 
 // Función para añadir un usuario
 async function añadir_usuario() {
-    const nombre = $("#añadir-usuario-nombre").val(); // Obtener el nombre de usuario
+    const usuario = $("#añadir-usuario-nombre").val(); // Obtener el nombre de usuario
     const rol_nombre = $("#añadir-rol-nombre").val(); // Obtener el nombre del rol (usando el valor del select)
-    
+    const contraseña = $("#añadir-contraseña-nombre").val();
+    const email = $("#añadir-correo-nombre").val();
+
     // Mapear el nombre del rol al rol_id
     const rol_id = await mapear_rol_a_id(rol_nombre); // Función para mapear el nombre del rol a su ID
 
@@ -173,7 +185,7 @@ async function añadir_usuario() {
     const dia = String(fechaActual.getDate()).padStart(2, '0');
     const fecha = `${año}-${mes}-${dia}`;
 
-    if (!nombre || !rol_id) {
+    if (!usuario || !rol_id) {
         alert("Por favor, ingresa un nombre para el usuario y selecciona un rol.");
         return;
     }
@@ -184,8 +196,11 @@ async function añadir_usuario() {
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                nombre,
-                rol_id, // Enviar el ID del rol en lugar del nombre
+                rol_id,
+                fecha,
+                usuario,
+                contraseña,
+                email,
                 fecha
             }),
         });
@@ -218,7 +233,7 @@ $(document).ready(async () => {
     // Cambiar informacion de la navbar
     cambiar_navbar_con_info_usuario(usuario_info);
 
-    // Mostrar la lista de todas las etiquetas
+    // Mostrar la lista de todos los usuarios
     mostrar_todos_los_usuarios();
 
     // Editar el usuario
@@ -227,8 +242,8 @@ $(document).ready(async () => {
     });
     $(document).on("click", "#boton-guardar-cambios", editar_usuario);
 
-    // Añadir una etiqueta
-    $(document).on("click", "#boton-guardar-nuev-usuario", añadir_usuario);
+    // Añadir un usuario
+    $(document).on("click", "#boton-guardar-nuevo-usuario", añadir_usuario);
 
     // Eliminar los usuarios
     $(document).on("click", ".delete-btn", function () {
