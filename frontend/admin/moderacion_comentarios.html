@@ -71,8 +71,8 @@
             <p>Este es un comentario de ejemplo que será moderado.</p>
             <div class="botones-moderacion">
               <button class="btn aceptar" onclick="aceptarComentario(this)">Aceptar</button>
-              <button class="btn eliminar" onclick="eliminarComentario(this)">Eliminar</button>
-              <button class="btn suspender" onclick="suspenderComentario(this, 'Nombre de Usuario')">Suspender</button>
+<button class="btn eliminar" onclick="eliminarComentario(this)">Eliminar</button>
+<button class="btn suspender" onclick="suspenderComentario(this, 'nombreUsuario')">Suspender</button>
             </div>
           </div>
         </div>
@@ -87,8 +87,8 @@
             <p>Este es un comentario de ejemplo que será moderado.</p>
             <div class="botones-moderacion">
               <button class="btn aceptar" onclick="aceptarComentario(this)">Aceptar</button>
-              <button class="btn eliminar" onclick="eliminarComentario(this)">Eliminar</button>
-              <button class="btn suspender" onclick="suspenderComentario(this, 'Nombre de Usuario')">Suspender</button>
+<button class="btn eliminar" onclick="eliminarComentario(this)">Eliminar</button>
+<button class="btn suspender" onclick="suspenderComentario(this, 'nombreUsuario')">Suspender</button>
             </div>
           </div>
         </div>
@@ -102,9 +102,9 @@
             <a href="/frontend/usuario/perfil.html" class="nombre-usuario">Nombre de Usuario</a>
             <p>Este es un comentario de ejemplo que será moderado.</p>
             <div class="botones-moderacion">
-              <button class="btn aceptar" onclick="aceptarComentario(this)">Aceptar</button>
-              <button class="btn eliminar" onclick="eliminarComentario(this)">Eliminar</button>
-              <button class="btn suspender" onclick="suspenderComentario(this, 'Nombre de Usuario')">Suspender</button>
+<button class="btn aceptar" onclick="aceptarComentario(this)">Aceptar</button>
+<button class="btn eliminar" onclick="eliminarComentario(this)">Eliminar</button>
+<button class="btn suspender" onclick="suspenderComentario(this, 'nombreUsuario')">Suspender</button>
             </div>
           </div>
         </div>
@@ -113,12 +113,12 @@
       <div class="controles">
         <button class="btn-navegacion anterior" onclick="cambiarSeccion('anterior')">Anterior</button>
         <button class="btn-navegacion siguiente" onclick="cambiarSeccion('siguiente')">Siguiente</button>
-        <button class="btn-guardar" onclick="guardarCambios()">Guardar cambios</button>
+        <button id="btn-guardar" class="btn-guardar">Guardar Cambios</button>
       </div>
       
       <script src="/frontend/admin/js/moderacion_comentarios.js"></script>
       <link rel="stylesheet" href="/frontend/admin/css/moderacion_comentarios.css">
-      <script type="module" src="/frontend/usuario/js/ajax/perfil_ajax.js"></script>
+      <script type="module" src="/frontend/admin/js/ajax/inicio_ajax.js"></script>
 
 </body>
 

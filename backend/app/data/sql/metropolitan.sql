@@ -184,7 +184,6 @@ CREATE TABLE IF NOT EXISTS `metropolitan`.`Dudas` (
   `Nombre` VARCHAR(255) NOT NULL,
   `Correo` VARCHAR(255) NOT NULL,
   `Descripcion` VARCHAR(255) NOT NULL,
-  `ImagenDeAyudaAlProblema` VARCHAR(255) NULL,
   `FechaDeReporte` DATE NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE INDEX `IdReportes_UNIQUE` (`Id` ASC) VISIBLE)

@@ -44,3 +44,7 @@ document.querySelectorAll(".btn-reportar-comentario").forEach((boton) => {
         });
     });
 });
+
+document.getElementById("likeButton").addEventListener("click", function () {
+    this.classList.toggle("liked"); // Agrega o quita la clase 'liked'
+});

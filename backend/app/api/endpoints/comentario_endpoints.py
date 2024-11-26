@@ -7,6 +7,21 @@ from backend.app.schemas import comentario_esquema as coms
 router = APIRouter()
 
 ### Solicitudes GET
+# Obtener todos los ID de comentarios
+@router.get("/api/comentario")
+async def comentario_ids():
+    # Funcion para obtener los IDs
+    data: list[tuple] = comq.comentarios_query(comq.get_comentario_all)
+    # Si no hay usuarios retornar nada
+    if not data:
+        return []
+    ids = list()
+    for i in range(len(data)):
+        ids.append(data[i][0])
+    return coms.GET_ComentarioAll_Response(
+        comentarios_ids=ids
+    )
+
 # Obtener informacion de un comentario
 @router.get("/api/comentario/{id}")
 async def comentario_info(id):
@@ -54,11 +69,13 @@ async def articulo_añadir_comentario(input: coms.POST_ComentarioCrear_Request):
 @router.put("/api/comentario-estado")
 async def comentario_cambiar_estado(input: coms.PUT_ComentarioCambiarEstado_Request):
     # Accedemos a los valores de la solicitud
-    comentario_id = input.comentario_id
-    estado_id = input.estado_id
+    params = (
+        input.comentario_id,
+        input.estado_id,
+    )
 
     # Realizamos los cambios en la BD
-    comq.comentarios_query(comq.put_comentario_cambiar_estado.format(estado_id=estado_id, comentario_id=comentario_id))
+    comq.comentarios_query(comq.put_comentario_cambiar_estado, params)
     return {"message": "Se cambio el estado de un comentario exitosamente"}
 
 

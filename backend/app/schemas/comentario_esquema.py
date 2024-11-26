@@ -2,6 +2,10 @@ from pydantic import BaseModel
 
 ### GET
 ### ============================= Comentarios ==================================== ###
+# Obten todos los ID de comentarios
+class GET_ComentarioAll_Response(BaseModel):
+    comentarios_ids: list[int]
+
 # Obten la información de un comentario especifico
 class GET_ComentarioInfo_Response(BaseModel):
     comentario_id: int

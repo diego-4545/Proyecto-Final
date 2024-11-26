@@ -53,6 +53,9 @@ def comentarios_query(query, parametros=None):
 
 # Código SQL para extraer datos (GET)
 # ============================== Comentarios =================================== #
+# Obtener todos los ID de comentarios
+get_comentario_all = "SELECT Id FROM Comentarios;"
+
 # Obtener información de un comentario
 get_comentario_info = "SELECT * FROM Comentarios WHERE Id={comentario_id};"
 
@@ -70,7 +73,7 @@ post_comentario_crear = "INSERT INTO Comentarios (Articulo, Usuario, Estado, Con
 # Código SQL para modificar registros existentes (PUT)
 # ============================= Comentarios ==================================== #
 # Cambia el estado de un comentario
-put_comentario_cambiar_estado = "UPDATE Comentarios SET Estado={estado_id} WHERE Id={comentario_id}"
+put_comentario_cambiar_estado = "UPDATE Comentarios SET Estado=%s WHERE Id=%s"
 
 
 

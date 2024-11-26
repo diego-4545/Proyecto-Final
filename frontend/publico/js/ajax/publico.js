@@ -5,6 +5,7 @@ function get_usuario_info() {
     const usuario_id = localStorage.getItem("usuario_id");
     if(!usuario_id){
         mostrar_inicia_sesion();
+        return;
     }
 
     $.ajax({
@@ -62,19 +63,12 @@ async function get_rol_nombre(rol_id) {
 }
 
 // Mostrar "Inicia sesión" si no hay usuario logueado
-function mostrar_inicia_sesion() {
-    $("#perfil-icono").css("display", "none");
+async function mostrar_inicia_sesion() {
+    $("#perfil-icono").addClass("hidden");
     $("#inicia-sesion").css("display", "block");
+    return;
 }
 
-// Cerrar sesión
-function cerrar_sesion() {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("usuario_id");
-    localStorage.removeItem("rol_id");
-
-    window.location.href = "/";
-}
 
 // Cargar todo al cargar la página
 $(document).ready(async () => {

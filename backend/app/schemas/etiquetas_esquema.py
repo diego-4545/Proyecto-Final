@@ -26,7 +26,6 @@ class POST_EtiquetaCrear_Request(BaseModel):
 class PUT_EtiquetaCambiar_Request(BaseModel):
     etiqueta_id: int
     nombre: str
-    fecha: str
 
 
 ### DELETE

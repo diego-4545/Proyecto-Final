@@ -50,7 +50,5 @@ async function registroUsuario() {
 }
 
 $(document).ready(() => {
-    alert("pene");
     $("#boton-ejecutar").on("click", () => registroUsuario());
 });
-
