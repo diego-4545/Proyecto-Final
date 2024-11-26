@@ -70,7 +70,7 @@ async function mostrar_articulos() {
                     const estatus = await obtener_estado_articulo_nombre(articulo.estado);
                     const articulo_bloque = `
                         <li class="articulo">
-                            <a id="enlace-articulo-${articulo.id}" href="/articulo">
+                            <a data-id="${articulo.id}" onclick="añadir_articulo_id_localstorage(event, ${articulo.articulo_id})">
                                 <span id="info-articulo-titulo-${articulo.id}">${articulo.nombre}</span>
                             </a>
                             <span id="info-articulo-fecha-${articulo.id}">${articulo.fecha}</span>
@@ -82,6 +82,20 @@ async function mostrar_articulos() {
                     $('#lista-articulos').append(articulo_bloque);
                 }
             });
+
+            const script_bloque = `
+                <script>
+                    function añadir_articulo_id_localstorage(event, id) {
+                        // Evitar la redirección predeterminada
+                        event.preventDefault();
+                        // Guardar el ID en el localStorage
+                        localStorage.setItem('articulo_id', id);
+                        // Redirigir después de guardar el ID
+                        window.location.href = "/articulo";
+                    }
+                </script>
+            `;
+            $("body").append(script_bloque);
         } catch (error) {
             console.error("Error al procesar los artículos: ", error);
         }

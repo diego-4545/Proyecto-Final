@@ -47,7 +47,7 @@ async def todos_los_articulos(id):
 async def articulo_info(id):
     # Funcion que obtiene la info de un articulo por su ID
     data: list[tuple] = artq.articulos_query(artq.get_articulo_info.format(articulo_id=id))
-    # Regresar nada si no hay articulos de ese usuario
+    # Regresar nada si no hay articulos con ese ID
     if not data:
         return None
     return arts.GET_ArticuloInfo_Response(
@@ -66,7 +66,9 @@ async def articulo_info(id):
 async def articulo_estado(id):
     # Funcion que obtiene el nombre del estado de un articulo
     data: list[tuple] = artq.articulos_query(artq.get_articulo_estado.format(estado_id=id))
-    print(data)
+    # Regresar nada si no hay articulo con ese ID
+    if not data:
+        return None
     return arts.GET_ArticuloNombreEstado_Response(
         estado_id=data[0][0],
         nombre=data[0][1],
@@ -77,6 +79,12 @@ async def articulo_estado(id):
 async def articulo_likes(id):
     # Funcion para obtener la cantidad de likes de un articulo
     data: list[tuple] = artq.articulos_query(artq.get_articulo_likes.format(articulo_id=id))
+    # Regresar nada si no hay likes de ese articulo
+    if data[0][0] == 0:
+        return arts.GET_ArticuloLikes_Response(
+        articulo_id=id,
+        likes=0,
+    )
     return arts.GET_ArticuloLikes_Response(
         articulo_id=data[0][0],
         likes=data[0][1],
@@ -87,6 +95,9 @@ async def articulo_likes(id):
 async def articulo_etiquetas(id):
     # Funcion para obtener las etiqueta de un articulo
     data: list[tuple] = artq.articulos_query(artq.get_articulo_etiquetas.format(articulo_id=id))
+    # Si no hay etiquetas regresar una lista vacia
+    if not data:
+        return []
     return arts.GET_ArticuloEtiquetas_Response(
         articulo_id=data[0][0],
         etiquetas=data[0][1],
@@ -97,6 +108,9 @@ async def articulo_etiquetas(id):
 async def articulo_comentario(id):
     # Funcion para obtener todos los ID de los comentarios de un articulo
     data: list[tuple] = artq.articulos_query(artq.get_articulo_comentarios.format(articulo_id=id))
+    # Si no hay comentarios retornar una lista vacia
+    if not data:
+        return []
     return arts.GET_ArticuloComentarios_Response(
         articulo_id=data[0][0],
         comentarios=data[0][1],
@@ -113,12 +127,11 @@ async def articulo_añadir(input: arts.POST_ArticuloCrear_Request):
         input.usuario_id,
         input.nombre,
         input.fecha,
-        0,
-        1,
+        input.visitas,
+        input.estado,
         input.contenido,
         input.imagen,
     )
-
     # Realizamos la inserción de los datos en la BD
     artq.articulos_query(artq.post_articulo_crear, params)
     return {"message": "Articulo creado exitosamente"}
@@ -141,7 +154,7 @@ async def articulo_añadir_like(input: arts.POST_ArticuloLike_Request):
 async def articulo_añadir_etiquetas(input: arts.POST_EtiquetasAsignar_Request):
     # Accedemos a las etiquetas
     etiquetas_id = input.etiquetas_id
-
+    # Un ciclo para añadir todos los ids de etiquetas
     for etiqueta in etiquetas_id:
         params = (
             input.articulo_id,

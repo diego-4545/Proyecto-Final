@@ -19,8 +19,8 @@
     />
 
     <!-- Estilos de CSS -->
-    <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/articulos.css">
+    <link rel="stylesheet" href="/frontend/usuario/css/navbar.css">
+    <link rel="stylesheet" href="/frontend/usuario/css/articulos.css">
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -56,7 +56,7 @@
                     <span class="role" id="navbar-info-usuario-rol">Rol</span>
                 </div>
                 <a href="/perfil">
-                    <img id="navbar-info-usuario-foto" src="frontend/publico/img/perfil_default.png" alt="Foto de perfil">
+                    <img id="navbar-info-usuario-foto" src="/frontend/img_biblioteca/perfiles/default.png" alt="Foto de perfil">
                 </a>
             </div>
         </div>
@@ -70,14 +70,11 @@
     <div id="contenedor-info-articulo">
         <div id="info-escritor">
             <!-- Informacion del escritor -->
-            <img id="foto-perfil-escritor" src="./img/perfil_default.png" alt="Foto del escrito"> <!-- Foto de perfil del escritor -->
-            <span id="info-escritor-nombre">Manuel Magaña López</span> <!-- Nombre del escritor -->
+            <img id="foto-perfil-escritor" src="/frontend/img_biblioteca/perfiles/default.png" alt="Foto del escrito"> <!-- Foto de perfil del escritor -->
+            <span id="info-escritor-nombre"></span> <!-- Nombre del escritor -->
         </div>
         <div id="info-etiquetas">
             <!-- Lista de etiquetas que componen el artículo -->
-            <div class="etiqueta">
-                <span id="info-etiqueta-nombre">Naturaleza</span>
-            </div>
         </div>    
     </div>
 
@@ -85,11 +82,11 @@
     <div id="contenedor-contenido-articulo" class="container-fluid">
         <div id="imagen-articulo" class="col-12">
             <!-- Imagen del artículo -->
-            <img src="../img_biblioteca/articulos/montañas_nevadas.png" alt="Banner articulo">
+            <img id="info-articulo-foto" src="" alt="Banner articulo">
         </div>
         <div id="contenido-articulo" class="col-12">
             <!-- Contenido del artículo -->
-            <span>El Monte Everest, con 8,848.86 metros, es la montaña más alta del mundo, símbolo de desafío humano, espiritualidad y un recordatorio de nuestra responsabilidad ambiental.</span>
+            <span id="info-articulo-contenido">El Monte Everest, con 8,848.86 metros, es la montaña más alta del mundo, símbolo de desafío humano, espiritualidad y un recordatorio de nuestra responsabilidad ambiental.</span>
         </div>
     </div>
 
@@ -157,6 +154,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Scripts de JS -->
-    <script src="js/articulos.js"></script>
+    <script type="module" src="/frontend/usuario/js/ajax/articulo_ajax.js"></script>
+    <script src="/frontend/usuario/js/articulos.js"></script>
 </body>
 </html>

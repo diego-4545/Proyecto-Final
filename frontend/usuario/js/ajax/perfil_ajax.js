@@ -6,7 +6,6 @@ import { cambiar_navbar_con_info_usuario } from "./basic_ajax.js";
 
 var global_url = "http://127.0.0.1:8000"
 
-
 // Mostrar info de la página en general
 function mostrar_perfil_con_info_usuario(usuario_info) {
     // Cambiando la imagen de perfil
@@ -65,7 +64,7 @@ async function mostrar_perfil_etiquetas_usuario() {
             );
 
             // Iteramos sobre los nombres de las etiquetas para agregarlas al DOM
-            nombresEtiquetas.forEach(etiqueta => {
+            await nombresEtiquetas.forEach(etiqueta => {
                 if (etiqueta) {
                     // Crear el elemento <li> y el <span>
                     const li = $('<li>', { class: 'etiquetas' });
@@ -138,11 +137,11 @@ async function mostrar_perfil_articulos_usuario() {
                     const articulo_bloque = `
                         <div class="col-md-4">
                             <div class="card articulo">
-                                <a href="/articulo">
-                                    <img id="info-articulo-imagen-${articulo.id}" src="${articulo.imagen}" class="card-img-top" alt="${articulo.nombre}">
+                                <a data-id="${articulo.articulo_id}" onclick="añadir_articulo_id_localstorage(event, ${articulo.articulo_id})">
+                                    <img id="info-articulo-imagen-${articulo.articulo_id}" src="${articulo.imagen}" class="card-img-top" alt="${articulo.nombre}">
                                 </a>
                                 <div class="card-body">
-                                    <h5 id="info-articulo-titulo-${articulo.id}" class="card-title text-center">${articulo.nombre}</h5>
+                                    <h5 id="info-articulo-titulo-${articulo.articulo_id}" class="card-title text-center">${articulo.nombre}</h5>
                                 </div>
                             </div>
                         </div>
@@ -150,6 +149,20 @@ async function mostrar_perfil_articulos_usuario() {
                     $('#galeria-articulos').append(articulo_bloque);
                 }
             });
+
+            const script_bloque = `
+                <script>
+                    function añadir_articulo_id_localstorage(event, id) {
+                        // Evitar la redirección predeterminada
+                        event.preventDefault();
+                        // Guardar el ID en el localStorage
+                        localStorage.setItem('articulo_id', id);
+                        // Redirigir después de guardar el ID
+                        window.location.href = "/articulo";
+                    }
+                </script>
+            `;
+            $("body").append(script_bloque);
         } catch (error) {
             console.error("Error al procesar los artículos: ", error);
         }
@@ -257,8 +270,101 @@ function cambiar_datos_usuario(usuario_info) {
 }
 
 // Cambiar las etiquetas del usuario
-function cambiar_etiquetas() {
+// Función para obtener los data-ids de los botones seleccionados
+function obtenerEtiquetasSeleccionadas() {
+    const etiquetasSeleccionadas = [];
+    $('#form-etiquetas .opcion-etiqueta.active').each(function() {
+        etiquetasSeleccionadas.push($(this).data('id')); // Utiliza .data() para obtener el data-id
+    });   
+    return etiquetasSeleccionadas; // Devuelve el arreglo con los data-ids
+}
+// Función para enviar las solicitudes POST con AJAX usando jQuery
+async function enviarEtiquetasSeleccionadas() {
+    const usuario_id = localStorage.getItem("usuario_id");
+    const etiquetas = obtenerEtiquetasSeleccionadas();
+    try {
+        await $.ajax({
+            url: '/api/usuario-etiquetas/' + usuario_id,
+            type: 'DELETE',
+            contentType: 'application/json',
+        });
+    } catch (error) {
+        console.error("Error al reiniciar las etiquetas: " + error);
+    }
+    
+    await $.ajax({
+        url: '/api/usuario-etiquetas',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ 
+            usuario_id: usuario_id,
+            etiquetas: etiquetas,  
+        }),
+        success: function(response) {
+            console.log('Etiqueta ' + id + ' enviada correctamente', response);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar la etiqueta ' + id, error);
+            return null;
+        }
+    });
     window.location.href = "/perfil";
+}
+
+// Mostrar las opciones de etiquetas del modal
+async function mostrar_modal_etiquetas() {
+    // Obtener IDs de etiquetas
+    async function obtener_id_etiquetas() {
+        try {    
+            const etiquetas = await $.ajax({
+                url: global_url + "/api/etiqueta",
+                method: "GET",
+                contentType: "application/json",
+            });
+            return etiquetas.etiquetas_ids;
+        } catch (error) {
+            console.error("Error al obtener los ids de las etiquetas: " + error);
+            return null;
+        }
+    }
+
+    // Obtener el nombre de una etiqueta específica
+    async function obtener_nombre_etiqueta(etiqueta_id) {
+        try {
+            const etiqueta_info = await $.ajax({
+                url: global_url + "/api/etiqueta-nombre/" + etiqueta_id,
+                method: "GET",
+                contentType: "application/json",
+            });
+            return etiqueta_info;
+        } catch (error) {
+            console.error("Error al obtener el nombre de la etiqueta: " + error);
+            return null;
+        }
+    }
+
+    // Limpiamos la lista de etiquetas antes de agregar las nuevas
+    $("#form-etiquetas").empty();
+    const etiquetas_ids = await obtener_id_etiquetas();
+    if (etiquetas_ids) {
+        try {
+            // Obtenemos los nombres de todas las etiquetas en paralelo
+            const nombresEtiquetas = await Promise.all(
+                etiquetas_ids.map(id => obtener_nombre_etiqueta(id))
+            );
+            // Iteramos sobre los nombres de las etiquetas para agregarlas al DOM
+            await nombresEtiquetas.forEach(etiqueta => {
+                if (etiqueta) {
+                    const opcion_bloque = `
+                        <button class="toggle-btn opcion-etiqueta mt-1" type="button" onclick="toggleButton(event, this)" data-id="${etiqueta.etiqueta_id}">${etiqueta.nombre}</button>
+                    `;
+                    $('#form-etiquetas').append(opcion_bloque);
+                }
+            });
+        } catch (error) {
+            console.error("Error al procesar las etiquetas: ", error);
+        }
+    }
 }
 
 
@@ -317,6 +423,14 @@ $(document).ready(async () => {
 
     // Cambiar imagen de perfil
     $("#guardar-imagen-btn").on("click", () => guardarImagen(usuario_info));
+    
+    // Mostrar etiquetas en el modal 
+    $("#boton-editar-etiquetas").on("click", () => mostrar_modal_etiquetas());
+    // Cambiar etiquetas
+    $('#guardar-etiquetas').on('click', () => enviarEtiquetasSeleccionadas());
+
+    
+    
     //Cambiar datos del usuario
     $("#boton-cambiar-datos-usuario").on("click", () => cambiar_datos_usuario(usuario_info));
 
