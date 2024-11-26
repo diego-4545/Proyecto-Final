@@ -96,11 +96,20 @@ async def articulo_etiquetas(id):
     # Funcion para obtener las etiqueta de un articulo
     data: list[tuple] = artq.articulos_query(artq.get_articulo_etiquetas.format(articulo_id=id))
     # Si no hay etiquetas regresar una lista vacia
+    print(data)
     if not data:
-        return []
+        return arts.GET_ArticuloEtiquetas_Response(
+            articulo_id=data[0][0],
+            etiquetas=[],
+        )
+    
+    ids = list()
+    for i in range(len(data)):
+        ids.append(data[i][1])
+    print(ids)
     return arts.GET_ArticuloEtiquetas_Response(
         articulo_id=data[0][0],
-        etiquetas=data[0][1],
+        etiquetas=ids,
     )
 
 # Obtener ID de comentarios de un articulo

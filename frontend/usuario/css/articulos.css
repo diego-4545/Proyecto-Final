@@ -125,18 +125,16 @@
 }
 
 #btn-reportar {
-    background-color: #49494A; /* Verde */
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 10px;
     border-radius: 8px;
     font-weight: bold;
     margin-bottom: 40px;
 }
 
 .btn-reportar-comentario {
-    background-color: #49494A; /* Verde */
     color: white;
     border: none;
     padding: 5px 10px;
@@ -150,4 +148,33 @@
 
 .btn-reportar-comentario:hover {
     background-color: #49494A; /* Un tono más oscuro al pasar el ratón */
+}
+
+.like-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.heart-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #ccc; /* Corazón gris por defecto */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.heart-button .heart-icon {
+    font-family: Arial, sans-serif;
+}
+
+.heart-button:hover {
+    transform: scale(1.1);
+}
+
+.heart-button.liked {
+    color: red; /* Corazón rojo cuando está seleccionado */
+    transform: scale(1.2);
 }

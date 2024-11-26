@@ -160,7 +160,7 @@ async def crear_usuario(input: usrs.POST_UsuarioCrear_Request):
     return {"message": "Usuario creado exitosamente"}
 
 # Asignar etiquetas a un usuario
-@router.post("/api/usuario-etiquetas/")
+@router.post("/api/usuario-etiquetas")
 async def asignar_etiquetas(input: usrs.POST_UsuarioEtiquetasAsignar_Request):
     for etiqueta_id in input.etiquetas:
         query = usrq.post_usuario_etiqueta_asignar
@@ -169,7 +169,7 @@ async def asignar_etiquetas(input: usrs.POST_UsuarioEtiquetasAsignar_Request):
     return {"message": "Etiquetas asignadas exitosamente"}
 
 # Crear una nueva notificación
-@router.post("/api/notificacion/")
+@router.post("/api/notificacion")
 async def crear_notificacion(notificacion: usrs.POST_UsuarioNotificacionCrear_Request):
     query = usrq.post_notificacion_crear
     params = (
@@ -185,7 +185,7 @@ async def crear_notificacion(notificacion: usrs.POST_UsuarioNotificacionCrear_Re
 
 ### PUT
 # Actualizar la información de un usuario
-@router.put("/api/usuario/")
+@router.put("/api/usuario")
 async def actualizar_usuario(usuario: usrs.PUT_UsuarioCambiar_Request):
     query = usrq.put_usuario_info_cambiar
     params = (
@@ -203,7 +203,7 @@ async def actualizar_usuario(usuario: usrs.PUT_UsuarioCambiar_Request):
     return {"message": "Información del usuario actualizada exitosamente"}
 
 # Cambiar el estado de una notificación
-@router.put("/api/notificacion/")
+@router.put("/api/notificacion")
 async def actualizar_estado_notificacion(notificacion: usrs.PUT_UsuarioNotificacionCambiar_Request):
     query = usrq.put_notificacion_estado_cambiar
     params = (

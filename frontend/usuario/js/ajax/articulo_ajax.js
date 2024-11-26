@@ -12,7 +12,6 @@ async function obtener_info_articulo(id) {
         });
 
         $("#info-articulo-titulo").text(articulo_info.nombre);
-        $("#info-articulo-descripcion").text(articulo_info.descripcion);
         $("#info-articulo-foto").attr('src', articulo_info.imagen);
         $("#info-articulo-contenido").text(articulo_info.contenido);
 
@@ -82,7 +81,7 @@ async function obtener_etiquetas_articulo(id) {
     if (etiquetas_ids) {
         try {
             const ids = await Promise.all(
-                etiquetas_ids.map(id => obtener_nombre_etiqueta(id))
+                etiquetas_ids.etiquetas.map(id => obtener_nombre_etiqueta(id))
             );
             ids.forEach(etiqueta => {
                 if (etiqueta) {
