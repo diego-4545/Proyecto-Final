@@ -1,14 +1,7 @@
 import { verificarAdmin } from "./auth_ajax.js";
 
 var global_url = "http://127.0.0.1:8000"
-
-
-
-let currentPage = 1;
-const rowsPerPage = 5;
-
-
-let currentEditRow = null;
+let articulo_id = "";
 
 // Conseguir informacion del usuarios
 async function get_usuario_info() {
@@ -32,12 +25,6 @@ async function get_usuario_info() {
             "rol_id": response.rol_id,
             "contraseña": response.contraseña,
         };
-
-        cambiar_navbar_con_info_usuario(usuario_info);
-        cambiar_perfil_con_info_usuario(usuario_info);
-        cambiar_perfil_etiquetas_usuario();
-        cambiar_perfil_articulos_usuario();
-
         return usuario_info; // Retorna los datos del usuario
     } catch (error) {
         console.error("Error al obtener los datos del usuario:", error);
@@ -50,108 +37,112 @@ async function get_usuario_info() {
 async function cambiar_navbar_con_info_usuario(usuario_info) {
     // Cambiamos el nombre de usuario de la barra de navegación
     $("#navbar-info-usuario-nombre").text(usuario_info.usuario);
-
-
+    
     // Cambiamos la imagen de perfil de la barra de navegación
     $("#navbar-info-usuario-foto").attr("src", usuario_info.foto_perfil);
 }
 
-
-function editTag(button) {
-    currentEditRow = $(button).closest('tr');
-    
-    const article = currentEditRow.find('td:eq(1)').text();
-    const image = currentEditRow.find('td:eq(2)').text();
-    const date = currentEditRow.find('td:eq(3)').text();
-    const status = currentEditRow.find('td:eq(4)').text();
-    const creator = currentEditRow.find('td:eq(5)').text();
-    const tags = currentEditRow.find('td:eq(6)').text();
-    
-    $('#editArticleName').val(article);
-    $('#editImage').val(image);
-    $('#editDate').val(date);
-    $('#editStatus').val(status);
-    $('#editCreator').val(creator);
-    $('#editTagName').val(tags);
-    
-    $('#editTagModal').modal('show');
-}
-
-$('#updateTagBtn').on('click', function() {
-    const updatedArticle = $('#editArticleName').val().trim();
-    const updatedImage = $('#editImage').val().trim();
-    const updatedDate = $('#editDate').val();
-    const updatedStatus = $('#editStatus').val();
-    const updatedCreator = $('#editCreator').val().trim();
-    const updatedTags = $('#editTagName').val().trim();
-    
-    if (updatedArticle === "" || updatedImage === "" || updatedDate === "" || updatedCreator === "" || updatedTags === "") {
-        alert("Por favor, complete todos los campos.");
-        return;
-    }
-    
-    currentEditRow.find('td:eq(1)').text(updatedArticle);
-    currentEditRow.find('td:eq(2)').text(updatedImage);
-    currentEditRow.find('td:eq(3)').text(updatedDate);
-    currentEditRow.find('td:eq(4)').text(updatedStatus);
-    currentEditRow.find('td:eq(5)').text(updatedCreator);
-    currentEditRow.find('td:eq(6)').text(updatedTags);
-    
-    $('#editTagModal').modal('hide');
-});
-
-
-function deleteTag(button) {
-    const confirmation = confirm("¿Estás seguro de que deseas eliminar esta etiqueta?");
-    if (confirmation) {
-        const row = button.parentNode.parentNode;
-        row.remove();
-    }
-    updateTable();
-}
-
-function updateTable() {
-    const rows = $('#tableBody tr');
-    const totalRows = rows.length;
-    const totalPages = Math.ceil(totalRows / rowsPerPage);
-
-    rows.each((index, row) => {
-        $(row).hide();
-        if (index >= (currentPage - 1) * rowsPerPage && index < currentPage * rowsPerPage) {
-            $(row).show();
+async function mostrar_todos_los_articulos() {
+    // Obtener IDs de usuarios
+    async function obtener_id_usuario() {
+        try {    
+            const usuarios_ids = await $.ajax({
+                url: global_url + "/api/usuario",
+                method: "GET",
+                contentType: "application/json",
+            });
+            return usuarios_ids.usuarios_ids;
+        } catch (error) {
+            console.error("Error al obtener los IDs de los usuarios: " + error);
+            return null;
         }
+    }
+
+    // Obtener la información de un usuario específico
+    async function obtener_info_usuario(usuarios_ids) {
+        try {
+            const usuario_info = await $.ajax({
+                url: global_url + "/api/usuario/" + usuarios_ids,
+                method: "GET",
+                contentType: "application/json",
+            });
+            return usuario_info;
+        } catch (error) {
+            console.error("Error al obtener el nombre del usuario: " + error);
+            return null;
+        }
+    }
+
+    // Limpiar la lista de usuarios antes de agregar las nuevas filas
+    $("#tableBody").empty();
+
+    const usuarios_ids = await obtener_id_usuario();
+    if (usuarios_ids) {
+        try {
+            // Obtener la información de los usuarios en paralelo
+            const info_usuarios = await Promise.all(
+                usuarios_ids.map(id => obtener_info_usuario(id))
+            );
+
+            // Iterar sobre los usuarios y agregar las filas a la tabla
+            for (const usuario of info_usuarios) {
+                if (usuario) {
+                    // Obtener el nombre del rol
+                    const rol_nombre = await get_rol_nombre(usuario.rol_id);
+
+                    const fila = `
+                        <tr>
+                            <td>
+                                <button class="btn btn-dark edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#editar-usuario-modal" data-id="${usuario.usuario_id}">Editar</button>
+                                <button class="btn btn-danger delete-btn" data-id="${usuario.usuario_id}">Eliminar</button>
+                            </td>
+                            <td>${rol_nombre || 'Desconocido'}</td>
+                            <td>${new Date(usuario.fecha).toLocaleDateString()}</td>
+                            <td>${usuario.usuario}</td>
+                            <td>${usuario.contraseña}</td>
+                            <td>${usuario.email}</td>
+                        </tr>
+                    `;
+                    // Agregar la fila al cuerpo de la tabla
+                    $("#tableBody").append(fila);
+                }
+            }
+        } catch (error) {
+            console.error("Error al procesar los usuarios: ", error);
+        }
+    }
+}
+
+
+$(document).ready(async () => {
+    // Autenticacion
+    await verificarAdmin();
+
+    // Obtener infor del usuario
+    const usuario_info = await get_usuario_info();
+
+    // Cambiar informacion de la navbar
+    cambiar_navbar_con_info_usuario(usuario_info);
+
+    // Mostrar la lista de todos los usuarios
+    mostrar_todos_los_articulos();
+
+    // Editar el articulo
+    $(document).on("click", ".edit-btn", function () {
+        usuario_id = $(this).data("id"); // Obtiene el ID de la etiqueta desde el atributo data-id
+    });
+    $(document).on("click", "#boton-guardar-cambios", editar_usuario);
+
+    // Eliminar los articulos
+    $(document).on("click", ".delete-btn", function () {
+        usuario_id = $(this).data("id");
+        eliminar_usuario(usuario_id);
     });
 
-    $('#pageInfo').text(`Página ${currentPage} de ${totalPages}`);
-}
+    // Para la barra de busqueda
+    $(document).on("click", "#searchBar", searchTag);
 
-function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        updateTable();
-    }
-}
-
-function nextPage() {
-    const totalRows = $('#tableBody tr').length;
-    const totalPages = Math.ceil(totalRows / rowsPerPage);
-    if (currentPage < totalPages) {
-        currentPage++;
-        updateTable();
-    }
-}
-
-function goToFirstPage() {
-    currentPage = 1;
-    updateTable();
-}
-
-function goToLastPage() {
-    const totalRows = $('#tableBody tr').length;
-    const totalPages = Math.ceil(totalRows / rowsPerPage);
-    currentPage = totalPages;
-    updateTable();
-}
+});
 
 function searchTag() {
     const searchTerm = document.getElementById("searchBar").value.toLowerCase();
@@ -166,31 +157,3 @@ function searchTag() {
         }
     });
 }
-
-function saveChanges() {
-    alert("Cambios guardados.");
-}
-
-$(document).ready(function() {
-    updateTable();
-});
-
-$('#addTagForm').on('keydown', function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-    }
-});
-
-$('#editTagForm').on('keydown', function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-    }
-});
-function addTag() {
-    $('#addTagModal').modal('show');
-}
-
-function addTag() {
-    $('#addTagModal').modal('show');
-}
-
