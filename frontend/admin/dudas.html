@@ -60,16 +60,16 @@
             <form onsubmit="return refrescarPagina()">
                 <div class="name-image-container">
                     <div class="name-container">
-                        <input type="text" placeholder="NOMBRE COMPLETO" disabled>
+                        <input id="imput-nombre" type="text" placeholder="NOMBRE COMPLETO" disabled>
                     </div>
                     <div class="image-container">
                         <img src="/frontend/admin/img/mas.png" alt="Imagen de ejemplo" class="image-preview">
                     </div>
                 </div>
             
-                <input type="email" placeholder="CORREO ELECTRÓNICO" disabled>
+                <input id="imput-correo" type="email" placeholder="CORREO ELECTRÓNICO" disabled>
             
-                <textarea placeholder="MENSAJE" disabled></textarea>
+                <textarea id="imput-mensaje" placeholder="MENSAJE" disabled></textarea>
             
                 <textarea name="archivo" class="feedback-input" placeholder="Ingrese la retroalimentación" oninput="autoResize(this)"></textarea>
             
