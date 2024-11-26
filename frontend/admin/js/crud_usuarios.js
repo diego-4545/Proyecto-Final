@@ -59,7 +59,7 @@ async function cambiar_navbar_con_info_usuario(usuario_info) {
     $("#navbar-info-usuario-foto").attr("src", usuario_info.foto_perfil);
 }
 
-function addTag() {
+function addTag(event, this) {
     isEditing = false; 
     currentUserId = null
 
