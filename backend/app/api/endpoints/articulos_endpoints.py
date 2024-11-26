@@ -13,11 +13,14 @@ async def articulos_ids():
     # Funcion para obtener los IDs
     data: list[tuple] = artq.articulos_query(artq.get_articulos_all)
     # Si no hay usuarios retornar nada
+    print(data)
     if not data:
         return []
     ids = list()
+    
     for i in range(len(data)):
         ids.append(data[i][0])
+    print(ids)
     return arts.GET_ArticulosAll_Response(
         articulos_ids=ids
     )
@@ -198,5 +201,6 @@ async def articulo_cambiar_estado(input: arts.PUT_ArticuloCambiarEstado_Request)
 # Borramos un articulo
 @router.delete("/api/articulo/{id}")
 async def articulo_borrar(id):
+    artq.articulos_query(artq.delete_articulo_all_usuario.format(articulo_id=id))
     artq.articulos_query(artq.delete_articulo_eliminar.format(articulo_id=id))
     return {"message": "Se borro el articulo exitosamente"}

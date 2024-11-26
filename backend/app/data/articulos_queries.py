@@ -109,4 +109,5 @@ put_articulo_cambiar_estado = "UPDATE Articulos SET Nombre=%s, FechaDeCreacion=%
 # Código SQL para eliminar registros (DELETE)
 # ============================= Articulo ==================================== #
 # Eliminar un articulo
-delete_articulo_eliminar = "DELETE FROM Articulos WHERE Id={articulo_id};"
+delete_articulo_all_usuario = "DELETE FROM usuarioarticulos WHERE Articulo={articulo_id}"
+delete_articulo_eliminar = "DELETE FROM Articulos WHERE Id={articulo_id}"

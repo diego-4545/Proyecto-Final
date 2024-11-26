@@ -51,7 +51,7 @@ $(document).ready(() => {
                     if (articulo && articulo.nombre && articulo.contenido) {
                         // Renderizar cada artículo en el contenedor
                         $(".news-container").append(`
-                            <a href="/noticia/${id}" class="news-box">
+                            <a href="/noticia/${id}" class="news-box" data-id="${articulo.articulo_id}" onclick="añadir_articulo_id_localstorage(event, ${articulo.articulo_id})">
                                 <h3>${articulo.nombre}</h3>
                                 <p>${articulo.contenido}</p>
                             </a>
@@ -64,6 +64,19 @@ $(document).ready(() => {
                     continue; // Continuar con los demás artículos
                 }
             }
+            const script_bloque = `
+                <script>
+                    function añadir_articulo_id_localstorage(event, id) {
+                        // Evitar la redirección predeterminada
+                        event.preventDefault();
+                        // Guardar el ID en el localStorage
+                        localStorage.setItem('articulo_id', id);
+                        // Redirigir después de guardar el ID
+                        window.location.href = "/articulo";
+                    }
+                </script>
+            `;
+            $("body").append(script_bloque);
         } catch (error) {
             console.error("Error al realizar la búsqueda:", error);
             alert("Ocurrió un error al realizar la búsqueda.");
