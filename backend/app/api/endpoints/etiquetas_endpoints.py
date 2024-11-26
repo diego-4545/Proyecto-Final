@@ -14,7 +14,7 @@ async def etiqueta_ids():
     data: list[tuple] = etiq.etiquetas_query(etiq.get_etiqueta_all)
     # Si no hay etiquetas retornar nada
     if not data:
-        return None
+        return []
     ids = list()
     for i in range(len(data)):
         ids.append(data[i][0])
@@ -48,7 +48,7 @@ async def articulo_añadir_etiqueta(input: etis.POST_EtiquetaCrear_Request):
     )
     # Insertamos los valores en la BD
     etiq.etiquetas_query(etiq.post_etiqueta_crear, params)
-    return {"message": "Se creo un comentario exitosamente"}
+    return {"message": "Se creo la etiqueta exitosamente"}
 
 
 
@@ -58,13 +58,13 @@ async def articulo_añadir_etiqueta(input: etis.POST_EtiquetaCrear_Request):
 async def etiqueta_cambiar(input: etis.PUT_EtiquetaCambiar_Request):
     # Accedemos a los valores de la solicitud
     params = (
-        input.etiqueta_id,
         input.nombre,
-        input.fecha,
+        input.etiqueta_id,
     )
+    print(params)
     # Realizamos los cambios en la BD
     etiq.etiquetas_query(etiq.put_etiqueta_estado, params)
-    return {"message": "Se cambio el estado de un comentario exitosamente"}
+    return {"message": "Se cambiaron los datos de la etiqueta exitosamente"}
 
 
 
@@ -72,5 +72,10 @@ async def etiqueta_cambiar(input: etis.PUT_EtiquetaCambiar_Request):
 # Borramos una etiqueta
 @router.delete("/api/etiqueta/{id}")
 async def etiqueta_borrar(id):
+    # Borramos las etiquetas de otros perfiles
+    etiq.etiquetas_query(etiq.delete_etiqueta_all_usuarios.format(etiqueta_id=id))
+    etiq.etiquetas_query(etiq.delete_etiqueta_all_articulos.format(etiqueta_id=id))
+
+    # Borramos la etiqueta de la tabla de etiquetas
     etiq.etiquetas_query(etiq.delete_etiqueta_eliminar.format(etiqueta_id=id))
-    return {"message": "Se elimino el comentario exitosamente"}
+    return {"message": "Se elimino la etiqueta exitosamente"}

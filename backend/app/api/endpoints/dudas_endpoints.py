@@ -14,7 +14,7 @@ async def dudas_ids():
     data: list[tuple] = dudq.dudas_query(dudq.get_ids_dudas)
     # Si no hay dudas no retornar nada
     if not data:
-        return None
+        return []
     ids = list()
     for i in range(len(data)):
         ids.append(data[i][0])

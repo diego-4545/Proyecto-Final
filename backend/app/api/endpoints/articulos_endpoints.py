@@ -14,7 +14,7 @@ async def articulos_ids():
     data: list[tuple] = artq.articulos_query(artq.get_articulos_all)
     # Si no hay usuarios retornar nada
     if not data:
-        return None
+        return []
     ids = list()
     for i in range(len(data)):
         ids.append(data[i][0])

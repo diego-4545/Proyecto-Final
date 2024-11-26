@@ -69,11 +69,13 @@ post_etiqueta_crear = "INSERT INTO Etiqueta (Nombre, FechaDeCreacion) VALUES (%s
 ### PUT
 ### ============================= Etiqueta ==================================== ###
 # Cambia una etiqueta
-put_etiqueta_estado = "UPDATE Etiqueta SET Nombre=%s, FechaDeCreacion=%s WHERE Id=%s"
+put_etiqueta_estado = "UPDATE Etiqueta SET Nombre=%s WHERE Id=%s"
 
 ### DELETE
 ### ============================= Etiqueta ==================================== ###
 # Eliminar una etiqueta
 delete_etiqueta_eliminar = "DELETE FROM Etiqueta WHERE Id={etiqueta_id};"
 
-    
+# Borrar las eitquetas de todos los perfiles y articulos
+delete_etiqueta_all_usuarios = "DELETE FROM etiquetasdeusuario WHERE Etiqueta={etiqueta_id};"
+delete_etiqueta_all_articulos = "DELETE FROM etiquetasdearticulo WHERE Etiqueta={etiqueta_id};"

@@ -14,7 +14,7 @@ async def comentario_ids():
     data: list[tuple] = comq.comentarios_query(comq.get_comentario_all)
     # Si no hay usuarios retornar nada
     if not data:
-        return None
+        return []
     ids = list()
     for i in range(len(data)):
         ids.append(data[i][0])

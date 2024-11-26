@@ -14,7 +14,7 @@ async def usuarios_ids():
     data: list[tuple] = usrq.usuarios_query(usrq.get_usuarios_all)
     # Si no hay usuarios retornar nada
     if not data:
-        return None
+        return []
     ids = list()
     for i in range(len(data)):
         ids.append(data[i][0])
