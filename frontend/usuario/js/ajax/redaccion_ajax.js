@@ -49,6 +49,7 @@ async function crear_articulo(usuario_id) {
             })
         });
         console.log("Articulo creado exitosamente");
+        window.location.href = "/escritor";
     } catch (error) {
         console.error("Error al crear el nuevo articulo: " + error);
         return null;
